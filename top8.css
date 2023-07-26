@@ -1,0 +1,23 @@
+#container {
+    position: absolute;
+    width: 1920px;
+    height: 1080px;
+    top: 0px;
+    left: 0px;
+    background-image: url(top8back-black.jpg);
+    background-size: 1920px 1080px;
+}
+
+#title {
+    position: absolute;
+    width: 800px;
+    height: 150px;
+    top: 0px;
+    left: 560px;
+    font-family: "corpoM";
+    font-size: 50px;
+    line-height: 150px;
+    text-align: center;
+    color: white;
+    content: "知恵捨";
+}

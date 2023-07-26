@@ -1,0 +1,33 @@
+<!DOCTYPE StreamControl>
+<items>
+ <timestamp>1478805215</timestamp>
+ <l3rd1a></l3rd1a>
+ <l3rd1b></l3rd1b>
+ <l3rd2a></l3rd2a>
+ <l3rd2b></l3rd2b>
+ <l3rd3a></l3rd3a>
+ <l3rd3b></l3rd3b>
+ <l3rd4a></l3rd4a>
+ <l3rd4b></l3rd4b>
+ <language>eng</language>
+ <pCountry1></pCountry1>
+ <pCountry2></pCountry2>
+ <pName1>sdfbg</pName1>
+ <pName1jp></pName1jp>
+ <pName2>sdfg</pName2>
+ <pName2jp></pName2jp>
+ <pScore1>0</pScore1>
+ <pScore2>0</pScore2>
+ <sponsorts>0</sponsorts>
+ <stage></stage>
+ <threeshottext></threeshottext>
+ <twitter>
+  <username></username>
+  <twittername></twittername>
+  <text></text>
+  <created></created>
+  <picFileName></picFileName>
+  <urls/>
+  <media/>
+ </twitter>
+</items>

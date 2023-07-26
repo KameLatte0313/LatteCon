@@ -1,0 +1,282 @@
+<!DOCTYPE StreamControlLayout>
+<layout width="390" height="340" tabbed="1">
+ <tab name="Match">
+  <lineEdit id="pTeam1" x="10" y="20" width="115" height="20">Team</lineEdit>
+  <lineEdit id="pName1" x="10" y="50" width="115" height="20" dataSet="players.csv">PlayerName</lineEdit>
+  <spinBox id="pScore1" x="130" y="20" width="40" height="55" maximum="999" />
+
+  <lineEdit id="pTeam2" x="245" y="20" width="115" height="20">Team</lineEdit>
+  <lineEdit id="pName2" x="245" y="50" width="115" height="20" dataSet="players.csv">PlayerName</lineEdit>
+  <spinBox id="pScore2" x="200" y="20" width="40" height="55" maximum="999" />
+
+  <!-- <button type="reset" x="310" y="20" width="30" height="23" tooltip="Clear Player 1 fields" id="clear1" reset="pName1,pTwitter1,pScore1,pCountry1">Clear</button>
+  <button type="reset" x="340" y="20" width="30" height="23" tooltip="Reset the Scores" id="reset" reset="pScore1,pScore2">Reset</button>
+  <button type="reset" x="310" y="50" width="30" height="23" tooltip="Clear Player 2 fields" id="clear2" reset="pName2,pTwitter2,pScore2,pCountry2">Clear</button> -->
+  <button type="swap" x="175" y="20" width="20" height="55" tooltip="Swap the Scores" id="swap" swapSet1="pTeam1,pName1,pScore1" swapSet2="pTeam2,pName2,pScore2">⇔</button>
+  <button type="reset" x="130" y="80" width="110" height="23" tooltip="Reset the Scores" id="reset" reset="pTeam1,pName1,pScore1,pTeam2,pName2,pScore2">Reset</button>
+
+  <label x="10" y="80" width="46" height="13">noGF</label>
+  <label x="60" y="80" width="46" height="13">W</label>
+  <label x="95" y="80" width="46" height="13">L</label>
+
+  <label x="245" y="80" width="46" height="13">noGF</label>
+  <label x="295" y="80" width="46" height="13">W</label>
+  <label x="330" y="80" width="46" height="13">L</label>
+  
+
+  <radioGroup id="GF-WL1">
+    <radioButton x="40" y="77" width="80" height="20" value="no"></radioButton>
+    <radioButton x="72" y="77" width="80" height="20" value="W"></radioButton>
+	<radioButton x="104" y="77" width="80" height="20" value="L"></radioButton>
+  </radioGroup>
+  
+  <radioGroup id="GF-WL2">
+    <radioButton x="275" y="77" width="80" height="20" value="no"></radioButton>
+    <radioButton x="307" y="77" width="80" height="20" value="W"></radioButton>
+	<radioButton x="339" y="77" width="80" height="20" value="L"></radioButton>
+  </radioGroup>
+
+  <!-- 左下 -->
+  <!-- <label x="10" y="96" width="46" height="13">Stage</label> -->
+  
+
+  <label x="0" y="130" width="46" height="13">勝者側</label>
+  <label x="0" y="150" width="46" height="13">敗者側</label>
+
+  <label x="40" y="110" width="46" height="13">R1</label>
+  <label x="60" y="110" width="46" height="13">R2</label>
+  <label x="80" y="110" width="46" height="13">R3</label>
+  <label x="100" y="110" width="46" height="13">R4</label>
+  <label x="120" y="110" width="46" height="13">R5</label>
+  <label x="140" y="110" width="46" height="13">R6</label>
+  <label x="160" y="110" width="46" height="13">R7</label>
+  <label x="180" y="110" width="46" height="13">QF</label>
+  <label x="200" y="110" width="46" height="13">SF</label>
+  <label x="223" y="110" width="46" height="13">F</label>
+
+  <label x="0" y="170" width="46" height="13">予選</label>
+  <label x="0" y="190" width="46" height="13">GF</label>
+  <label x="0" y="210" width="46" height="13">GF2</label>
+
+  <label x="80" y="190" width="46" height="13">直接入力</label>
+  <lineEdit id="stage_typing" x="80" y="207" width="150" height="20" />
+
+  <radioGroup id="stage">
+    <radioButton x="40" y="127" width="80" height="20" value="WINNERS ROUND1"></radioButton>
+    <radioButton x="60" y="127" width="80" height="20" value="WINNERS ROUND2"></radioButton>
+    <radioButton x="80" y="127" width="80" height="20" value="WINNERS ROUND3"></radioButton>
+    <radioButton x="100" y="127" width="80" height="20" value="WINNERS ROUND4"></radioButton>
+    <radioButton x="120" y="127" width="80" height="20" value="WINNERS ROUND5"></radioButton>
+    <radioButton x="140" y="127" width="80" height="20" value="WINNERS ROUND6"></radioButton>
+    <radioButton x="160" y="127" width="80" height="20" value="WINNERS ROUND7"></radioButton>
+    <radioButton x="180" y="127" width="80" height="20" value="WINNERS QUARTER-FINAL"></radioButton>
+    <radioButton x="200" y="127" width="80" height="20" value="WINNERS SEMI-FINAL"></radioButton>
+    <radioButton x="220" y="127" width="80" height="20" value="WINNERS FINAL"></radioButton>
+
+    <radioButton x="40" y="147" width="80" height="20" value="LOSERS ROUND1"></radioButton>
+    <radioButton x="60" y="147" width="80" height="20" value="LOSERS ROUND2"></radioButton>
+    <radioButton x="80" y="147" width="80" height="20" value="LOSERS ROUND3"></radioButton>
+    <radioButton x="100" y="147" width="80" height="20" value="LOSERS ROUND4"></radioButton>
+    <radioButton x="120" y="147" width="80" height="20" value="LOSERS ROUND5"></radioButton>
+    <radioButton x="140" y="147" width="80" height="20" value="LOSERS ROUND6"></radioButton>
+    <radioButton x="160" y="147" width="80" height="20" value="LOSERS ROUND7"></radioButton>
+    <radioButton x="180" y="147" width="80" height="20" value="LOSERS QUARTER-FINAL"></radioButton>
+    <radioButton x="200" y="147" width="80" height="20" value="LOSERS SEMI-FINAL"></radioButton>
+    <radioButton x="220" y="147" width="80" height="20" value="LOSERS FINAL"></radioButton>
+
+    <radioButton x="40" y="167" width="80" height="20" value="POOLS"></radioButton>
+    <radioButton x="40" y="187" width="80" height="20" value="GRAND FINAL"></radioButton>
+    <radioButton x="40" y="207" width="80" height="20" value="GRAND FINAL RESET"></radioButton>
+
+    <radioButton x="130" y="187" width="80" height="20" value="stage_typing"></radioButton>
+  </radioGroup>
+
+  <!-- 右下 -->
+  <label x="247" y="110" width="56" height="13">Best of N</label>
+  <lineEdit id="bestofN" x="247" y="125" width="115" height="20" />
+
+  <label x="247" y="160" width="56" height="13">BO3</label>
+  <label x="293" y="160" width="56" height="13">BO5</label>
+  <radioGroup id="boN">
+    <radioButton x="272" y="157" width="80" height="20" value="bo3"></radioButton>
+    <radioButton x="322" y="157" width="80" height="20" value="bo5"></radioButton>
+  </radioGroup>
+
+  <label x="247" y="210" width="56" height="13">P1</label>
+  <label x="247" y="230" width="56" height="13">--</label>
+  <label x="247" y="250" width="56" height="13">P2</label>
+
+  <label x="267" y="190" width="56" height="13"> 1</label>
+  <label x="287" y="190" width="56" height="13"> 2</label>
+  <label x="307" y="190" width="56" height="13"> 3</label>
+  <label x="327" y="190" width="56" height="13"> 4</label>
+  <label x="347" y="190" width="56" height="13"> 5</label>
+  <radioGroup id="game1">
+    <radioButton x="266" y="207" width="80" height="20" value="p1"></radioButton>
+    <radioButton x="266" y="227" width="80" height="20" value="no"></radioButton>
+    <radioButton x="266" y="247" width="80" height="20" value="p2"></radioButton>
+  </radioGroup>
+  <radioGroup id="game2">
+    <radioButton x="286" y="207" width="80" height="20" value="p1"></radioButton>
+    <radioButton x="286" y="227" width="80" height="20" value="no"></radioButton>
+    <radioButton x="286" y="247" width="80" height="20" value="p2"></radioButton>
+  </radioGroup>
+  <radioGroup id="game3">
+    <radioButton x="306" y="207" width="80" height="20" value="p1"></radioButton>
+    <radioButton x="306" y="227" width="80" height="20" value="no"></radioButton>
+    <radioButton x="306" y="247" width="80" height="20" value="p2"></radioButton>
+  </radioGroup>
+  <radioGroup id="game4">
+    <radioButton x="326" y="207" width="80" height="20" value="p1"></radioButton>
+    <radioButton x="326" y="227" width="80" height="20" value="no"></radioButton>
+    <radioButton x="326" y="247" width="80" height="20" value="p2"></radioButton>
+  </radioGroup>
+  <radioGroup id="game5">
+    <radioButton x="346" y="207" width="80" height="20" value="p1"></radioButton>
+    <radioButton x="346" y="227" width="80" height="20" value="no"></radioButton>
+    <radioButton x="346" y="247" width="80" height="20" value="p2"></radioButton>
+  </radioGroup>
+
+
+  <button type="timestamp" x="10" y="280" width="360" height="23" tooltip="Show Sponsors" id="sponsorts" saveonclick="1">Sponsors</button>
+ </tab>
+ <tab name="Top8" scrollable="1">
+
+	<label x="153" y="30" width="130" height="20">┓</label>
+	<label x="153" y="45" width="130" height="20">┠</label>
+	<label x="153" y="60" width="130" height="20">┛</label>
+
+	<label x="153" y="90" width="130" height="20" >┓</label>
+	<label x="153" y="105" width="130" height="20">┠</label>
+	<label x="153" y="120" width="130" height="20">┛</label>
+
+	<label x="153" y="170" width="130" height="20">┳</label>
+	<label x="153" y="185" width="130" height="20">┃</label>
+	<label x="153" y="200" width="130" height="20">┛</label>
+
+	<label x="153" y="230" width="130" height="20">┳</label>
+	<label x="153" y="245" width="130" height="20">┃</label>
+	<label x="153" y="260" width="130" height="20">┛</label>
+
+	<label x="313" y="45" width="130" height="20" >┳</label>
+	<label x="313" y="60" width="130" height="20" >┃</label>
+	<label x="313" y="75" width="130" height="20" >┃</label>
+	<label x="313" y="90" width="130" height="20" >┃</label>
+	<label x="313" y="105" width="130" height="20">┛</label>
+
+	<label x="313" y="170" width="130" height="20">┓</label>
+	<label x="313" y="185" width="130" height="20">┠</label>
+	<label x="313" y="200" width="130" height="20">┛</label>
+
+	<label x="313" y="230" width="130" height="20">┓</label>
+	<label x="313" y="245" width="130" height="20">┠</label>
+	<label x="313" y="260" width="130" height="20">┛</label>
+
+	<label x="473" y="45" width="130" height="20" >┳</label>
+	<label x="473" y="60" width="130" height="20" >┃</label>
+	<label x="473" y="75" width="130" height="20" >┃</label>
+	<label x="473" y="90" width="130" height="20" >┃</label>
+	<label x="473" y="105" width="130" height="20">┻</label>
+
+	<label x="473" y="185" width="130" height="20">┳</label>
+	<label x="473" y="200" width="130" height="20">┃</label>
+	<label x="473" y="215" width="130" height="20">┃</label>
+	<label x="473" y="230" width="130" height="20">┃</label>
+	<label x="473" y="245" width="130" height="20">┛</label>
+
+	<label x="10" y="10" width="130" height="13">WinnersSemiFinal</label>
+	<lineEdit id="top8_1_1" x="10" y="30" width="120" height="20" dataSet="players.csv">Lose→LQF</lineEdit>
+	<lineEdit id="top8_1_2" x="10" y="60" width="120" height="20" dataSet="players.csv">Lose→LQF</lineEdit>
+	<lineEdit id="top8_1_3" x="10" y="90" width="120" height="20" dataSet="players.csv">Lose→LQF</lineEdit>
+	<lineEdit id="top8_1_4" x="10" y="120" width="120" height="20" dataSet="players.csv">Lose→LQF</lineEdit>
+	<radioGroup id="score_top8_1_1">
+		<radioButton x="135" y="29" width="40" height="25" value="0"    ></radioButton>
+		<radioButton x="135" y="44" width="40" height="25" value="1"    ></radioButton>
+		<radioButton x="135" y="59" width="40" height="25" value="2"    ></radioButton>
+	</radioGroup>
+	<radioGroup id="score_top8_1_3">
+		<radioButton x="135" y="89" width="40" height="25" value="0"    ></radioButton>
+		<radioButton x="135" y="104" width="40" height="25" value="1"    ></radioButton>
+		<radioButton x="135" y="119" width="40" height="25" value="2"    ></radioButton>
+	</radioGroup>
+
+	<label x="10" y="150" width="130" height="13">Top8 Losers-Side</label>
+	<lineEdit id="top8_1_5" x="10" y="170" width="120" height="20" dataSet="players.csv">Lose→7thPlace</lineEdit>
+	<lineEdit id="top8_1_6" x="10" y="200" width="120" height="20" dataSet="players.csv">Lose→7thPlace</lineEdit>
+	<lineEdit id="top8_1_7" x="10" y="230" width="120" height="20" dataSet="players.csv">Lose→7thPlace</lineEdit>
+	<lineEdit id="top8_1_8" x="10" y="260" width="120" height="20" dataSet="players.csv">Lose→7thPlace</lineEdit>
+	<radioGroup id="score_top8_1_5">
+		<radioButton x="135" y="169" width="40" height="25" value="0"    ></radioButton>
+		<radioButton x="135" y="184" width="40" height="25" value="1"    ></radioButton>
+		<radioButton x="135" y="199" width="40" height="25" value="2"    ></radioButton>
+	</radioGroup>
+	<radioGroup id="score_top8_1_7">
+		<radioButton x="135" y="229" width="40" height="25" value="0"    ></radioButton>
+		<radioButton x="135" y="244" width="40" height="25" value="1"    ></radioButton>
+		<radioButton x="135" y="259" width="40" height="25" value="2"    ></radioButton>
+	</radioGroup>
+
+	<label x="170" y="10" width="130" height="13">WinnersFinal</label>
+	<lineEdit id="top8_2_1" x="170" y="45" width="120" height="20" dataSet="players.csv">Lose→LF</lineEdit>
+	<lineEdit id="top8_2_2" x="170" y="105" width="120" height="20" dataSet="players.csv">Lose→LF</lineEdit>
+	<radioGroup id="score_top8_2_1">
+		<radioButton x="295" y="44" width="40" height="25" value="0"    ></radioButton>
+		<radioButton x="295" y="74" width="40" height="25" value="1"    ></radioButton>
+		<radioButton x="295" y="104" width="40" height="25" value="2"    ></radioButton>
+	</radioGroup>
+
+	<label x="170" y="150" width="130" height="13">LosersQuarterFinal</label>
+	<lineEdit id="top8_2_3" x="170" y="170" width="120" height="20" dataSet="players.csv">Lose→5thPlace</lineEdit>
+	<lineEdit id="top8_2_4" x="170" y="200" width="120" height="20" dataSet="players.csv">Lose→5thPlace</lineEdit>
+	<lineEdit id="top8_2_5" x="170" y="230" width="120" height="20" dataSet="players.csv">Lose→5thPlace</lineEdit>
+	<lineEdit id="top8_2_6" x="170" y="260" width="120" height="20" dataSet="players.csv">Lose→5thPlace</lineEdit>
+	<radioGroup id="score_top8_2_3">
+		<radioButton x="295" y="169" width="40" height="25" value="0"    ></radioButton>
+		<radioButton x="295" y="184" width="40" height="25" value="1"    ></radioButton>
+		<radioButton x="295" y="199" width="40" height="25" value="2"    ></radioButton>
+	</radioGroup>
+	<radioGroup id="score_top8_2_5">
+		<radioButton x="295" y="229" width="40" height="25" value="0"    ></radioButton>
+		<radioButton x="295" y="244" width="40" height="25" value="1"    ></radioButton>
+		<radioButton x="295" y="259" width="40" height="25" value="2"    ></radioButton>
+	</radioGroup>
+
+	<label x="330" y="10" width="130" height="13">GrandFinal</label>
+	<lineEdit id="top8_3_1" x="330" y="45" width="120" height="20" dataSet="players.csv">Win→1stPlace</lineEdit>
+	<lineEdit id="top8_3_2" x="330" y="105" width="120" height="20" dataSet="players.csv">[L]Win→GF2</lineEdit>
+	<radioGroup id="score_top8_3_1">
+		<radioButton x="455" y="44" width="40" height="25" value="0"    ></radioButton>
+		<radioButton x="455" y="74" width="40" height="25" value="1"    ></radioButton>
+		<radioButton x="455" y="104" width="40" height="25" value="2"    ></radioButton>
+	</radioGroup>
+
+	<label x="330" y="150" width="130" height="13">LosersSemiFinal</label>
+	<lineEdit id="top8_3_3" x="330" y="185" width="120" height="20" dataSet="players.csv">Lose→4thPlace</lineEdit>
+	<lineEdit id="top8_3_4" x="330" y="245" width="120" height="20" dataSet="players.csv">Lose→4thPlace</lineEdit>
+	<radioGroup id="score_top8_3_3">
+		<radioButton x="455" y="184" width="40" height="25" value="0"    ></radioButton>
+		<radioButton x="455" y="214" width="40" height="25" value="1"    ></radioButton>
+		<radioButton x="455" y="244" width="40" height="25" value="2"    ></radioButton>
+	</radioGroup>
+
+	<label x="490" y="10" width="130" height="13">GrandFinal2</label>
+	<lineEdit id="top8_4_1" x="490" y="45" width="120" height="20" dataSet="players.csv">Lose→2ndPlace</lineEdit>
+	<lineEdit id="top8_4_2" x="490" y="105" width="120" height="20" dataSet="players.csv">Lose→2ndPlace</lineEdit>
+	<radioGroup id="score_top8_4_1">
+		<radioButton x="615" y="44" width="40" height="25" value="0"    ></radioButton>
+		<radioButton x="615" y="74" width="40" height="25" value="1"    ></radioButton>
+		<radioButton x="615" y="104" width="40" height="25" value="2"    ></radioButton>
+	</radioGroup>
+
+	<label x="490" y="150" width="130" height="13">LosersFinal</label>
+	<lineEdit id="top8_4_3" x="490" y="185" width="120" height="20" dataSet="players.csv">Lose→3rdPlace</lineEdit>
+	<lineEdit id="top8_4_4" x="490" y="245" width="120" height="20" dataSet="players.csv">Lose→3rdPlace</lineEdit>
+	<radioGroup id="score_top8_4_3">
+		<radioButton x="615" y="184" width="40" height="25" value="0"    ></radioButton>
+		<radioButton x="615" y="214" width="40" height="25" value="1"    ></radioButton>
+		<radioButton x="615" y="244" width="40" height="25" value="2"    ></radioButton>
+	</radioGroup>
+
+</tab>
+
+</layout>

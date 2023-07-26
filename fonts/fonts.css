@@ -1,0 +1,29 @@
+@font-face {
+    font-family: 'Gadugi';
+    src: url("Gadugi.woff") format("woff2");
+    font-weight: normal;
+}
+@font-face {
+    font-family: 'Gadugi';
+    src: url("Gadugi-Bold.woff") format("woff2");
+    font-weight: bold;
+}
+@font-face {
+    font-family: 'Mona';
+    src: url("mona.woff") format("woff2");
+    font-weight: normal;
+}
+@font-face{
+	font-family: 'corpoB';
+	src:url('Corporate-logo_bold.ttf');
+}
+
+@font-face{
+	font-family: 'corpoM';
+	src:url('Corporate-logo_medium.ttf');
+}
+
+@font-face{
+    font-family: 'tamanegi';
+    src:url('玉ねぎ楷書激無料版v7改.ttf')
+}
