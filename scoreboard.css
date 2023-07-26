@@ -80,8 +80,8 @@ body {
 /* 左プレイヤー */
 #player1 {
     position: absolute;
-    width: 300px;
-    height: 60px;
+    /* width: 300px;
+    height: 60px; */
     top: 60px;
     left: 510px;
     padding-left: 20px;
@@ -183,8 +183,8 @@ body {
 /* 右プレイヤー */
 #player2 {
     position: absolute;
-    width: 300px;
-    height: 60px;
+    /* width: 300px;
+    height: 60px; */
     top: 60px;
     right: 510px;
     padding-right: 20px;

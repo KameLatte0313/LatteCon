@@ -205,17 +205,14 @@ function update() {
         document.getElementById('stage').innerHTML = stage;
         document.getElementById('bestofN').innerHTML = scObj['bestofN']
 
+        fitty("#player1", {minSize: 10, maxSize: 35});
+        fitty("#player2", {minSize: 10, maxSize: 35});
 
-        TweenMax.from(document.getElementById("player1"),0.5,{x:"+50",opacity:0,delay:1.5});
-        TweenMax.from(document.getElementById("player2"),0.5,{x:"-50",opacity:0,delay:1.5});
+        TweenMax.from(document.getElementById("player1"),0.5,{opacity:0,delay:1.5});
+        TweenMax.from(document.getElementById("player2"),0.5,{opacity:0,delay:1.5});
 
         TweenMax.from(document.getElementById("score1"),0.5,{opacity:0,delay:1.5});
         TweenMax.from(document.getElementById("score2"),0.5,{opacity:0,delay:1.5});
-
-        // loadFlags();
-
-        // TweenMax.from(document.getElementById("flag1"),0.5,{opacity:0,delay:1.5});
-        // TweenMax.from(document.getElementById("flag2"),0.5,{opacity:0,delay:1.5});
 
         TweenMax.from(document.getElementById('stage'),0.5,{opacity:0,delay:1.5});
         TweenMax.from(document.getElementById('bestofN'),0.5,{opacity:0,delay:1.5,onComplete:function(){animating--;}});
@@ -223,8 +220,7 @@ function update() {
         document.getElementById("container").style.display="block";
         // textFit(document.getElementsByClassName('stage'), {minFontSize:10, maxFontSize: 14,multiLine: false});
 
-        // textFit(document.getElementsByClassName('player1'), {minFontSize:14, maxFontSize: 20,multiLine: false});
-        // textFit(document.getElementsByClassName('player2'), {minFontSize:14, maxFontSize: 20,multiLine: false});
+        
 
         boN = scObj["boN"];
 
