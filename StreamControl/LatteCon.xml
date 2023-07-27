@@ -93,7 +93,7 @@
 
   <!-- 右下 -->
   <label x="247" y="110" width="56" height="13">Best of N</label>
-  <lineEdit id="bestofN" x="247" y="125" width="115" height="20" />
+  <lineEdit id="bestofN" x="247" y="125" width="115" height="20">例：BEST OF 5</lineEdit>
 
   <label x="247" y="160" width="56" height="13">BO3</label>
   <label x="293" y="160" width="56" height="13">BO5</label>

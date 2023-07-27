@@ -2,7 +2,7 @@
 <settings>
  <altHotkeyHandling>0</altHotkeyHandling>
  <format>2</format>
- <layoutPath>SHIG.xml</layoutPath>
+ <layoutPath>LatteCon.xml</layoutPath>
  <outputPath>..\</outputPath>
  <useCDATA>0</useCDATA>
 </settings>

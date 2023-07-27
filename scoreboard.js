@@ -205,8 +205,8 @@ function update() {
         document.getElementById('stage').innerHTML = stage;
         document.getElementById('bestofN').innerHTML = scObj['bestofN']
 
-        fitty("#player1", {minSize: 10, maxSize: 35});
-        fitty("#player2", {minSize: 10, maxSize: 35});
+        fitty("#player1", {maxSize: 35});
+        fitty("#player2", {maxSize: 35});
 
         TweenMax.from(document.getElementById("player1"),0.5,{opacity:0,delay:1.5});
         TweenMax.from(document.getElementById("player2"),0.5,{opacity:0,delay:1.5});
@@ -285,15 +285,15 @@ function update() {
             TweenMax.to(document.getElementById("player1"),0.5,{opacity:"0",ease:Quad.easeOut,onComplete: function() {
                 currPlayer1 = scObj["pTeam1"].toString() + " " + scObj["pName1"].toString(); 
                 document.getElementById("player1").innerHTML = currPlayer1; 
-                textFit(document.getElementsByClassName('player1'), {minFontSize:14, maxFontSize: 20,multiLine: false}); 
+                fitty("#player1", {maxSize: 35});
             }});
             TweenMax.to(document.getElementById("player1"),0.5,{opacity:"1",ease:Quad.easeOut,delay:1});
 
             // 右プレイヤー
             TweenMax.to(document.getElementById("player2"),0.5,{opacity:"0",ease:Quad.easeOut,onComplete: function() {
                 currPlayer2 = scObj["pTeam2"].toString() + " " + scObj["pName2"].toString();
-                document.getElementById("player2").innerHTML = currPlayer2; 
-                textFit(document.getElementsByClassName('player2'), {minFontSize:14, maxFontSize: 20,multiLine: false}); 
+                document.getElementById("player2").innerHTML = currPlayer2;
+                fitty("#player2", {maxSize: 35});
             }});
             TweenMax.to(document.getElementById("player2"),0.5,{opacity:"1",ease:Quad.easeOut,delay:1,onComplete:function(){
                 animating--;
@@ -466,13 +466,10 @@ function getCountry (country) {
 function setGameScore (game, id) {
 
     if (game == "p1") {
-        // document.getElementById(id).style.background="rgba(254, 51, 52, 0.7)";
-        document.getElementById(id).style.background="rgb(254, 51, 52)";
+        document.getElementById(id).style.background="#FE3334";
     } else if (game == "p2") {
-        // document.getElementById(id).style.background="rgba(41, 139, 255, 0.7)";
-        document.getElementById(id).style.background="rgb(41, 139, 255)";
+        document.getElementById(id).style.background="#298BFF";
     } else if (game == "no") {
-        // document.getElementById(id).style.background="rgba(80, 80, 80, 0.7)";
-        document.getElementById(id).style.background="rgb(80, 80, 80)";
+        document.getElementById(id).style.background="#505050";
     }
 }
