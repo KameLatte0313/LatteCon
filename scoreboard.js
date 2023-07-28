@@ -193,8 +193,18 @@ function update() {
         document.getElementById("player1").innerHTML = currPlayer1;
         document.getElementById("player2").innerHTML = currPlayer2;
 
-        currScore1 = scObj["pScore1"];
-        currScore2 = scObj["pScore2"];
+        currScore1 = 0;
+        currScore2 = 0;
+        set_timing = [scObj["game1"], scObj["game2"], scObj["game3"], scObj["game4"], scObj["game5"]];
+        for (var game of set_timing) {
+            if (game == "p1") {
+                currScore1++;
+            } else if (game == "p2") {
+                currScore2++;
+            }
+        }
+
+        
         document.getElementById("score1").innerHTML = currScore1;
         document.getElementById("score2").innerHTML = currScore2;
 
@@ -218,7 +228,6 @@ function update() {
         TweenMax.from(document.getElementById('bestofN'),0.5,{opacity:0,delay:1.5,onComplete:function(){animating--;}});
 
         document.getElementById("container").style.display="block";
-        // textFit(document.getElementsByClassName('stage'), {minFontSize:10, maxFontSize: 14,multiLine: false});
 
         
 
@@ -304,9 +313,20 @@ function update() {
             currPlayerElement = "pName";
     	}
 
-        if (currScore1 != scObj["pScore1"].toString()) {
+        nowScore1 = 0;
+        nowScore2 = 0;
+        set_timing = [scObj["game1"], scObj["game2"], scObj["game3"], scObj["game4"], scObj["game5"]];
+        for (var game of set_timing) {
+            if (game == "p1") {
+                nowScore1++;
+            } else if (game == "p2") {
+                nowScore2++;
+            }
+        }
+
+        if (currScore1 != nowScore1) {
             animating++;
-            currScore1 = scObj['pScore1'].toString();
+            currScore1 = nowScore1;
             TweenMax.to(document.getElementById('score1'),0.5,{opacity:0,ease:Quad.easeIn,onComplete: function() {
                 document.getElementById("score1").innerHTML = currScore1;
             }});
@@ -314,9 +334,9 @@ function update() {
                 animating--;
             }});
         }
-        if (currScore2 != scObj["pScore2"].toString()) {
+        if (currScore2 != nowScore2) {
             animating++;
-            currScore2 = scObj['pScore2'].toString();
+            currScore2 = nowScore2;
             TweenMax.to(document.getElementById('score2'),0.5,{opacity:0,ease:Quad.easeIn,onComplete: function() {
                 document.getElementById("score2").innerHTML = currScore2;
             }});
@@ -330,7 +350,6 @@ function update() {
             TweenMax.to(document.getElementById('stage'),0.5,{opacity:0,ease:Quad.easeIn,onComplete: function() {
                 stage = scObj['stage_typing'];
                 document.getElementById('stage').innerHTML = stage;
-                // textFit(document.getElementsByClassName('stage'), {minFontSize:10, maxFontSize: 14,multiLine: false});
             }});
             TweenMax.to(document.getElementById('stage'),0.5,{opacity:1,delay:1,ease:Quad.easeOut,onComplete: function(){
                 animating--;
@@ -340,7 +359,6 @@ function update() {
             TweenMax.to(document.getElementById('stage'),0.5,{opacity:0,ease:Quad.easeIn,onComplete: function() {
                 stage = scObj['stage'];
                 document.getElementById('stage').innerHTML = stage;
-                // textFit(document.getElementsByClassName('stage'), {minFontSize:10, maxFontSize: 14,multiLine: false});
             }});
             TweenMax.to(document.getElementById('stage'),0.5,{opacity:1,delay:1,ease:Quad.easeOut,onComplete: function(){
                 animating--;
