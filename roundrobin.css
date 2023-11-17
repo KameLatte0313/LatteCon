@@ -1,0 +1,36 @@
+body {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 1920px;
+    height: 1080px;
+}
+
+table {
+    position: absolute;
+    top: 300px;
+    left: 160px;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+th, td {
+    border: solid 6px #333;
+    box-sizing: border-box;
+}
+
+td {
+    width: 200px;
+    height: 100px;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+
+td div {
+        /* white-space: nowrap; */
+}
+
+.no-data {
+    background-image: linear-gradient(to right top, transparent calc(50% - 0.5px), #333 50%, #333 calc(50% + 0.5px), transparent calc(50% + 5px))
+}

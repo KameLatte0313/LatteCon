@@ -225,11 +225,9 @@ function update() {
         TweenMax.from(document.getElementById("score2"),0.5,{opacity:0,delay:1.5});
 
         TweenMax.from(document.getElementById('stage'),0.5,{opacity:0,delay:1.5});
-        TweenMax.from(document.getElementById('bestofN'),0.5,{opacity:0,delay:1.5,onComplete:function(){animating--;}});
+        TweenMax.from(document.getElementById('bestofN'),0.5,{opacity:0,delay:1.5});
 
         document.getElementById("container").style.display="block";
-
-        
 
         boN = scObj["boN"];
 
@@ -283,6 +281,7 @@ function update() {
         TweenMax.to(document.getElementById("gf-wl2"),0.5,{opacity:"1",ease:Quad.easeOut,delay:1.5});
 
         firstupdate = false;
+        animating--;
 
     } else if (animating == 0) {
 
