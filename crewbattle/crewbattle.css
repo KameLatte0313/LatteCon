@@ -1,0 +1,164 @@
+:root {
+    --crew-bg-top: 300px; /* 【クルーバトル】メンバー表の高さ調整用 */
+}
+
+body {
+	margin:0px;
+	background-color: rgba(0, 0, 0, 0);
+	font-family: 'corpoM','corpoB',"logotypejp_mp_b","コーポレート・ロゴＢ","Noto Sans CJK JP Heavy","OmePlus P Gothic medium",/*"MLRPG",*/ "07鉄瓶ゴシック","なごみ極細ゴシック 特細","JFドットM+H12","ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Arial,"メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	color:#FFFFFF;
+	word-break: break-all;
+}
+
+.crew {
+    font-weight: bold;
+    font-family: 'corpoM';
+}
+
+.lBG {
+    position: absolute;
+    width: 300px;
+    height: 50px;
+    left: 0px;
+    background: linear-gradient(-90deg, #fe0000 0%, #fe0000 60%, #000 100%);
+    opacity: 0;
+    border: #333 solid 1px;
+}
+
+.lName {
+    position: absolute;
+    width: 220px;
+    height: 50px;
+    top: 0px;
+    left: 30px;
+    font-size: 25px;
+    line-height: 50px;
+    color: #FFFFFF;
+    text-align: center;
+    opacity: 1;
+}
+
+.lScore {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 0px;
+    left: 250px;
+    font-size: 30px;
+    line-height: 50px;
+    text-align: center;
+    color: #ffffff;
+    /* border-left: #333 solid 1px; */
+    opacity: 1;
+}
+
+.l_check {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 10px;
+    left: 10px;
+    line-height: 30px;
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+    /* background-image: url(../紅葉イラスト-白.png); */
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0;
+}
+
+#l1_bg {top: var(--crew-bg-top);}
+#l2_bg {top: calc(var(--crew-bg-top) + 50px);}
+#l3_bg {top: calc(var(--crew-bg-top) + 100px);}
+#l4_bg {top: calc(var(--crew-bg-top) + 150px);}
+#l5_bg {top: calc(var(--crew-bg-top) + 200px);}
+#l6_bg {top: calc(var(--crew-bg-top) + 250px);}
+#l7_bg {top: calc(var(--crew-bg-top) + 300px);}
+#l8_bg {top: calc(var(--crew-bg-top) + 350px);}
+#l9_bg {top: calc(var(--crew-bg-top) + 400px);}
+
+.lBG::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: 250px;
+    width: 1px;
+    height: 50px;
+    background-color: #333;
+}
+
+.rBG {
+    position: absolute;
+    width: 300px;
+    height: 50px;
+    right: 0px;
+    background: linear-gradient(90deg, #0071bc 0%, #0071bc 60%, #000 100%);
+    opacity: 0;
+    border: #333 solid 1px;
+}
+
+.rName {
+    position: absolute;
+    width: 220px;
+    height: 50px;
+    top: 0px;
+    right: 30px;
+    font-size: 25px;
+    line-height: 50px;
+    color: #FFFFFF;
+    text-align: center;
+    opacity: 1;
+}
+
+.rScore {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 0px;
+    right: 250px;
+    font-size: 30px;
+    line-height: 50px;
+    text-align: center;
+    color: #ffffff;
+    /* border-right: #333 solid 1px; */
+    opacity: 1;
+}
+
+.r_check {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 10px;
+    right: 10px;
+    line-height: 30px;
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+    /* background-image: url(../紅葉イラスト-白.png); */
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0;
+}
+
+#r1_bg {top: var(--crew-bg-top);}
+#r2_bg {top: calc(var(--crew-bg-top) + 50px);}
+#r3_bg {top: calc(var(--crew-bg-top) + 100px);}
+#r4_bg {top: calc(var(--crew-bg-top) + 150px);}
+#r5_bg {top: calc(var(--crew-bg-top) + 200px);}
+#r6_bg {top: calc(var(--crew-bg-top) + 250px);}
+#r7_bg {top: calc(var(--crew-bg-top) + 300px);}
+#r8_bg {top: calc(var(--crew-bg-top) + 350px);}
+#r9_bg {top: calc(var(--crew-bg-top) + 400px);}
+
+.rBG::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0px;
+    right: 250px;
+    width: 1px;
+    height: 50px;
+    background-color: #333;
+}

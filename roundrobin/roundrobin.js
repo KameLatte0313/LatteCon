@@ -123,7 +123,7 @@ function init() {
 
 function pollHandler() {
     // パスに注意
-	xhr.open('GET', "../streamcontrol.json?"+cacheBusterValiable+"="+cacheBuster,true);
+	xhr.open('GET', "../StreamControl/streamcontrol.json?"+cacheBusterValiable+"="+cacheBuster,true);
 	xhr.send();
 	cacheBuster++;
 }

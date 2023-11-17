@@ -1,17 +1,54 @@
 <!DOCTYPE StreamControl>
 <items>
- <timestamp>1700228741</timestamp>
+ <timestamp>1700246864</timestamp>
  <GF-WL1>no</GF-WL1>
  <GF-WL2>no</GF-WL2>
  <bestofN></bestofN>
  <boN>bo3</boN>
- <game1>p1</game1>
- <game2>p1</game2>
- <game3>p1</game3>
- <game4>p1</game4>
- <game5>p1</game5>
- <pName1></pName1>
- <pName2></pName2>
+ <cb_1_1>test1</cb_1_1>
+ <cb_1_1_score>3</cb_1_1_score>
+ <cb_1_2>test2</cb_1_2>
+ <cb_1_2_score>3</cb_1_2_score>
+ <cb_1_3>test3</cb_1_3>
+ <cb_1_3_score>3</cb_1_3_score>
+ <cb_1_4>test4</cb_1_4>
+ <cb_1_4_score>3</cb_1_4_score>
+ <cb_1_5>test5</cb_1_5>
+ <cb_1_5_score>3</cb_1_5_score>
+ <cb_1_6>test6</cb_1_6>
+ <cb_1_6_score>3</cb_1_6_score>
+ <cb_1_7>test7</cb_1_7>
+ <cb_1_7_score>3</cb_1_7_score>
+ <cb_1_8>test8</cb_1_8>
+ <cb_1_8_score>3</cb_1_8_score>
+ <cb_1_9>test9</cb_1_9>
+ <cb_1_9_score>3</cb_1_9_score>
+ <cb_2_1>test10</cb_2_1>
+ <cb_2_1_score>3</cb_2_1_score>
+ <cb_2_2>test11</cb_2_2>
+ <cb_2_2_score>3</cb_2_2_score>
+ <cb_2_3>test12</cb_2_3>
+ <cb_2_3_score>3</cb_2_3_score>
+ <cb_2_4>test13</cb_2_4>
+ <cb_2_4_score>3</cb_2_4_score>
+ <cb_2_5>test14</cb_2_5>
+ <cb_2_5_score>3</cb_2_5_score>
+ <cb_2_6>test15</cb_2_6>
+ <cb_2_6_score>3</cb_2_6_score>
+ <cb_2_7>test16</cb_2_7>
+ <cb_2_7_score>3</cb_2_7_score>
+ <cb_2_8>test17</cb_2_8>
+ <cb_2_8_score>3</cb_2_8_score>
+ <cb_2_9>test18</cb_2_9>
+ <cb_2_9_score>3</cb_2_9_score>
+ <cd_memberNum>9</cd_memberNum>
+ <game1>no</game1>
+ <game2>no</game2>
+ <game3>no</game3>
+ <game4>no</game4>
+ <game5>no</game5>
+ <pName1>かめらて</pName1>
+ <pName2>すぱかぷ</pName2>
  <pTeam1></pTeam1>
  <pTeam2></pTeam2>
  <rr_1vs2_1>0</rr_1vs2_1>
@@ -26,15 +63,17 @@
  <rr_3vs1_3>0</rr_3vs1_3>
  <rr_3vs2_2>0</rr_3vs2_2>
  <rr_3vs2_3>0</rr_3vs2_3>
- <rr_p1></rr_p1>
- <rr_p1_h></rr_p1_h>
+ <rr_p1>test1</rr_p1>
+ <rr_p1_h>test1</rr_p1_h>
  <rr_p1_rank>0</rr_p1_rank>
- <rr_p2></rr_p2>
- <rr_p2_h></rr_p2_h>
+ <rr_p2>test2</rr_p2>
+ <rr_p2_h>test2</rr_p2_h>
  <rr_p2_rank>0</rr_p2_rank>
- <rr_p3></rr_p3>
- <rr_p3_h></rr_p3_h>
+ <rr_p3>test3</rr_p3>
+ <rr_p3_h>test3</rr_p3_h>
  <rr_p3_rank>0</rr_p3_rank>
+ <select_Lmember>1</select_Lmember>
+ <select_Rmember>1</select_Rmember>
  <sponsorts>0</sponsorts>
  <stage>WINNERS ROUND1</stage>
  <stage_typing></stage_typing>
@@ -54,17 +93,17 @@
  <top8_1_7_score>0</top8_1_7_score>
  <top8_1_8>test8</top8_1_8>
  <top8_1_8_score>0</top8_1_8_score>
- <top8_2_1></top8_2_1>
+ <top8_2_1>test1</top8_2_1>
  <top8_2_1_score>0</top8_2_1_score>
- <top8_2_2></top8_2_2>
+ <top8_2_2>test3</top8_2_2>
  <top8_2_2_score>0</top8_2_2_score>
- <top8_2_3></top8_2_3>
+ <top8_2_3>test2</top8_2_3>
  <top8_2_3_score>0</top8_2_3_score>
- <top8_2_4></top8_2_4>
+ <top8_2_4>test5</top8_2_4>
  <top8_2_4_score>0</top8_2_4_score>
- <top8_2_5></top8_2_5>
+ <top8_2_5>test4</top8_2_5>
  <top8_2_5_score>0</top8_2_5_score>
- <top8_2_6></top8_2_6>
+ <top8_2_6>test8</top8_2_6>
  <top8_2_6_score>0</top8_2_6_score>
  <top8_3_1></top8_3_1>
  <top8_3_1_score>0</top8_3_1_score>
