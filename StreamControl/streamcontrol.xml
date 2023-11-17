@@ -1,17 +1,17 @@
 <!DOCTYPE StreamControl>
 <items>
- <timestamp>1700223004</timestamp>
+ <timestamp>1700228741</timestamp>
  <GF-WL1>no</GF-WL1>
  <GF-WL2>no</GF-WL2>
- <bestofN>BEST OF 5</bestofN>
+ <bestofN></bestofN>
  <boN>bo3</boN>
- <game1>no</game1>
- <game2>no</game2>
- <game3>no</game3>
- <game4>no</game4>
- <game5>no</game5>
- <pName1>かめらて</pName1>
- <pName2>すぱかぷ</pName2>
+ <game1>p1</game1>
+ <game2>p1</game2>
+ <game3>p1</game3>
+ <game4>p1</game4>
+ <game5>p1</game5>
+ <pName1></pName1>
+ <pName2></pName2>
  <pTeam1></pTeam1>
  <pTeam2></pTeam2>
  <rr_1vs2_1>0</rr_1vs2_1>

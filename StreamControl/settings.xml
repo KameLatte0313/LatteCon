@@ -3,6 +3,6 @@
  <altHotkeyHandling>0</altHotkeyHandling>
  <format>3</format>
  <layoutPath>LatteCon.xml</layoutPath>
- <outputPath>..\</outputPath>
+ <outputPath>.\</outputPath>
  <useCDATA>0</useCDATA>
 </settings>
