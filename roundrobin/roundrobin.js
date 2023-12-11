@@ -20,6 +20,7 @@ var scObj;
 // ここにStreamControlから取得したデータをため込むための変数を定義する。
 
 var scObjOld = {
+    rr_pool: '',
     rr_p1: '',
     rr_p2: '',
     rr_p3: '',
@@ -148,6 +149,7 @@ function scLoaded() {
 function update() {
     // スコアボードを始めて読み込んだ時の書き換え処理を記述する箇所
     if (firstupdate) {
+        document.getElementById("rr_pool").innerHTML = scObjOld['rr_pool'] = scObj["rr_pool"].toString(); 
         document.getElementById("rr_p1").innerHTML = scObjOld['rr_p1'] = scObj["rr_p1"].toString(); 
         document.getElementById("rr_p2").innerHTML = scObjOld['rr_p2'] = scObj["rr_p2"].toString(); 
         document.getElementById("rr_p3").innerHTML = scObjOld['rr_p3'] = scObj["rr_p3"].toString();
@@ -176,6 +178,8 @@ function update() {
 
     // スコアボードを始めて読み込んだ時の書き換え処理を記述する箇所
     } else if (!animating) {
+        changeVal("rr_pool");
+
         // 左端プレイヤー名
         changeRRname("1");
         changeRRname("2");
@@ -217,6 +221,20 @@ function setRRscore(lPlayer, rPlayer) {
     id.innerHTML = scObjOld[lProperty] + " - " + scObjOld[rProperty];
 }
 
+function changeVal(id_name) {
+    if (scObjOld[id_name] != scObj[id_name]) {
+        animating = true;
+        let id = document.getElementById(id_name);
+        TweenMax.to(id,0.5,{opacity:"0",ease:Quad.easeOut,onComplete: function() { 
+            id.innerHTML = scObjOld[id_name] = scObj[id_name].toString(); 
+            fitty("#" + id_name, {maxSize: 25});
+        }});
+        TweenMax.to(id,0.5,{opacity:"1",ease:Quad.easeOut,delay:1,onComplete: function() {
+            animating = false;
+        }});
+    }
+}
+
 function changeRRname(player) {
     let id_name = "rr_p" + player;
     if (scObjOld[id_name] != scObj[id_name]) {
@@ -224,7 +242,8 @@ function changeRRname(player) {
         let id = document.getElementById(id_name);
         TweenMax.to(id,0.5,{opacity:"0",ease:Quad.easeOut,onComplete: function() { 
             id.innerHTML = scObjOld[id_name] = scObj[id_name].toString(); 
-            // fitty("#" + id_name, {maxSize: 25});
+            let fitId = "#" + id_name;
+            fitty(fitId, {maxSize: 30});
         }});
         TweenMax.to(id,0.5,{opacity:"1",ease:Quad.easeOut,delay:1,onComplete: function() {
             animating = false;

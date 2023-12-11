@@ -6,17 +6,29 @@ body {
     height: 1080px;
 }
 
+#bg_filter {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1920px;
+    height: 1080px;
+    /* background-color: #000;
+    opacity: 0.85; */
+}
+
 table {
     position: absolute;
     top: 300px;
-    left: 160px;
+    left: 344px;
     border-collapse: collapse;
-    background-color: white;
+    /* background-color: white; */
+    background-color: #000;
+    opacity: 0.95;
 }
 
 th, td {
-    border: solid 6px #333;
-    box-sizing: border-box;
+    border: solid 2px #aaa;
+    /* box-sizing: border-box; */
 }
 
 td {
@@ -25,12 +37,37 @@ td {
     font-size: 30px;
     font-weight: bold;
     text-align: center;
+    color: #fff;
+    /* -webkit-text-stroke: 2px #000; */
+    /* text-stroke: 1px #000; */
 }
 
 td div {
-        /* white-space: nowrap; */
+    /* white-space: nowrap; */
+}
+
+#rr_pool {
+    font-size: 40px;
+}
+
+/* #tr_top td {border-top: solid 0px #ccc; height: 60px;}
+#tr_bottom td {border-bottom: solid 0px #ccc;}
+tr td:first-child {border-left: solid 0px #ccc;}
+tr td:last-child {border-right: solid 0px #ccc;} */
+tr td:nth-child(5) {border-left: double 10px #aaa;}
+
+.rr_info {
+    width: 100px;
+}
+
+.rr_info:not(#tr_top td) {
+    font-size: 35px;
+}
+
+.score {
+    font-size: 35px;
 }
 
 .no-data {
-    background-image: linear-gradient(to right top, transparent calc(50% - 0.5px), #333 50%, #333 calc(50% + 0.5px), transparent calc(50% + 5px))
+    background-image: linear-gradient(to right top, transparent calc(50% - 0.5px), #aaa 50%, #aaa calc(50% + 0.5px), transparent calc(50% + 5px))
 }

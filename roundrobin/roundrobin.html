@@ -12,46 +12,47 @@
     </head>
 	<body>
         <div id="container-roundrobin-table">
+            <div id="bg_filter"></div>
             <table>
-                <tr>
-                    <td>プレイヤー名</td> 
+                <tr id="tr_top">
+                    <td><div id="rr_pool"></div></td> 
                     <td><div id="rr_p1_h"></div></td> 
                     <td><div id="rr_p2_h"></div></td> 
                     <td><div id="rr_p3_h"></div></td> 
-                    <td>勝利数</td> 
-                    <td>奪</td> 
-                    <td>失</td> 
-                    <td>順位</td>
+                    <td class="rr_info">勝利数</td> 
+                    <td class="rr_info">奪</td> 
+                    <td class="rr_info">失</td> 
+                    <td class="rr_info">順位</td>
                 </tr>
                 <tr>
                     <td><div id="rr_p1"></div></td> 
                     <td class="no-data"></td> 
-                    <td><div id="rr_1vs2"></div></td> 
-                    <td><div id="rr_1vs3"></div></td> 
-                    <td><div id="rr_p1_w"></div></td> 
-                    <td><div id="rr_p1_wset"></div></td> 
-                    <td><div id="rr_p1_lset"></div></td> 
-                    <td><div id="rr_p1_rank"></div></td>
+                    <td class="score"><div id="rr_1vs2"></div></td> 
+                    <td class="score"><div id="rr_1vs3"></div></td> 
+                    <td class="rr_info"><div id="rr_p1_w"></div></td> 
+                    <td class="rr_info"><div id="rr_p1_wset"></div></td> 
+                    <td class="rr_info"><div id="rr_p1_lset"></div></td> 
+                    <td class="rr_info"><div id="rr_p1_rank"></div></td>
                 </tr>
                 <tr>
                     <td><div id="rr_p2"></div></td> 
-                    <td><div id="rr_2vs1"></div></td> 
+                    <td class="score"><div id="rr_2vs1"></div></td> 
                     <td class="no-data"></td> 
-                    <td><div id="rr_2vs3"></div></td> 
-                    <td><div id="rr_p2_w"></div></td> 
-                    <td><div id="rr_p2_wset"></div></td> 
-                    <td><div id="rr_p2_lset"></div></td> 
-                    <td><div id="rr_p2_rank"></div></td>
+                    <td class="score"><div id="rr_2vs3"></div></td> 
+                    <td class="rr_info"><div id="rr_p2_w"></div></td> 
+                    <td class="rr_info"><div id="rr_p2_wset"></div></td> 
+                    <td class="rr_info"><div id="rr_p2_lset"></div></td> 
+                    <td class="rr_info"><div id="rr_p2_rank"></div></td>
                 </tr>
-                <tr>
+                <tr id="tr_bottom">
                     <td><div id="rr_p3"></div></td> 
-                    <td><div id="rr_3vs1"></div></td> 
-                    <td><div id="rr_3vs2"></div></td> 
+                    <td class="score"><div id="rr_3vs1"></div></td> 
+                    <td class="score"><div id="rr_3vs2"></div></td> 
                     <td class="no-data"></td> 
-                    <td><div id="rr_p3_w"></div></td> 
-                    <td><div id="rr_p3_wset"></div></td> 
-                    <td><div id="rr_p3_lset"></div></td> 
-                    <td><div id="rr_p3_rank"></div></td>
+                    <td class="rr_info"><div id="rr_p3_w"></div></td> 
+                    <td class="rr_info"><div id="rr_p3_wset"></div></td> 
+                    <td class="rr_info"><div id="rr_p3_lset"></div></td> 
+                    <td class="rr_info"><div id="rr_p3_rank"></div></td>
                 </tr>
             </table>
         </div>
