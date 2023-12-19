@@ -90,7 +90,7 @@ body {
     color: white;
     font-size: 35px;
     font-weight: bold;
-    font-family: 'corpoM';
+    font-family: 'corpoB';
     z-index: 5;
     /* background-color: red; */
 }
@@ -193,7 +193,7 @@ body {
     color: white;
     font-size: 35px;
     font-weight: bold;
-    font-family: 'corpoM';
+    font-family: 'corpoB';
     z-index: 5;
     /* background-color: gold; */
 }
