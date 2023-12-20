@@ -1,14 +1,14 @@
 <!DOCTYPE StreamControl>
 <items>
- <timestamp>1703002265</timestamp>
+ <timestamp>1703099747</timestamp>
  <GF-WL1>no</GF-WL1>
  <GF-WL2>no</GF-WL2>
  <bestofN>BEST OF 5</bestofN>
  <boN>bo5</boN>
  <cb_1_1>test1</cb_1_1>
- <cb_1_1_score>0</cb_1_1_score>
+ <cb_1_1_score>3</cb_1_1_score>
  <cb_1_2>test2</cb_1_2>
- <cb_1_2_score>2</cb_1_2_score>
+ <cb_1_2_score>3</cb_1_2_score>
  <cb_1_3>test3</cb_1_3>
  <cb_1_3_score>3</cb_1_3_score>
  <cb_1_4>test4</cb_1_4>
@@ -24,9 +24,9 @@
  <cb_1_9>test9</cb_1_9>
  <cb_1_9_score>3</cb_1_9_score>
  <cb_2_1>test10</cb_2_1>
- <cb_2_1_score>0</cb_2_1_score>
+ <cb_2_1_score>3</cb_2_1_score>
  <cb_2_2>test11</cb_2_2>
- <cb_2_2_score>0</cb_2_2_score>
+ <cb_2_2_score>3</cb_2_2_score>
  <cb_2_3>test12</cb_2_3>
  <cb_2_3_score>3</cb_2_3_score>
  <cb_2_4>test13</cb_2_4>
@@ -41,9 +41,16 @@
  <cb_2_8_score>3</cb_2_8_score>
  <cb_2_9>test18</cb_2_9>
  <cb_2_9_score>3</cb_2_9_score>
- <cd_memberNum>9</cd_memberNum>
- <game1>p1</game1>
- <game2>p1</game2>
+ <cb_autocalc>1</cb_autocalc>
+ <cb_memberNum>9</cb_memberNum>
+ <cb_team1>東チーム</cb_team1>
+ <cb_team1_score>15</cb_team1_score>
+ <cb_team2>西チーム</cb_team2>
+ <cb_team2_score>15</cb_team2_score>
+ <cb_upperleft>大学スマブラサークル連合</cb_upperleft>
+ <cb_upperright>東西クルーバトル</cb_upperright>
+ <game1>no</game1>
+ <game2>no</game2>
  <game3>p2</game3>
  <game4>p2</game4>
  <game5>p2</game5>
@@ -79,8 +86,8 @@
  <rr_pl_p3>TEST3</rr_pl_p3>
  <rr_pl_p3_xid>@test3</rr_pl_p3_xid>
  <rr_pool>Pool A</rr_pool>
- <select_Lmember>2</select_Lmember>
- <select_Rmember>3</select_Rmember>
+ <select_Lmember>1</select_Lmember>
+ <select_Rmember>1</select_Rmember>
  <sponsorts>0</sponsorts>
  <stage>GRAND FINAL</stage>
  <stage_typing></stage_typing>

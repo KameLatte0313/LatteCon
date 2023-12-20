@@ -57,7 +57,7 @@ var scObjOld = {
     cb_2_9_score: '',
     select_Lmember: '0',
     select_Rmember: '0',
-    cd_memberNum: ''
+    cb_memberNum: ''
 }
 
 var isPreview = false;
@@ -235,24 +235,24 @@ function detectCrewMember(team) {
 }
 
 function showMember() {
-    if (scObj["cd_memberNum"] != scObjOld["cd_memberNum"]) {
+    if (scObj["cb_memberNum"] != scObjOld["cb_memberNum"]) {
         let id_r;
         let id_l;
-        if (scObj["cd_memberNum"] > scObjOld["cd_memberNum"]) {
-            for (let i = 1; i <= scObj["cd_memberNum"]; i++) {
+        if (scObj["cb_memberNum"] > scObjOld["cb_memberNum"]) {
+            for (let i = 1; i <= scObj["cb_memberNum"]; i++) {
                 id_r = document.getElementById("r" + i.toString() + "_bg");
                 id_l = document.getElementById("l" + i.toString() + "_bg");
                 TweenMax.to(id_r,0.5,{opacity:"0.9",ease:Quad.easeOut})
                 TweenMax.to(id_l,0.5,{opacity:"0.9",ease:Quad.easeOut})
             }
         } else {
-            for (let i = Number(scObj["cd_memberNum"]) + 1; i <= Number(scObjOld["cd_memberNum"]); i++) {
+            for (let i = Number(scObj["cb_memberNum"]) + 1; i <= Number(scObjOld["cb_memberNum"]); i++) {
                 id_r = document.getElementById("r" + i.toString() + "_bg");
                 id_l = document.getElementById("l" + i.toString() + "_bg");
                 TweenMax.to(id_r,0.5,{opacity:"0",ease:Quad.easeOut})
                 TweenMax.to(id_l,0.5,{opacity:"0",ease:Quad.easeOut})
             }
         }
-        scObjOld["cd_memberNum"] = scObj["cd_memberNum"];
+        scObjOld["cb_memberNum"] = scObj["cb_memberNum"];
     }
 }

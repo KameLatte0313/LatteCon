@@ -1,0 +1,181 @@
+body {
+	margin:0px;
+	background-color: rgba(0, 0, 0, 0);
+	font-family: 'corpoM','corpoB',"logotypejp_mp_b","コーポレート・ロゴＢ","Noto Sans CJK JP Heavy","OmePlus P Gothic medium",/*"MLRPG",*/ "07鉄瓶ゴシック","なごみ極細ゴシック 特細","JFドットM+H12","ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Arial,"メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	color:#FFFFFF;
+	word-break: break-all;
+}
+
+#container {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 1920px;
+	height: 1080px;
+}
+
+#base {
+    position: absolute;
+    width: 900px;
+    height: 100px;
+    top: 20px;
+    left: 510px;
+    background-color: #171717;
+    border-bottom: 5px solid #FE3334;
+    /* opacity: 0.99; */
+}
+
+#base::before {
+    content: "";
+    position: absolute;
+    width: 450px;
+    height: inherit;
+    left: 450px;
+    border-bottom: 5px solid #298BFF;
+}
+
+#top-bar {
+    position: absolute;
+    width: 900px;
+    height: 40px;
+    top: 20px;
+    left: 510px;
+    background-color: #000;
+}
+
+#cb_upperleft {
+    position: absolute;
+    width: 430px;
+    height: 40px;
+    top: 20px;
+    left: 510px;
+    padding-left: 20px;
+    color: white;
+    text-align: left;
+    line-height: 40px;
+    font-weight: bold;
+    font-size: 20px;
+    /* background-color: aqua; */
+
+    font-family: "corpoM";
+}
+
+#cb_upperright {
+    position: absolute;
+    width: 430px;
+    height: 40px;
+    top: 20px;
+    right: 510px;
+    padding-right: 20px;
+    color: white;
+    text-align: right;
+    line-height: 40px;
+    font-weight: bold;
+    font-size: 20px;
+    /* background-color: aquamarine; */
+
+    font-family: "corpoM";
+}
+
+/* 左プレイヤー */
+#cb_team1 {
+    position: absolute;
+    /* width: 300px;
+    height: 60px; */
+    top: 60px;
+    left: 510px;
+    padding-left: 20px;
+    text-align: left;
+    line-height: 60px;
+    color: white;
+    font-size: 35px;
+    font-weight: bold;
+    font-family: 'corpoB';
+    z-index: 5;
+    /* background-color: red; */
+}
+
+/* 左スコア */
+#cb_team1_score {
+    position: absolute;
+    width: 65px;
+    height: 60px;
+    top: 60px;
+    left: 870px;
+    text-align: right;
+    line-height: 60px;
+    font-size: 40px;
+    font-weight: bold;
+    font-family: 'corpoM';
+    /* color: rgb(254, 51, 52); */
+    color: white;
+    z-index: 6;
+    /* background-color: blue; */
+}
+
+#score-center {
+    position: absolute;
+    width: 50px;
+    height: 60px;
+    top: 60px;
+    left: 935px;
+    color: white;
+    text-align: center;
+    line-height: 60px;
+    font-size: 40px;
+    font-weight: bold;
+    font-family: 'corpoM';
+    /* background-color: aqua; */
+}
+
+/* 右スコア */
+#cb_team2_score {
+    position: absolute;
+    width: 65px;
+    height: 60px;
+    top: 60px;
+    right: 870px;
+    text-align: left;
+    line-height: 60px;
+    font-size: 40px;
+    font-weight: bold;
+    font-family: 'corpoM';
+    /* color: rgb(41, 139, 255); */
+    color: white;
+    z-index: 6;
+    /* background-color: pink; */
+}
+
+/* 右プレイヤー */
+#cb_team2 {
+    position: absolute;
+    /* width: 300px;
+    height: 60px; */
+    top: 60px;
+    right: 510px;
+    padding-right: 20px;
+    text-align: right;
+    line-height: 60px;
+    color: white;
+    font-size: 35px;
+    font-weight: bold;
+    font-family: 'corpoB';
+    z-index: 5;
+    /* background-color: gold; */
+}
+
+/* .no {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.p1 {
+    background: rgba(254, 51, 52, 0.7);
+}
+
+.p2 {
+    background: rgba(41, 139, 255, 0.7);
+} */
+
+.hidden {
+	display: none;
+}
