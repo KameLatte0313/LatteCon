@@ -45,10 +45,13 @@ td {
 
 td div {
     /* white-space: nowrap; */
+    height: 100px;
+    line-height: 100px;
 }
 
 #rr_pool {
     font-size: 40px;
+    color: rgb(255, 94, 0);
 }
 
 /* #tr_top td {border-top: solid 0px #ccc; height: 60px;}
