@@ -69,6 +69,14 @@
 
   <button type="timestamp" x="10" y="500" width="50" height="23" tooltip="Show Sponsors" id="sponsorts" saveonclick="1">Sponsors</button>
  </tab>
+ <tab name="MC">
+	<label x="5" y="5" width="200" height="20">MCレイアウト（mc.html）</label>
+	<lineEdit id="mc_name1" x="5" y="25" width="160" height="20">MC Name</lineEdit>
+	<lineEdit id="mc_xid1" x="5" y="50" width="160" height="20">@TwitterID</lineEdit>
+
+	<lineEdit id="mc_name2" x="180" y="25" width="160" height="20">MC Name</lineEdit>
+	<lineEdit id="mc_xid2" x="180" y="50" width="160" height="20">@TwitterID</lineEdit>
+ </tab>
  <tab name="Top8" scrollable="1">
 
 	<label x="153" y="30" width="130" height="20">┓</label>
@@ -326,15 +334,15 @@
   <spinBox id="rr_p3_rank" x="368" y="90" width="30" height="22" maximum="999" />
 
   <!-- 選手名表示レイアウト -->
-  <label x="10" y="135" width="130" height="13">プレイヤー名レイアウト</label>
+  <label x="10" y="135" width="200" height="13">プレイヤー名レイアウト（interview.html）</label>
 
   <lineEdit id="rr_pl_p1" x="10" y="150" width="105" height="20">Player1 - Name</lineEdit>
-  <lineEdit id="rr_pl_p2" x="120" y="150" width="105" height="20">Player2 - Name</lineEdit>
-  <lineEdit id="rr_pl_p3" x="230" y="150" width="105" height="20">Player3 - Name</lineEdit>
+  <lineEdit id="rr_pl_p2" x="140" y="150" width="105" height="20">Player2 - Name</lineEdit>
+  <lineEdit id="rr_pl_p3" x="270" y="150" width="105" height="20">Player3 - Name</lineEdit>
 
   <lineEdit id="rr_pl_p1_xid" x="10" y="180" width="105" height="20">@P1TwitterID</lineEdit>
-  <lineEdit id="rr_pl_p2_xid" x="120" y="180" width="105" height="20">@P2TwitterID</lineEdit>
-  <lineEdit id="rr_pl_p3_xid" x="230" y="180" width="105" height="20">@P3TwitterID</lineEdit>
+  <lineEdit id="rr_pl_p2_xid" x="140" y="180" width="105" height="20">@P2TwitterID</lineEdit>
+  <lineEdit id="rr_pl_p3_xid" x="270" y="180" width="105" height="20">@P3TwitterID</lineEdit>
 </tab>
 
 </layout>
