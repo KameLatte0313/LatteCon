@@ -54,15 +54,15 @@ body {
 
 .l_check {
     position: absolute;
-    width: 30px;
-    height: 30px;
+    width: 36px;
+    height: 36px;
     top: 10px;
-    left: 10px;
-    line-height: 30px;
-    text-align: center;
-    color: #fff;
-    font-size: 20px;
-    /* background-image: url(../紅葉イラスト-白.png); */
+    left: 8px;
+    /* line-height: 30px;
+    text-align: center; */
+    /* color: #fff; */
+    /* font-size: 20px; */
+    background-image: url(../imgs/紅葉イラスト-白.png);
     background-repeat: no-repeat;
     background-size: contain;
     opacity: 0;
@@ -128,15 +128,15 @@ body {
 
 .r_check {
     position: absolute;
-    width: 30px;
-    height: 30px;
+    width: 36px;
+    height: 36px;
     top: 10px;
-    right: 10px;
-    line-height: 30px;
-    text-align: center;
-    color: #fff;
-    font-size: 20px;
-    /* background-image: url(../紅葉イラスト-白.png); */
+    right: 8px;
+    /* line-height: 30px; */
+    /* text-align: center; */
+    /* color: #fff; */
+    /* font-size: 20px; */
+    background-image: url(../imgs/紅葉イラスト-白.png);
     background-repeat: no-repeat;
     background-size: contain;
     opacity: 0;

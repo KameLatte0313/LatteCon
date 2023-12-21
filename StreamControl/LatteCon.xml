@@ -61,11 +61,11 @@
 		<radioButton x="103"  y="147" width="80" height="20" value="Losers Semi-Final" ></radioButton>
 		<radioButton x="129"  y="147" width="80" height="20" value="Losers Final" ></radioButton>
 
-		<radioButton x="103"  y="172" width="80" height="20" value="" ></radioButton>
+		<radioButton x="103"  y="172" width="80" height="20" value="stage_typing" ></radioButton>
 	</radioGroup>
 
 	<label x="10" y="175" width="85" height="13">Stage/直接入力</label>
-	<lineEdit id="stage_typing"   x="129" y="170" width="160" height="20" dataSet="stage.csv" >stage_直接入力</lineEdit>
+	<lineEdit id="stage_typing"   x="129" y="170" width="160" height="20">stage_直接入力</lineEdit>
 
   <button type="timestamp" x="10" y="500" width="50" height="23" tooltip="Show Sponsors" id="sponsorts" saveonclick="1">Sponsors</button>
  </tab>
@@ -163,97 +163,110 @@
 
 </tab>
 <tab name="クルーバトル">
-	<label x="5" y="5" width="80" height="13">メンバー数</label>
-  <spinBox  id="cd_memberNum" x="60" y="2"  width="35" height="20" maximum="9" />
+	<label x="5" y="7" width="80" height="13">メンバー数</label>
+  	<spinBox  id="cb_memberNum" x="60" y="5"  width="35" height="20" maximum="9" />
 
-  <label x="204" y="44" width="80" height="13">P1</label>
-  <label x="204" y="74" width="80" height="13">P2</label>
-  <label x="204" y="104" width="80" height="13">P3</label>
-  <label x="204" y="134" width="80" height="13">P4</label>
-  <label x="204" y="164" width="80" height="13">P5</label>
-  <label x="204" y="194" width="80" height="13">P6</label>
-  <label x="204" y="224" width="80" height="13">P7</label>
-  <label x="204" y="254" width="80" height="13">P8</label>
-  <label x="204" y="284" width="80" height="13">P9</label>
+	<checkBox x="303" y="7" width="150" height="20" id="cb_autocalc">チーム残ストック自動計算</checkBox>
 
-	<label x="5" y="25" width="80" height="13">now?</label>
+	<lineEdit id="cb_upperColumn" x="120" y="5" width="180" height="20">Crew Battle</lineEdit>
+
+	<lineEdit id="cb_team1" x="20" y="30" width="140" height="20">Team Name</lineEdit>
+		<spinBox  id="cb_team1_score" x="165" y="30" width="35" height="20" maximum="99" />
+
+	<!-- <button type="swap" x="200" y="340" width="20" height="20" tooltip="Swap info" id="swap1" swapSet1="pName1,pScore1,pSponsor1" swapSet2="pName2,pScore2,pSponsor2">⇔</button> -->
+	<label x="207" y="33" width="20" height="13">-</label>
+	
+	<lineEdit id="cb_team2" x="260" y="30" width="140" height="20">Team Name</lineEdit>
+	<spinBox  id="cb_team2_score" x="220" y="30" width="35" height="20" maximum="99" />
+
+	<label x="204" y="74" width="80" height="13">P1</label>
+	<label x="204" y="104" width="80" height="13">P2</label>
+	<label x="204" y="134" width="80" height="13">P3</label>
+	<label x="204" y="164" width="80" height="13">P4</label>
+	<label x="204" y="194" width="80" height="13">P5</label>
+	<label x="204" y="224" width="80" height="13">P6</label>
+	<label x="204" y="254" width="80" height="13">P7</label>
+	<label x="204" y="284" width="80" height="13">P8</label>
+	<label x="204" y="314" width="80" height="13">P9</label>
+
+	<label x="5" y="55" width="80" height="13">now?</label>
 
 	<radioGroup id="select_Lmember">
-		<radioButton x="10" y="40" width="40" height="20" value="1" ></radioButton>
-		<radioButton x="10" y="70" width="40" height="20" value="2" ></radioButton>
-		<radioButton x="10" y="100" width="40" height="20" value="3" ></radioButton>
-		<radioButton x="10" y="130" width="40" height="20" value="4" ></radioButton>
-		<radioButton x="10" y="160" width="40" height="20" value="5" ></radioButton>
-		<radioButton x="10" y="190" width="40" height="20" value="6" ></radioButton>
-		<radioButton x="10" y="220" width="40" height="20" value="7" ></radioButton>
-		<radioButton x="10" y="250" width="40" height="20" value="8" ></radioButton>
-		<radioButton x="10" y="280" width="40" height="20" value="9" ></radioButton>
-		<radioButton x="10" y="310" width="40" height="20" value="0" ></radioButton>
+		<radioButton x="10" y="70" width="40" height="20" value="1" ></radioButton>
+		<radioButton x="10" y="100" width="40" height="20" value="2" ></radioButton>
+		<radioButton x="10" y="130" width="40" height="20" value="3" ></radioButton>
+		<radioButton x="10" y="160" width="40" height="20" value="4" ></radioButton>
+		<radioButton x="10" y="190" width="40" height="20" value="5" ></radioButton>
+		<radioButton x="10" y="220" width="40" height="20" value="6" ></radioButton>
+		<radioButton x="10" y="250" width="40" height="20" value="7" ></radioButton>
+		<radioButton x="10" y="280" width="40" height="20" value="8" ></radioButton>
+		<radioButton x="10" y="310" width="40" height="20" value="9" ></radioButton>
+		<radioButton x="10" y="340" width="40" height="20" value="0" ></radioButton>
 	</radioGroup>
-	<label x="30" y="313" width="80" height="13">←NO SELECT</label>
+	<label x="30" y="343" width="80" height="13">←NO SELECT</label>
 
-	<label x="40" y="25" width="80" height="13">左チーム</label>
+	<label x="40" y="55" width="80" height="13">左チーム</label>
 
-	<lineEdit id="cb_1_1" x="40" y="40"  width="120" height="20">PlayerName1</lineEdit>
-	<lineEdit id="cb_1_2" x="40" y="70"  width="120" height="20">PlayerName2</lineEdit>
-	<lineEdit id="cb_1_3" x="40" y="100" width="120" height="20">PlayerName3</lineEdit>
-	<lineEdit id="cb_1_4" x="40" y="130" width="120" height="20">PlayerName4</lineEdit>
-	<lineEdit id="cb_1_5" x="40" y="160" width="120" height="20">PlayerName5</lineEdit>
-	<lineEdit id="cb_1_6" x="40" y="190" width="120" height="20">PlayerName6</lineEdit>
-	<lineEdit id="cb_1_7" x="40" y="220" width="120" height="20">PlayerName7</lineEdit>
-	<lineEdit id="cb_1_8" x="40" y="250" width="120" height="20">PlayerName8</lineEdit>
-	<lineEdit id="cb_1_9" x="40" y="280" width="120" height="20">PlayerName9</lineEdit>
+	<lineEdit id="cb_1_1" x="40" y="70"  width="120" height="20">PlayerName1</lineEdit>
+	<lineEdit id="cb_1_2" x="40" y="100"  width="120" height="20">PlayerName2</lineEdit>
+	<lineEdit id="cb_1_3" x="40" y="130" width="120" height="20">PlayerName3</lineEdit>
+	<lineEdit id="cb_1_4" x="40" y="160" width="120" height="20">PlayerName4</lineEdit>
+	<lineEdit id="cb_1_5" x="40" y="190" width="120" height="20">PlayerName5</lineEdit>
+	<lineEdit id="cb_1_6" x="40" y="220" width="120" height="20">PlayerName6</lineEdit>
+	<lineEdit id="cb_1_7" x="40" y="250" width="120" height="20">PlayerName7</lineEdit>
+	<lineEdit id="cb_1_8" x="40" y="280" width="120" height="20">PlayerName8</lineEdit>
+	<lineEdit id="cb_1_9" x="40" y="310" width="120" height="20">PlayerName9</lineEdit>
 
-	<label x="185" y="25" width="80" height="13">残ストック</label>
+	<label x="185" y="55" width="80" height="13">残ストック</label>
 
-	<spinBox  id="cb_1_1_score" x="165" y="40"  width="35" height="20" maximum="99" />
-	<spinBox  id="cb_1_2_score" x="165" y="70"  width="35" height="20" maximum="99" />
-	<spinBox  id="cb_1_3_score" x="165" y="100" width="35" height="20" maximum="99" />
-	<spinBox  id="cb_1_4_score" x="165" y="130" width="35" height="20" maximum="99" />
-	<spinBox  id="cb_1_5_score" x="165" y="160" width="35" height="20" maximum="99" />
-	<spinBox  id="cb_1_6_score" x="165" y="190" width="35" height="20" maximum="99" />
-	<spinBox  id="cb_1_7_score" x="165" y="220" width="35" height="20" maximum="99" />
-	<spinBox  id="cb_1_8_score" x="165" y="250" width="35" height="20" maximum="99" />
-	<spinBox  id="cb_1_9_score" x="165" y="280" width="35" height="20" maximum="99" />
+	<spinBox  id="cb_1_1_score" x="165" y="70"  width="35" height="20" maximum="99" />
+	<spinBox  id="cb_1_2_score" x="165" y="100"  width="35" height="20" maximum="99" />
+	<spinBox  id="cb_1_3_score" x="165" y="130" width="35" height="20" maximum="99" />
+	<spinBox  id="cb_1_4_score" x="165" y="160" width="35" height="20" maximum="99" />
+	<spinBox  id="cb_1_5_score" x="165" y="190" width="35" height="20" maximum="99" />
+	<spinBox  id="cb_1_6_score" x="165" y="220" width="35" height="20" maximum="99" />
+	<spinBox  id="cb_1_7_score" x="165" y="250" width="35" height="20" maximum="99" />
+	<spinBox  id="cb_1_8_score" x="165" y="280" width="35" height="20" maximum="99" />
+	<spinBox  id="cb_1_9_score" x="165" y="310" width="35" height="20" maximum="99" />
 
-	<spinBox  id="cb_2_1_score" x="220" y="40"  width="35" height="20" maximum="99" />
-	<spinBox  id="cb_2_2_score" x="220" y="70"  width="35" height="20" maximum="99" />
-	<spinBox  id="cb_2_3_score" x="220" y="100" width="35" height="20" maximum="99" />
-	<spinBox  id="cb_2_4_score" x="220" y="130" width="35" height="20" maximum="99" />
-	<spinBox  id="cb_2_5_score" x="220" y="160" width="35" height="20" maximum="99" />
-	<spinBox  id="cb_2_6_score" x="220" y="190" width="35" height="20" maximum="99" />
-	<spinBox  id="cb_2_7_score" x="220" y="220" width="35" height="20" maximum="99" />
-	<spinBox  id="cb_2_8_score" x="220" y="250" width="35" height="20" maximum="99" />
-	<spinBox  id="cb_2_9_score" x="220" y="280" width="35" height="20" maximum="99" />
+	<spinBox  id="cb_2_1_score" x="220" y="70"  width="35" height="20" maximum="99" />
+	<spinBox  id="cb_2_2_score" x="220" y="100"  width="35" height="20" maximum="99" />
+	<spinBox  id="cb_2_3_score" x="220" y="130" width="35" height="20" maximum="99" />
+	<spinBox  id="cb_2_4_score" x="220" y="160" width="35" height="20" maximum="99" />
+	<spinBox  id="cb_2_5_score" x="220" y="190" width="35" height="20" maximum="99" />
+	<spinBox  id="cb_2_6_score" x="220" y="220" width="35" height="20" maximum="99" />
+	<spinBox  id="cb_2_7_score" x="220" y="250" width="35" height="20" maximum="99" />
+	<spinBox  id="cb_2_8_score" x="220" y="280" width="35" height="20" maximum="99" />
+	<spinBox  id="cb_2_9_score" x="220" y="310" width="35" height="20" maximum="99" />
 	
 
-	<label x="260" y="25" width="80" height="13">右チーム</label>
+	<label x="260" y="55" width="80" height="13">右チーム</label>
 
-	<lineEdit id="cb_2_1" x="260" y="40" width="120" height="20" >PlayerName1</lineEdit>
-	<lineEdit id="cb_2_2" x="260" y="70" width="120" height="20">PlayerName2</lineEdit>
-	<lineEdit id="cb_2_3" x="260" y="100" width="120" height="20">PlayerName3</lineEdit>
-	<lineEdit id="cb_2_4" x="260" y="130" width="120" height="20">PlayerName4</lineEdit>
-	<lineEdit id="cb_2_5" x="260" y="160" width="120" height="20">PlayerName5</lineEdit>
-	<lineEdit id="cb_2_6" x="260" y="190" width="120" height="20">PlayerName6</lineEdit>
-	<lineEdit id="cb_2_7" x="260" y="220" width="120" height="20">PlayerName7</lineEdit>
-	<lineEdit id="cb_2_8" x="260" y="250" width="120" height="20">PlayerName8</lineEdit>
-	<lineEdit id="cb_2_9" x="260" y="280" width="120" height="20">PlayerName9</lineEdit>
+	<lineEdit id="cb_2_1" x="260" y="70" width="120" height="20" >PlayerName1</lineEdit>
+	<lineEdit id="cb_2_2" x="260" y="100" width="120" height="20">PlayerName2</lineEdit>
+	<lineEdit id="cb_2_3" x="260" y="130" width="120" height="20">PlayerName3</lineEdit>
+	<lineEdit id="cb_2_4" x="260" y="160" width="120" height="20">PlayerName4</lineEdit>
+	<lineEdit id="cb_2_5" x="260" y="190" width="120" height="20">PlayerName5</lineEdit>
+	<lineEdit id="cb_2_6" x="260" y="220" width="120" height="20">PlayerName6</lineEdit>
+	<lineEdit id="cb_2_7" x="260" y="250" width="120" height="20">PlayerName7</lineEdit>
+	<lineEdit id="cb_2_8" x="260" y="280" width="120" height="20">PlayerName8</lineEdit>
+	<lineEdit id="cb_2_9" x="260" y="310" width="120" height="20">PlayerName9</lineEdit>
 
-	<label x="385" y="25" width="80" height="13">now?</label>
+	<label x="385" y="55" width="80" height="13">now?</label>
 
 	<radioGroup id="select_Rmember">
-		<radioButton x="390" y="40" width="40" height="20" value="1" ></radioButton>
-		<radioButton x="390" y="70" width="40" height="20" value="2" ></radioButton>
-		<radioButton x="390" y="100" width="40" height="20" value="3" ></radioButton>
-		<radioButton x="390" y="130" width="40" height="20" value="4" ></radioButton>
-		<radioButton x="390" y="160" width="40" height="20" value="5" ></radioButton>
-		<radioButton x="390" y="190" width="40" height="20" value="6" ></radioButton>
-		<radioButton x="390" y="220" width="40" height="20" value="7" ></radioButton>
-		<radioButton x="390" y="250" width="40" height="20" value="8" ></radioButton>
-		<radioButton x="390" y="280" width="40" height="20" value="9" ></radioButton>
-		<radioButton x="390" y="310" width="40" height="20" value="0" ></radioButton>
+		<radioButton x="390" y="70" width="40" height="20" value="1" ></radioButton>
+		<radioButton x="390" y="100" width="40" height="20" value="2" ></radioButton>
+		<radioButton x="390" y="130" width="40" height="20" value="3" ></radioButton>
+		<radioButton x="390" y="160" width="40" height="20" value="4" ></radioButton>
+		<radioButton x="390" y="190" width="40" height="20" value="5" ></radioButton>
+		<radioButton x="390" y="220" width="40" height="20" value="6" ></radioButton>
+		<radioButton x="390" y="250" width="40" height="20" value="7" ></radioButton>
+		<radioButton x="390" y="280" width="40" height="20" value="8" ></radioButton>
+		<radioButton x="390" y="310" width="40" height="20" value="9" ></radioButton>
+		<radioButton x="390" y="340" width="40" height="20" value="0" ></radioButton>
 	</radioGroup>
-	<label x="310" y="313" width="80" height="13">NO SELECT→</label>
+	<label x="310" y="343" width="80" height="13">NO SELECT→</label>
 </tab>
 <tab name="3人総当たり">
   <!-- <label x="30" y="7" width="130" height="13">プレイヤー名</label> -->

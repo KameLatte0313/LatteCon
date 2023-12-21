@@ -20,15 +20,35 @@ var scObj;
 // ここにStreamControlから取得したデータをため込むための変数を定義する。
 
 var scObjOld = {
-    stage: '',
-    stage_typing: '',
-    pTeam1: '',
-    pTeam2: '',
-    pName1: '',
-    pName2: '',
-    pScore1: '',
-    pScore2: ''
+    cb_upperColumn: '',
+    cb_team1: '',
+    cb_team1_score: 0,
+    cb_team2: '',
+    cb_team2_score: 0,
+    cb_memberNum: '',
+    cb_1_1_score: '',
+    cb_1_2_score: '',
+    cb_1_3_score: '',
+    cb_1_4_score: '',
+    cb_1_5_score: '',
+    cb_1_6_score: '',
+    cb_1_7_score: '',
+    cb_1_8_score: '',
+    cb_1_9_score: '',
+    cb_2_1_score: '',
+    cb_2_2_score: '',
+    cb_2_3_score: '',
+    cb_2_4_score: '',
+    cb_2_5_score: '',
+    cb_2_6_score: '',
+    cb_2_7_score: '',
+    cb_2_8_score: '',
+    cb_2_9_score: '',
+    cb_autocalc: ''
 }
+
+var team1score = 0;
+var team2score = 0;
 
 var isPreview = false;
 
@@ -114,31 +134,70 @@ function scLoaded() {
 function update() {
     // スコアボードを始めて読み込んだ時の書き換え処理を記述する箇所
     if (firstupdate) {
-        document.getElementById("pName1").innerHTML = scObjOld['pName1'] = scObj["pName1"].toString();
-        document.getElementById("pName2").innerHTML = scObjOld['pName2'] = scObj["pName2"].toString();
-        document.getElementById("pScore1").innerHTML = scObjOld['pScore1'] = scObj["pScore1"].toString();
-        document.getElementById("pScore2").innerHTML = scObjOld['pScore2'] = scObj["pScore2"].toString();
-        
-        if (scObj['stage'] == "stage_typing") {
-            document.getElementById("stage").innerHTML = scObjOld['stage'] = scObj['stage_typing'];
-        } else {
-            document.getElementById("stage").innerHTML = scObjOld['stage'] = scObj['stage'];
+        document.getElementById("cb_upperColumn").innerHTML = scObjOld['cb_upperColumn'] = scObj["cb_upperColumn"].toString();
+        document.getElementById("cb_team1").innerHTML = scObjOld['cb_team1'] = scObj["cb_team1"].toString();
+        document.getElementById("cb_team2").innerHTML = scObjOld['cb_team2'] = scObj["cb_team2"].toString();
+
+        scObjOld['cb_memberNum'] = scObj["cb_memberNum"];
+
+        scObjOld['cb_autocalc'] = scObj["cb_autocalc"];
+
+        for (let i = 1; i < 10; i++) {
+            let cb_memberScore = "cb_1_" + i.toString() + "_score";
+            scObjOld[cb_memberScore] = scObj[cb_memberScore];
+            cb_memberScore = "cb_2_" + i.toString() + "_score";
+            scObjOld[cb_memberScore] = scObj[cb_memberScore];
         }
+
+        if (scObjOld['cb_autocalc'] == "0") {
+            team1score = scObj['cb_team1_score'];
+            team2score = scObj['cb_team2_score'];
+        } else {
+            for (let i = 1; i <= Number(scObjOld['cb_memberNum']); i++) {
+                let cb_memberScore = "cb_1_" + i.toString() + "_score";
+                team1score = team1score + Number(scObjOld[cb_memberScore]);
+
+                cb_memberScore = "cb_2_" + i.toString() + "_score";
+                team2score = team2score + Number(scObjOld[cb_memberScore]);
+            }
+        }
+
+        document.getElementById("cb_team1_score").innerHTML = scObjOld['cb_team1_score'] = team1score;
+        document.getElementById("cb_team2_score").innerHTML = scObjOld['cb_team2_score'] = team2score;
 
         firstupdate = false;
 
-    // スコアボードを始めて読み込んだ時の書き換え処理を記述する箇所
     } else if (!animating) {
-        changeVal("pName1");
-        changeVal("pName2");
-        changeVal("pScore1");
-        changeVal("pScore2");
+        changeVal("cb_upperColumn");
+        changeVal("cb_team1");
+        changeVal("cb_team2");
 
-        if (scObj['stage'] == "stage_typing") {
-            changeValtoData("stage", scObj['stage_typing']);
-        } else if (scObj['stage'] != "stage_typing") {
-            changeVal("stage");
+        if (scObj['cb_autocalc'] == "0") {
+            team1score = scObj['cb_team1_score'];
+            team2score = scObj['cb_team2_score'];
+        } else {
+            for (let i = 1; i < 10; i++) {
+                let cb_memberScore = "cb_1_" + i.toString() + "_score";
+                scObjOld[cb_memberScore] = scObj[cb_memberScore];
+                cb_memberScore = "cb_2_" + i.toString() + "_score";
+                scObjOld[cb_memberScore] = scObj[cb_memberScore];
+            }
+            team1score = 0;
+            team2score = 0;
+            for (let i = 1; i <= Number(scObj['cb_memberNum']); i++) {
+                let cb_memberScore = "cb_1_" + i.toString() + "_score";
+                team1score = team1score + Number(scObjOld[cb_memberScore]);
+
+                cb_memberScore = "cb_2_" + i.toString() + "_score";
+                team2score = team2score + Number(scObjOld[cb_memberScore]);
+            }
         }
+        
+        changeValtoAddData("cb_team1_score", team1score);
+        changeValtoAddData("cb_team2_score", team2score);
+
+        fitty("#cb_team1", {maxSize: 25});
+        fitty("#cb_team2", {maxSize: 25});
     }
     
 }
@@ -158,7 +217,7 @@ function changeVal(id_name) {
     }
 }
 
-function changeValtoData(id_name, data) {
+function changeValtoAddData(id_name, data) {
     if (scObjOld[id_name] != data) {
         animating = true;
         let id = document.getElementById(id_name);

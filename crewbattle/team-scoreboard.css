@@ -34,7 +34,7 @@ body {
     background-size: 256px 65px;
 }
 
-#stage {
+#cb_upperColumn {
     position: absolute;
     width: 211px;
     height: 50px;
@@ -48,7 +48,7 @@ body {
     font-size: 20px;
 }
 
-#pName1 {
+#cb_team1 {
     position: absolute;
     width: 423px;
     height: 40px;
@@ -72,7 +72,7 @@ body {
     background-size: 85px 78px;
 }
 
-#pScore1 {
+#cb_team1_score {
     position: absolute;
     width: 85px;
     height: 78px;
@@ -95,7 +95,7 @@ body {
     background-size: 85px 78px;
 }
 
-#pScore2 {
+#cb_team2_score {
     position: absolute;
     width: 85px;
     height: 78px;
@@ -108,7 +108,7 @@ body {
     color: white;
 }
 
-#pName2 {
+#cb_team2 {
     position: absolute;
     width: 423px;
     height: 40px;
