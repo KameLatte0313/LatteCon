@@ -31,8 +31,8 @@ body {
     width: 100%;
     height: 100px;
     top: 0px;
-    background-color: #171717;
-    /* background: linear-gradient(to bottom, #da2a00 10%, #fe7800); */
+    /* background-color: #171717; */
+    background: linear-gradient(to bottom, #da2a00 10%, #fe7800);
     border-radius: 10px;
     font-size: 40px;
     font-weight: bold;

@@ -1,12 +1,12 @@
 :root {
-    --player-back-color: #171717;
+    --player-back-color: rgb(255, 50, 23);
     --player-font-color: #eee;
     --player-bar-color: #eee;
-    --score-back-color: #eee;
-    --score-font-color: #171717;
-    --score-bar-color: #171717;
+    --score-back-color: #027867;
+    --score-font-color: #eee;
+    --score-bar-color: #eee;
     --stage-font-color: #eee;
-    --tournament-bar-color: #171717;
+    --tournament-bar-color: #eee;
 }
 
 body {
