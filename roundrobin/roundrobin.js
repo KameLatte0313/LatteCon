@@ -219,6 +219,14 @@ function setRRscore(lPlayer, rPlayer) {
     scObjOld[lProperty] = scObj[lProperty];
     scObjOld[rProperty] = scObj[rProperty];
     id.innerHTML = scObjOld[lProperty] + " - " + scObjOld[rProperty];
+
+    if (Number(scObjOld[lProperty]) > Number(scObjOld[rProperty])) {
+        id.style.color = "#32e966";
+    } else if (Number(scObjOld[lProperty]) < Number(scObjOld[rProperty])) {
+        id.style.color = "#ff334b";
+    } else if (Number(scObjOld[lProperty]) == Number(scObjOld[rProperty])) {
+        id.style.color = "#fff";
+    }
 }
 
 function changeVal(id_name) {
@@ -261,8 +269,19 @@ function changeRRscore(lPlayer, rPlayer) {
         let id = document.getElementById(id_name);
         scObjOld[lProperty] = scObj[lProperty];
         scObjOld[rProperty] = scObj[rProperty];
+
+        let color;
+        if (Number(scObjOld[lProperty]) > Number(scObjOld[rProperty])) {
+            color = "#32e966";
+        } else if (Number(scObjOld[lProperty]) < Number(scObjOld[rProperty])) {
+            color = "#ff334b";
+        } else if (Number(scObjOld[lProperty]) == Number(scObjOld[rProperty])) {
+            color = "#fff";
+        }
+
         TweenMax.to(id,0.5,{opacity:"0",ease:Quad.easeOut,onComplete: function() { 
             id.innerHTML = scObjOld[lProperty] + " - " + scObjOld[rProperty];
+            id.style.color = color;
             // fitty("#" + id_name, {maxSize: 25});
         }});
         TweenMax.to(id,0.5,{opacity:"1",ease:Quad.easeOut,delay:1,onComplete: function() {

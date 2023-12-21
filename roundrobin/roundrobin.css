@@ -45,6 +45,8 @@ td {
 
 td div {
     /* white-space: nowrap; */
+    height: 100px;
+    line-height: 100px;
 }
 
 #rr_pool {
