@@ -1,6 +1,6 @@
 # LatteCon_forSSBU_1.0
-Kamelatte
-<https://twitter.com/kame8103>
+かめらて / Kamelatte
+<https://twitter.com/KameLatte_>
 
 ## LISCENSE
 
