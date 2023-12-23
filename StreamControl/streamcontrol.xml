@@ -1,6 +1,6 @@
 <!DOCTYPE StreamControl>
 <items>
- <timestamp>1703099747</timestamp>
+ <timestamp>1703325024</timestamp>
  <GF-WL1>no</GF-WL1>
  <GF-WL2>no</GF-WL2>
  <bestofN>BEST OF 5</bestofN>
@@ -54,6 +54,10 @@
  <game3>p2</game3>
  <game4>p2</game4>
  <game5>p2</game5>
+ <mc_name1>テスト1</mc_name1>
+ <mc_name2>テスト2</mc_name2>
+ <mc_xid1>@test1</mc_xid1>
+ <mc_xid2>@test2</mc_xid2>
  <pName1>かめらて</pName1>
  <pName2>すぱかぷ</pName2>
  <pTeam1></pTeam1>
@@ -92,43 +96,43 @@
  <stage>GRAND FINAL</stage>
  <stage_typing></stage_typing>
  <top8_1_1>test1</top8_1_1>
- <top8_1_1_score>3</top8_1_1_score>
+ <top8_1_1_score>0</top8_1_1_score>
  <top8_1_2>test2</top8_1_2>
- <top8_1_2_score>1</top8_1_2_score>
+ <top8_1_2_score>0</top8_1_2_score>
  <top8_1_3>test3</top8_1_3>
- <top8_1_3_score>3</top8_1_3_score>
+ <top8_1_3_score>0</top8_1_3_score>
  <top8_1_4>test4</top8_1_4>
- <top8_1_4_score>2</top8_1_4_score>
+ <top8_1_4_score>0</top8_1_4_score>
  <top8_1_5>test5</top8_1_5>
- <top8_1_5_score>3</top8_1_5_score>
+ <top8_1_5_score>0</top8_1_5_score>
  <top8_1_6>test6</top8_1_6>
  <top8_1_6_score>0</top8_1_6_score>
  <top8_1_7>test7</top8_1_7>
  <top8_1_7_score>0</top8_1_7_score>
  <top8_1_8>test8</top8_1_8>
- <top8_1_8_score>3</top8_1_8_score>
+ <top8_1_8_score>0</top8_1_8_score>
  <top8_2_1>test1</top8_2_1>
- <top8_2_1_score>3</top8_2_1_score>
+ <top8_2_1_score>0</top8_2_1_score>
  <top8_2_2>test3</top8_2_2>
  <top8_2_2_score>0</top8_2_2_score>
  <top8_2_3>test2</top8_2_3>
- <top8_2_3_score>3</top8_2_3_score>
+ <top8_2_3_score>0</top8_2_3_score>
  <top8_2_4>test5</top8_2_4>
  <top8_2_4_score>0</top8_2_4_score>
  <top8_2_5>test4</top8_2_5>
- <top8_2_5_score>3</top8_2_5_score>
+ <top8_2_5_score>0</top8_2_5_score>
  <top8_2_6>test8</top8_2_6>
  <top8_2_6_score>0</top8_2_6_score>
  <top8_3_1>test1</top8_3_1>
- <top8_3_1_score>3</top8_3_1_score>
+ <top8_3_1_score>0</top8_3_1_score>
  <top8_3_2>test2</top8_3_2>
- <top8_3_2_score>2</top8_3_2_score>
+ <top8_3_2_score>0</top8_3_2_score>
  <top8_3_3>test2</top8_3_3>
- <top8_3_3_score>3</top8_3_3_score>
+ <top8_3_3_score>0</top8_3_3_score>
  <top8_3_4>test4</top8_3_4>
  <top8_3_4_score>0</top8_3_4_score>
  <top8_4_3>test3</top8_4_3>
  <top8_4_3_score>0</top8_4_3_score>
  <top8_4_4>test2</top8_4_4>
- <top8_4_4_score>3</top8_4_4_score>
+ <top8_4_4_score>0</top8_4_4_score>
 </items>
