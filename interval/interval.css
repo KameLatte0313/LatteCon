@@ -1,0 +1,328 @@
+body {
+	margin:0px;
+	background-color: rgba(0, 0, 0, 0);
+	font-family: 'corpoM','corpoB',"logotypejp_mp_b","コーポレート・ロゴＢ","Noto Sans CJK JP Heavy","OmePlus P Gothic medium",/*"MLRPG",*/ "07鉄瓶ゴシック","なごみ極細ゴシック 特細","JFドットM+H12","ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Arial,"メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	color:#FFFFFF;
+	word-break: break-all;
+}
+
+#container {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 1920px;
+	height: 1080px;
+}
+
+/* base */
+#base {
+    position: absolute;
+    width: 1920px;
+    height: 250px;
+    top: 830px;
+    /* background-color: #f00; */
+    /* opacity: 0.99; */
+}
+
+#l-bar {
+    position: absolute;
+    width: 500px;
+    height: 50px;
+    top: 50px;
+    left: 100px;
+    background-color: #000;
+}
+
+#stage {
+    position: absolute;
+    width: 460px;
+    height: 50px;
+    /* top: 800px; */
+    left: 20px;
+    margin-right: 20px;
+    color: white;
+    text-align: right;
+    line-height: 50px;
+    font-weight: bold;
+    font-size: 25px;
+    /* background-color: aquamarine; */
+
+    font-family: "corpoM";
+}
+
+#l-name {
+    position: absolute;
+    width: 500px;
+    height: 95px;
+    top: 100px;
+    left: 100px;
+    background-color: #171717;
+    /* border-bottom: 5px solid #FE3334; */
+}
+
+#l-name::after {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 5px;
+    left: 0px;
+    top: 95px;
+    /* background: linear-gradient(-90deg, #FE3334 0%, #FE3334 60%, #000 100%); */
+    background-color: #FE3334;
+    /* border-bottom: 5px solid #298BFF; */
+}
+
+#player1 {
+    position: absolute;
+    right: 0px;
+    /* margin-right: 20px; */
+    text-align: right;
+    line-height: 95px;
+    color: white;
+    font-size: 50px;
+    font-weight: bold;
+    font-family: 'corpoB';
+    z-index: 5;
+    /* background-color: red; */
+}
+
+#gf-wl1 {
+    position: absolute;
+    width: 80px;
+    height: 95px;
+    top: 0px;
+    right: 420px;
+    text-align: center;
+    line-height: 95px;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'corpoM';
+    opacity: 0;
+    /* background-color: aqua; */
+}
+
+#l-score {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    top: 50px;
+    left: 600px;
+    background-color: #FE3334;
+}
+
+#score1 {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    /* top: 840px; */
+    /* left: 360px; */
+    text-align: center;
+    line-height: 150px;
+    font-size: 100px;
+    font-weight: bold;
+    font-family: 'corpoM';
+    color: white;
+    /* background-color: blue; */
+}
+
+#r-bar {
+    position: absolute;
+    width: 500px;
+    height: 50px;
+    top: 50px;
+    right: 100px;
+    background-color: #000;
+}
+
+#bestofN {
+    position: absolute;
+    width: 460px;
+    height: 50px;
+    /* top: 800px; */
+    right: 20px;
+    margin-left: 20px;
+    color: white;
+    text-align: left;
+    line-height: 50px;
+    font-weight: bold;
+    font-size: 25px;
+    /* background-color: aquamarine; */
+
+    font-family: "corpoM";
+}
+
+#r-name {
+    position: absolute;
+    width: 500px;
+    height: 95px;
+    top: 100px;
+    right: 100px;
+    background-color: #171717;
+    /* border-bottom: 5px solid #298BFF; */
+}
+
+#r-name::after {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 5px;
+    left: 0px;
+    top: 95px;
+    /* background: linear-gradient(90deg, #298BFF 0%, #298BFF 60%, #000 100%); */
+    background-color: #298BFF;
+    /* border-bottom: 5px solid #298BFF; */
+}
+
+#player2 {
+    position: absolute;
+    text-align: left;
+    line-height: 95px;
+    color: white;
+    font-size: 50px;
+    font-weight: bold;
+    font-family: 'corpoB';
+    z-index: 5;
+    /* background-color: red; */
+}
+
+#gf-wl2 {
+    position: absolute;
+    width: 80px;
+    height: 95px;
+    top: 0px;
+    left: 420px;
+    text-align: center;
+    line-height: 95px;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'corpoM';
+    opacity: 0;
+    /* background-color: aqua; */
+}
+
+#r-score {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    top: 50px;
+    right: 600px;
+    background-color: #298BFF;
+}
+
+#score2 {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    /* top: 840px; */
+    /* left: 360px; */
+    text-align: center;
+    line-height: 150px;
+    font-size: 100px;
+    font-weight: bold;
+    font-family: 'corpoM';
+    color: white;
+    /* background-color: blue; */
+}
+
+/* bo3-scorebar */
+#bo3-scorebar {
+    position: absolute;
+    width: 156px;
+    height: 40px;
+    /* top: 800px; */
+    left: 372px;
+    opacity: 0;
+}
+
+#bo3-scorebar div {
+    width: 52px;
+    height: 40px;
+    top: 0px;
+    position: absolute;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'corpoM';
+    line-height: 32px;
+    color: white;
+    border: solid black;
+    border-width: 4px 2px 4px 2px;
+    box-sizing: border-box;
+}
+
+#bo3-game1 {
+    left: 0px;
+}
+
+#bo3-game2 {
+    left: 52px;
+}
+
+#bo3-game3 {
+    left: 104px;
+}
+
+/* bo5-scorebar */
+#bo5-scorebar {
+    position: absolute;
+    width: 260px;
+    height: 40px;
+    /* top: 800px; */
+    left: 320px;
+    opacity: 0;
+    /* background-color: aqua; */
+}
+
+#bo5-scorebar div {
+    width: 52px;
+    height: 40px;
+    top: 0px;
+    position: absolute;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'corpoM';
+    line-height: 32px;
+    color: white;
+    border: solid black;
+    border-width: 4px 2px 4px 2px;
+    box-sizing: border-box;
+}
+
+#bo5-game1 {
+    left: 0px;
+}
+
+#bo5-game2 {
+    left: 52px;
+}
+
+#bo5-game3 {
+    left: 104px;
+}
+
+#bo5-game4 {
+    left: 156px;
+}
+
+#bo5-game5 {
+    left: 208px;
+}
+
+/* .no {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.p1 {
+    background: rgba(254, 51, 52, 0.7);
+}
+
+.p2 {
+    background: rgba(41, 139, 255, 0.7);
+} */
+
+.hidden {
+	display: none;
+}

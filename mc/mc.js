@@ -20,12 +20,10 @@ var scObj;
 // ここにStreamControlから取得したデータをため込むための変数を定義する。
 
 var scObjOld = {
-    rr_pl_p1: '',
-    rr_pl_p2: '',
-    rr_pl_p3: '',
-    rr_pl_p1_xid: '',
-    rr_pl_p2_xid: '',
-    rr_pl_p3_xid: ''
+    mc_name1: '',
+    mc_name2: '',
+    mc_xid1: '',
+    mc_xid2: ''
 }
 
 var isPreview = false;

@@ -1,0 +1,405 @@
+body {
+	margin:0px;
+	background-color: rgba(0, 0, 0, 0);
+	font-family: 'corpoM','corpoB',"logotypejp_mp_b","コーポレート・ロゴＢ","Noto Sans CJK JP Heavy","OmePlus P Gothic medium",/*"MLRPG",*/ "07鉄瓶ゴシック","なごみ極細ゴシック 特細","JFドットM+H12","ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Arial,"メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	color:#FFFFFF;
+	word-break: break-all;
+}
+
+#container {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 1920px;
+	height: 1080px;
+}
+
+/* base */
+#base {
+    position: absolute;
+    width: 1920px;
+    height: 250px;
+    top: 830px;
+    /* background-color: #f00; */
+    /* opacity: 0.99; */
+}
+
+#l-bar {
+    position: absolute;
+    width: 480px;
+    height: 100px;
+    top: -20px;
+    left: 310px;
+    background-color: #000;
+}
+
+#stage {
+    position: absolute;
+    width: 440px;
+    height: 50px;
+    top: 5px;
+    left: 20px;
+    margin-right: 20px;
+    color: white;
+    text-align: left;
+    line-height: 50px;
+    font-weight: bold;
+    font-size: 25px;
+    /* background-color: aquamarine; */
+
+    font-family: "corpoM";
+}
+
+#bestofN {
+    position: absolute;
+    width: 440px;
+    height: 50px;
+    top: 45px;
+    right: 20px;
+    margin-left: 20px;
+    color: white;
+    text-align: left;
+    line-height: 50px;
+    font-weight: bold;
+    font-size: 25px;
+    /* background-color: aquamarine; */
+
+    font-family: "corpoM";
+}
+
+#l-name {
+    position: absolute;
+    width: 500px;
+    height: 95px;
+    top: 100px;
+    left: 310px;
+    background-color: #171717;
+    /* border-bottom: 5px solid #FE3334; */
+}
+
+#l-name::after {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 5px;
+    left: 0px;
+    top: 95px;
+    /* background: linear-gradient(-90deg, #FE3334 0%, #FE3334 60%, #000 100%); */
+    background-color: #FE3334;
+    /* border-bottom: 5px solid #298BFF; */
+}
+
+#player1 {
+    position: absolute;
+    /* width: 400px;
+    height: 95px; */
+    /* top: 100px; */
+    right: 0px;
+    /* margin-right: 20px; */
+    text-align: right;
+    line-height: 95px;
+    color: white;
+    font-size: 50px;
+    font-weight: bold;
+    font-family: 'corpoB';
+    z-index: 5;
+    /* background-color: red; */
+}
+
+#gf-wl1 {
+    position: absolute;
+    width: 80px;
+    height: 95px;
+    top: 0px;
+    right: 420px;
+    text-align: center;
+    line-height: 95px;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'corpoM';
+    opacity: 0;
+    /* background-color: aqua; */
+}
+
+#l-score {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    top: 50px;
+    left: 810px;
+    background-color: #FE3334;
+}
+
+#score1 {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    /* top: 840px; */
+    /* left: 360px; */
+    text-align: center;
+    line-height: 150px;
+    font-size: 100px;
+    font-weight: bold;
+    font-family: 'corpoM';
+    color: white;
+    /* background-color: blue; */
+}
+
+#r-bar {
+    position: absolute;
+    width: 480px;
+    height: 100px;
+    top: -20px;
+    right: 310px;
+    background-color: #000;
+}
+
+#mic1 {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 15px;
+    left: 10px;
+    background-image: url(../imgs/mic-white.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center bottom;
+}
+
+#mic2 {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 55px;
+    left: 10px;
+    background-image: url(../imgs/mic-white.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center bottom;
+}
+
+#mc_name1 {
+    position: absolute;
+    width: 410px;
+    height: 50px;
+    top: 5px;
+    left: 50px;
+    margin-right: 20px;
+    color: white;
+    text-align: left;
+    line-height: 50px;
+    font-weight: bold;
+    font-size: 25px;
+    /* background-color: aquamarine; */
+
+    font-family: "corpoM";
+}
+
+#mc_name2 {
+    position: absolute;
+    width: 410px;
+    height: 50px;
+    top: 45px;
+    left: 50px;
+    margin-right: 20px;
+    color: white;
+    text-align: left;
+    line-height: 50px;
+    font-weight: bold;
+    font-size: 25px;
+    /* background-color: aquamarine; */
+
+    font-family: "corpoM";
+}
+
+
+
+#r-name {
+    position: absolute;
+    width: 500px;
+    height: 95px;
+    top: 100px;
+    right: 310px;
+    background-color: #171717;
+    /* border-bottom: 5px solid #298BFF; */
+}
+
+#r-name::after {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 5px;
+    left: 0px;
+    top: 95px;
+    /* background: linear-gradient(90deg, #298BFF 0%, #298BFF 60%, #000 100%); */
+    background-color: #298BFF;
+    /* border-bottom: 5px solid #298BFF; */
+}
+
+#player2 {
+    position: absolute;
+    /* width: 400px;
+    height: 95px; */
+    /* top: 100px; */
+    left: 0px;
+    /* margin-left: 20px; */
+    text-align: left;
+    line-height: 95px;
+    color: white;
+    font-size: 50px;
+    font-weight: bold;
+    font-family: 'corpoB';
+    z-index: 5;
+    /* background-color: red; */
+}
+
+#gf-wl2 {
+    position: absolute;
+    width: 80px;
+    height: 95px;
+    top: 0px;
+    left: 420px;
+    text-align: center;
+    line-height: 95px;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'corpoM';
+    opacity: 0;
+    /* background-color: aqua; */
+}
+
+#r-score {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    top: 50px;
+    right: 810px;
+    background-color: #298BFF;
+}
+
+#score2 {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    /* top: 840px; */
+    /* left: 360px; */
+    text-align: center;
+    line-height: 150px;
+    font-size: 100px;
+    font-weight: bold;
+    font-family: 'corpoM';
+    color: white;
+    /* background-color: blue; */
+}
+
+/* bo3-scorebar */
+#bo3-scorebar {
+    position: absolute;
+    width: 300px;
+    height: 60px;
+    top: -20px;
+    left: 810px;
+    opacity: 0;
+    background-color: #000;
+
+}
+
+#bo3-scorebar div {
+    width: 93.3px;
+    height: 50px;
+    top: 5px;
+    position: absolute;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: 'corpoM';
+    line-height: 50px;
+    color: white;
+    /* border: solid black;
+    border-width: 4px 2px 4px 2px;
+    box-sizing: border-box; */
+}
+
+#bo3-game1 {
+    left: 5px;
+}
+
+#bo3-game2 {
+    left: 103.3px;
+}
+
+#bo3-game3 {
+    right: 5px;
+}
+
+/* bo5-scorebar */
+#bo5-scorebar {
+    position: absolute;
+    width: 300px;
+    height: 60px;
+    top: -20px;
+    left: 810px;
+    opacity: 0;
+    background-color: #000;
+}
+
+#bo5-scorebar div {
+    width: 54px;
+    height: 50px;
+    top: 5px;
+    position: absolute;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'corpoM';
+    line-height: 50px;
+    color: white;
+    /* border: solid black; */
+    /* border-style: solid;
+    border-color: #000;
+    border-width: 4px 2px 2px 2px;
+    box-sizing: border-box; */
+}
+
+#bo5-game1 {
+    left: 5px;
+    /* border-width: 4px 2px 4px 4px; */
+}
+
+#bo5-game2 {
+    left: 64px;
+    /* border-width: 4px 2px 2px 4px; */
+}
+
+#bo5-game3 {
+    left: 123px;
+    /* border-width: 4px 2px 2px 4px; */
+}
+
+#bo5-game4 {
+    right: 64px;
+    /* border-width: 4px 2px 2px 4px; */
+}
+
+#bo5-game5 {
+    right: 5px;
+    /* border-width: 4px 4px 4px 2px; */
+}
+
+/* .no {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.p1 {
+    background: rgba(254, 51, 52, 0.7);
+}
+
+.p2 {
+    background: rgba(41, 139, 255, 0.7);
+} */
+
+.hidden {
+	display: none;
+}
