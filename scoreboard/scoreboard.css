@@ -207,6 +207,7 @@ body {
     top: 20px;
     left: 882px;
     opacity: 0;
+    background-color: #505050;
 }
 
 #bo3-scorebar div {
@@ -225,15 +226,15 @@ body {
     box-sizing: border-box;
 }
 
-#bo3-game1 {
+.bo3-game1 {
     left: 0px;
 }
 
-#bo3-game2 {
+.bo3-game2 {
     left: 52px;
 }
 
-#bo3-game3 {
+.bo3-game3 {
     left: 104px;
 }
 
@@ -244,8 +245,8 @@ body {
     height: 40px;
     top: 20px;
     left: 830px;
+    background-color: #505050;
     opacity: 0;
-    /* background-color: aqua; */
 }
 
 #bo5-scorebar div {
@@ -264,24 +265,46 @@ body {
     box-sizing: border-box;
 }
 
-#bo5-game1 {
+.bo5-game1 {
     left: 0px;
 }
 
-#bo5-game2 {
+.bo5-game2 {
     left: 52px;
 }
 
-#bo5-game3 {
+.bo5-game3 {
     left: 104px;
 }
 
-#bo5-game4 {
+.bo5-game4 {
     left: 156px;
 }
 
-#bo5-game5 {
+.bo5-game5 {
     left: 208px;
+}
+
+.ss-num {
+    z-index: 10;
+}
+
+.ss-no {
+    background-color: #505050;
+    z-index: 9;
+    opacity: 0;
+}
+
+.ss-red {
+    background-color: #FE3334;
+    z-index: 9;
+    opacity: 0;
+}
+
+.ss-blue {
+    background-color: #298BFF;
+    z-index: 9;
+    opacity: 0;
 }
 
 /* .no {

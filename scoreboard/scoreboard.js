@@ -34,15 +34,7 @@ var scObjOld = {
     game5: ''
 }
 
-var game1;
-var game2;
-var game3;
-var game4;
-var game5;
-
 var animating = false;
-
-var switchCount = 0;
 
 var isPreview = false;
 
@@ -171,22 +163,7 @@ function update() {
         // セットストーリー
         scObjOld["boN"] = scObj["boN"];
 
-        if (scObjOld["boN"] == "bo3") {
-            setGameScore(scObj["game1"], "bo3-game1");
-            setGameScore(scObj["game2"], "bo3-game2");
-            setGameScore(scObj["game3"], "bo3-game3");
-
-            TweenMax.to(document.getElementById("bo3-scorebar"),0.5,{opacity:"1",ease:Quad.easeOut,delay:1.5});
-
-        } else if (scObjOld["boN"] == "bo5") {
-            setGameScore(scObj["game1"], "bo5-game1");
-            setGameScore(scObj["game2"], "bo5-game2");
-            setGameScore(scObj["game3"], "bo5-game3");
-            setGameScore(scObj["game4"], "bo5-game4");
-            setGameScore(scObj["game5"], "bo5-game5");
-
-            TweenMax.to(document.getElementById("bo5-scorebar"),0.5,{opacity:"1",ease:Quad.easeOut,delay:1.5});
-        }
+        setSetstory();
 
         // GF用WinLose表示
         scObjOld['gf_wl1'] = scObj["GF-WL1"];
@@ -259,17 +236,7 @@ function update() {
             animating = false;
         }
 
-        if (scObjOld["boN"] == "bo3") {
-            setGameScore(scObj["game1"], "bo3-game1");
-            setGameScore(scObj["game2"], "bo3-game2");
-            setGameScore(scObj["game3"], "bo3-game3");
-        } else if (scObjOld["boN"] == "bo5") {
-            setGameScore(scObj["game1"], "bo5-game1");
-            setGameScore(scObj["game2"], "bo5-game2");
-            setGameScore(scObj["game3"], "bo5-game3");
-            setGameScore(scObj["game4"], "bo5-game4");
-            setGameScore(scObj["game5"], "bo5-game5");
-        }
+        changeSetstory();
 
         // GF用WinLose表示
         changeGFWL("gf-wl1", "GF-WL1");
@@ -284,6 +251,24 @@ function setVal(id_name) {
 
 function setValtoAddData(id_name, data) {
     document.getElementById(id_name).innerHTML = scObjOld[id_name] = data.toString();
+}
+
+function setSetstory() {
+    for (let i = 1; i < 4; i++) {
+        let id_name = "bo3-game" + i.toString() + "-" + scObj["game" + i.toString()];
+        let property = "game" + i.toString();
+        let id = document.getElementById(id_name);
+        scObjOld[property] = scObj["game" + i.toString()];
+        TweenMax.to(id,0.5,{opacity:"1",ease:Quad.easeOut,delay:1.5});
+    }
+    for (let i = 1; i < 6; i++) {
+        let id_name = "bo5-game" + i.toString() + "-" + scObj["game" + i.toString()];
+        let property = "game" + i.toString();
+        let id = document.getElementById(id_name);
+        scObjOld[property] = scObj["game" + i.toString()];
+        TweenMax.to(id,0.5,{opacity:"1",ease:Quad.easeOut,delay:1.5});
+    }
+    TweenMax.to(document.getElementById(scObj["boN"] + "-scorebar"),0.5,{opacity:"1",ease:Quad.easeOut,delay:1.5});
 }
 
 function changeVal(id_name) {
@@ -314,6 +299,35 @@ function changeValtoAddData(id_name, data) {
     }
 }
 
+function changeSetstory() {
+    for (let i = 1; i < 4; i++) {
+        let property = "game" + i.toString();
+        if (scObjOld[property] != scObj["game" + i.toString()]) {
+            let id_name = "bo3-game" + i.toString() + "-" + scObj["game" + i.toString()];
+            let old_id_name = "bo3-game" + i.toString() + "-" + scObjOld[property];
+            let id = document.getElementById(id_name);
+            let old_id = document.getElementById(old_id_name);
+            
+            TweenMax.to(old_id,0.5,{opacity:"0",ease:Quad.easeOut});
+            TweenMax.to(id,0.5,{opacity:"1",ease:Quad.easeOut,delay:1});
+        }
+    }
+    for (let i = 1; i < 6; i++) {
+        let property = "game" + i.toString();
+        if (scObjOld[property] != scObj["game" + i.toString()]) {
+            let id_name = "bo5-game" + i.toString() + "-" + scObj["game" + i.toString()];
+            let old_id_name = "bo5-game" + i.toString() + "-" + scObjOld[property];
+            let id = document.getElementById(id_name);
+            let old_id = document.getElementById(old_id_name);
+            
+            TweenMax.to(old_id,0.5,{opacity:"0",ease:Quad.easeOut,onComplete: function() {
+                scObjOld[property] = scObj["game" + i.toString()];
+            }});
+            TweenMax.to(id,0.5,{opacity:"1",ease:Quad.easeOut,delay:1});
+        }
+    }
+}
+
 function changeGFWL(id_name, property) {
     if (scObjOld[id_name] != scObj[property]) {
         animating = true;
@@ -336,16 +350,5 @@ function changeGFWL(id_name, property) {
             TweenMax.to(id,0.5,{opacity:"1",ease:Quad.easeOut,delay:1});
         }
         animating = false;
-    }
-}
-
-function setGameScore (game, id) {
-
-    if (game == "p1") {
-        document.getElementById(id).style.background="#FE3334";
-    } else if (game == "p2") {
-        document.getElementById(id).style.background="#298BFF";
-    } else if (game == "no") {
-        document.getElementById(id).style.background="#505050";
     }
 }
