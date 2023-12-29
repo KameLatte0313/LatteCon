@@ -323,15 +323,15 @@ body {
     box-sizing: border-box; */
 }
 
-#bo3-game1 {
+.bo3-game1 {
     left: 5px;
 }
 
-#bo3-game2 {
+.bo3-game2 {
     left: 103.3px;
 }
 
-#bo3-game3 {
+.bo3-game3 {
     right: 5px;
 }
 
@@ -364,29 +364,56 @@ body {
     box-sizing: border-box; */
 }
 
-#bo5-game1 {
+.bo5-game1 {
     left: 5px;
     /* border-width: 4px 2px 4px 4px; */
 }
 
-#bo5-game2 {
+.bo5-game2 {
     left: 64px;
     /* border-width: 4px 2px 2px 4px; */
 }
 
-#bo5-game3 {
+.bo5-game3 {
     left: 123px;
     /* border-width: 4px 2px 2px 4px; */
 }
 
-#bo5-game4 {
+.bo5-game4 {
     right: 64px;
     /* border-width: 4px 2px 2px 4px; */
 }
 
-#bo5-game5 {
+.bo5-game5 {
     right: 5px;
     /* border-width: 4px 4px 4px 2px; */
+}
+
+.ss-num {
+    z-index: 10;
+}
+
+.ss-no {
+    background-color: #505050;
+    z-index: 9;
+    opacity: 0;
+}
+
+.ss-red {
+    background-color: #FE3334;
+    z-index: 9;
+    opacity: 0;
+}
+
+.ss-blue {
+    background-color: #298BFF;
+    z-index: 9;
+    opacity: 0;
+}
+
+.ss-bg {
+    background-color: #505050;
+    z-index: 8;
 }
 
 /* .no {
