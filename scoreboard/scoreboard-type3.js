@@ -31,8 +31,7 @@ var scObjOld = {
     game2: '',
     game3: '',
     game4: '',
-    game5: '',
-    tournament_name: '',
+    game5: ''
 }
 
 var animating = false;
@@ -154,8 +153,10 @@ function update() {
         if (scObjOld["stage"] == "stage_typing") {
             scObjOld["stage"] = scObj['stage_typing'];
         }
-        document.getElementById('stage').innerHTML = scObjOld["stage"];
-        TweenMax.from(document.getElementById('stage'),0.5,{opacity:0,delay:1.5});
+        document.getElementById('stage-boN').innerHTML = scObjOld["stage"];
+        TweenMax.from(document.getElementById('stage-boN'),0.5,{opacity:0,delay:1.5});
+
+        fitty("#stage-boN", {maxSize: 20});
 
         // BEST OF N
         setVal("bestofN");
@@ -165,10 +166,6 @@ function update() {
         scObjOld["boN"] = scObj["boN"];
 
         setSetstory();
-
-        setVal("tournament_name");
-        fitty("#tournament_name", {maxSize: 22});
-        TweenMax.from(document.getElementById('tournament_name'),0.5,{opacity:0,delay:1.5});
 
         // GF用WinLose表示
         scObjOld['gf_wl1'] = scObj["GF-WL1"];
@@ -221,10 +218,12 @@ function update() {
 
         // stage
         if (scObj['stage'] == "stage_typing") {
-            changeValtoAddData("stage", scObj["stage_typing"].toString());
+            changeValtoAddData("stage-boN", scObj["stage_typing"]);
         } else if (scObj['stage'] != "stage_typing") {
-            changeVal("stage");
+            // changeVal("stage");
+            changeValtoAddData("stage-boN", scObj["stage"]);
         }
+        fitty("#stage-boN", {maxSize: 20});
 
         // BEST OF N
         changeVal("bestofN");
@@ -248,9 +247,6 @@ function update() {
         // GF用WinLose表示
         changeGFWL("gf-wl1", "GF-WL1");
         changeGFWL("gf-wl2", "GF-WL2");
-
-        changeVal("tournament_name");
-        fitty("#tournament_name", {maxSize: 22});
 	}
 }
 

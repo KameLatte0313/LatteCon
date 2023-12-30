@@ -1,6 +1,6 @@
 {
-    "GF-WL1": "no",
-    "GF-WL2": "no",
+    "GF-WL1": "W",
+    "GF-WL2": "L",
     "bestofN": "BEST OF 5",
     "boN": "bo5",
     "cb_1_1": "test1",
@@ -47,8 +47,8 @@
     "cb_team2_score": "15",
     "cb_upperleft": "大学スマブラサークル連合",
     "cb_upperright": "東西クルーバトル",
-    "game1": "no",
-    "game2": "no",
+    "game1": "p1",
+    "game2": "p1",
     "game3": "p2",
     "game4": "p2",
     "game5": "p2",
@@ -93,7 +93,7 @@
     "sponsorts": "0",
     "stage": "GRAND FINAL",
     "stage_typing": "",
-    "timestamp": "1703325024",
+    "timestamp": "1703947353",
     "top8_1_1": "test1",
     "top8_1_1_score": "0",
     "top8_1_2": "test2",
@@ -133,5 +133,6 @@
     "top8_4_3": "test3",
     "top8_4_3_score": "0",
     "top8_4_4": "test2",
-    "top8_4_4_score": "0"
+    "top8_4_4_score": "0",
+    "tournament_name": "スサノオスマッシュ #99"
 }

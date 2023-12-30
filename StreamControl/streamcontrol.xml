@@ -1,8 +1,8 @@
 <!DOCTYPE StreamControl>
 <items>
- <timestamp>1703325024</timestamp>
- <GF-WL1>no</GF-WL1>
- <GF-WL2>no</GF-WL2>
+ <timestamp>1703947353</timestamp>
+ <GF-WL1>W</GF-WL1>
+ <GF-WL2>L</GF-WL2>
  <bestofN>BEST OF 5</bestofN>
  <boN>bo5</boN>
  <cb_1_1>test1</cb_1_1>
@@ -49,8 +49,8 @@
  <cb_team2_score>15</cb_team2_score>
  <cb_upperleft>大学スマブラサークル連合</cb_upperleft>
  <cb_upperright>東西クルーバトル</cb_upperright>
- <game1>no</game1>
- <game2>no</game2>
+ <game1>p1</game1>
+ <game2>p1</game2>
  <game3>p2</game3>
  <game4>p2</game4>
  <game5>p2</game5>
@@ -135,4 +135,5 @@
  <top8_4_3_score>0</top8_4_3_score>
  <top8_4_4>test2</top8_4_4>
  <top8_4_4_score>0</top8_4_4_score>
+ <tournament_name>スサノオスマッシュ #99</tournament_name>
 </items>
