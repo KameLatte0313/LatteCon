@@ -32,8 +32,7 @@ var scObjOld = {
     game3: '',
     game4: '',
     game5: '',
-    mc_name1: '',
-    mc_name2: ''
+    tournament_name: '',
 }
 
 var animating = false;
@@ -126,8 +125,8 @@ function update() {
         setValtoAddData("player1", scObj["pTeam1"].toString() + " " + scObj["pName1"].toString());
         setValtoAddData("player2", scObj["pTeam2"].toString() + " " + scObj["pName2"].toString());
 
-        fitty("#player1", {maxSize: 50});
-        fitty("#player2", {maxSize: 50});
+        fitty("#player1", {maxSize: 35});
+        fitty("#player2", {maxSize: 35});
 
         TweenMax.from(document.getElementById("player1"),0.5,{opacity:0,delay:1.5});
         TweenMax.from(document.getElementById("player2"),0.5,{opacity:0,delay:1.5});
@@ -167,6 +166,10 @@ function update() {
 
         setSetstory();
 
+        setVal("tournament_name");
+        fitty("#tournament_name", {maxSize: 22});
+        TweenMax.from(document.getElementById('tournament_name'),0.5,{opacity:0,delay:1.5});
+
         // GF用WinLose表示
         scObjOld['gf_wl1'] = scObj["GF-WL1"];
         scObjOld['gf_wl2'] = scObj["GF-WL2"];
@@ -190,10 +193,6 @@ function update() {
         TweenMax.to(document.getElementById("gf-wl1"),0.5,{opacity:"1",ease:Quad.easeOut,delay:1.5});
         TweenMax.to(document.getElementById("gf-wl2"),0.5,{opacity:"1",ease:Quad.easeOut,delay:1.5});
 
-        // MC
-        document.getElementById("mc_name1").innerHTML = scObjOld['mc_name1'] = scObj["mc_name1"].toString() + "　" + scObj["mc_xid1"].toString();
-        document.getElementById("mc_name2").innerHTML = scObjOld['mc_name2'] = scObj["mc_name2"].toString() + "　" + scObj["mc_xid2"].toString();
-
         firstupdate = false;
         animating = false;
 
@@ -202,8 +201,8 @@ function update() {
         // プレイヤー名
         changeValtoAddData("player1", scObj["pTeam1"].toString() + " " + scObj["pName1"].toString());
         changeValtoAddData("player2", scObj["pTeam2"].toString() + " " + scObj["pName2"].toString());
-        fitty("#player1", {maxSize: 50});
-        fitty("#player2", {maxSize: 50});
+        fitty("#player1", {maxSize: 35});
+        fitty("#player2", {maxSize: 35});
 
         // スコア
         nowScore1 = 0;
@@ -250,9 +249,8 @@ function update() {
         changeGFWL("gf-wl1", "GF-WL1");
         changeGFWL("gf-wl2", "GF-WL2");
 
-        // MC
-        changeValtoAddData("mc_name1", scObj["mc_name1"].toString() + "　" + scObj["mc_xid1"].toString());
-        changeValtoAddData("mc_name2", scObj["mc_name2"].toString() + "　" + scObj["mc_xid2"].toString());
+        changeVal("tournament_name");
+        fitty("#tournament_name", {maxSize: 22});
 	}
 }
 
