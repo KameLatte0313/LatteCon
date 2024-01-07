@@ -1,5 +1,5 @@
 # LatteCon（ラテコン）
-<a href="https://github.com/KameLatte0313/ScoreBoard-LatteCon_forSSBU_1.0/releases">ダウンロードページはこちら</a>
+<a href="https://github.com/KameLatte0313/LatteCon/releases">ダウンロードページはこちら</a>
 
 <img src="https://github.com/KameLatte0313/ScoreBoard-LatteCon_forSSBU_1.0/assets/75975584/cb103d60-11f2-4d21-860e-4fc32c7a7fdd"  style="width:600px;height:auto;">
 
