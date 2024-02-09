@@ -13,7 +13,7 @@ root.geometry("530x500")
 timestamp = math.floor(time.time())
 
 
-# def
+# 入力データをJSONに保存する関数
 def SetJSON(event):
     GF_WL1 = ""
     GF_WL2 = ""
@@ -221,6 +221,7 @@ def SetJSON(event):
     with open("datafile/LatteCon.json", "w", encoding="utf-8") as outputFile:
         json.dump(dic, outputFile, indent=4, ensure_ascii=False )
 
+# クルーバトルのメンバー名をクリアする関数
 def cbClearAllName(event):
     cb_1_1.delete(0, tk.END)
     cb_1_2.delete(0, tk.END)
@@ -241,6 +242,7 @@ def cbClearAllName(event):
     cb_2_8.delete(0, tk.END)
     cb_2_9.delete(0, tk.END)
 
+# クルーバトルの全スコアを任意の数値にセットする関数
 def cbSetAllScore(event):
     cb_1_1_score.set(cb_setScore.get())
     cb_1_2_score.set(cb_setScore.get())
@@ -261,6 +263,7 @@ def cbSetAllScore(event):
     cb_2_8_score.set(cb_setScore.get())
     cb_2_9_score.set(cb_setScore.get())
 
+# クルーバトルの左チームメンバーを事前入力データからセットする関数
 def cbSetLMember(event):
     cb_1_1.delete(0, tk.END)
     cb_1_2.delete(0, tk.END)
@@ -312,6 +315,7 @@ def cbSetLMember(event):
         cb_1_8.insert(tk.END, inad_4[7].get())
         cb_1_9.insert(tk.END, inad_4[8].get())
 
+# クルーバトルの右チームメンバーを事前入力データからセットする関数
 def cbSetRMember(event):
     cb_2_1.delete(0, tk.END)
     cb_2_2.delete(0, tk.END)
@@ -363,7 +367,103 @@ def cbSetRMember(event):
         cb_2_8.insert(tk.END, inad_4[7].get())
         cb_2_9.insert(tk.END, inad_4[8].get())
 
-def sbExchange(event):
+# クルーバトルの左右データを入れ替える関数
+def cbSwap(event):
+    exchangeVal = cb_team1.get()
+    cb_team1.delete(0, tk.END)
+    cb_team1.insert(tk.END, cb_team2.get())
+    cb_team2.delete(0, tk.END)
+    cb_team2.insert(tk.END, exchangeVal)
+    exchangeVal = cb_team1_score.get()
+    cb_team1_score.set(cb_team2_score.get())
+    cb_team2_score.set(exchangeVal)
+    exchangeVal = cb_1_1.get()
+    cb_1_1.delete(0, tk.END)
+    cb_1_1.insert(tk.END, cb_2_1.get())
+    cb_2_1.delete(0, tk.END)
+    cb_2_1.insert(tk.END, exchangeVal)
+    exchangeVal = cb_1_2.get()
+    cb_1_2.delete(0, tk.END)
+    cb_1_2.insert(tk.END, cb_2_2.get())
+    cb_2_2.delete(0, tk.END)
+    cb_2_2.insert(tk.END, exchangeVal)
+    exchangeVal = cb_1_3.get()
+    cb_1_3.delete(0, tk.END)
+    cb_1_3.insert(tk.END, cb_2_3.get())
+    cb_2_3.delete(0, tk.END)
+    cb_2_3.insert(tk.END, exchangeVal)
+    exchangeVal = cb_1_4.get()
+    cb_1_4.delete(0, tk.END)
+    cb_1_4.insert(tk.END, cb_2_4.get())
+    cb_2_4.delete(0, tk.END)
+    cb_2_4.insert(tk.END, exchangeVal)
+    exchangeVal = cb_1_5.get()
+    cb_1_5.delete(0, tk.END)
+    cb_1_5.insert(tk.END, cb_2_5.get())
+    cb_2_5.delete(0, tk.END)
+    cb_2_5.insert(tk.END, exchangeVal)
+    exchangeVal = cb_1_6.get()
+    cb_1_6.delete(0, tk.END)
+    cb_1_6.insert(tk.END, cb_2_6.get())
+    cb_2_6.delete(0, tk.END)
+    cb_2_6.insert(tk.END, exchangeVal)
+    exchangeVal = cb_1_7.get()
+    cb_1_7.delete(0, tk.END)
+    cb_1_7.insert(tk.END, cb_2_7.get())
+    cb_2_7.delete(0, tk.END)
+    cb_2_7.insert(tk.END, exchangeVal)
+    exchangeVal = cb_1_8.get()
+    cb_1_8.delete(0, tk.END)
+    cb_1_8.insert(tk.END, cb_2_8.get())
+    cb_2_8.delete(0, tk.END)
+    cb_2_8.insert(tk.END, exchangeVal)
+    exchangeVal = cb_1_9.get()
+    cb_1_9.delete(0, tk.END)
+    cb_1_9.insert(tk.END, cb_2_9.get())
+    cb_2_9.delete(0, tk.END)
+    cb_2_9.insert(tk.END, exchangeVal)
+    exchangeVal = cb_1_1_score.get()
+    cb_1_1_score.set(cb_2_1_score.get())
+    cb_2_1_score.set(exchangeVal)
+    exchangeVal = cb_1_2_score.get()
+    cb_1_2_score.set(cb_2_2_score.get())
+    cb_2_2_score.set(exchangeVal)
+    exchangeVal = cb_1_3_score.get()
+    cb_1_3_score.set(cb_2_3_score.get())
+    cb_2_3_score.set(exchangeVal)
+    exchangeVal = cb_1_4_score.get()
+    cb_1_4_score.set(cb_2_4_score.get())
+    cb_2_4_score.set(exchangeVal)
+    exchangeVal = cb_1_5_score.get()
+    cb_1_5_score.set(cb_2_5_score.get())
+    cb_2_5_score.set(exchangeVal)
+    exchangeVal = cb_1_6_score.get()
+    cb_1_6_score.set(cb_2_6_score.get())
+    cb_2_6_score.set(exchangeVal)
+    exchangeVal = cb_1_7_score.get()
+    cb_1_7_score.set(cb_2_7_score.get())
+    cb_2_7_score.set(exchangeVal)
+    exchangeVal = cb_1_8_score.get()
+    cb_1_8_score.set(cb_2_8_score.get())
+    cb_2_8_score.set(exchangeVal)
+    exchangeVal = cb_1_9_score.get()
+    cb_1_9_score.set(cb_2_9_score.get())
+    cb_2_9_score.set(exchangeVal)
+
+# スコアボードのデータをクリアする関数
+def sbClear(event):
+    pName1.delete(0, tk.END)
+    pName2.delete(0, tk.END)
+    pTeam1.delete(0, tk.END)
+    pTeam2.delete(0, tk.END)
+    game1_var.set(1)
+    game2_var.set(1)
+    game3_var.set(1)
+    game4_var.set(1)
+    game5_var.set(1)
+
+# スコアボードの左右データを入れ替える関数
+def sbSwap(event):
     exchangeVal = pName1.get()
     pName1.delete(0, tk.END)
     pName1.insert(tk.END, pName2.get())
@@ -399,6 +499,7 @@ def sbExchange(event):
     elif (game5_var.get() == 2):
         game5_var.set(0)
 
+# TOP8ブラケットの全データをクリアする関数
 def top8ClearAll(event):
     top8_1_1.delete(0, tk.END)
     top8_1_2.delete(0, tk.END)
@@ -441,6 +542,7 @@ def top8ClearAll(event):
     top8_4_3_score.set(0)
     top8_4_4_score.set(0)
 
+# 事前入力データをクリアする関数
 def inad1Clear(event):
     for i in range(9):
         inad_1[i].delete(0, tk.END)
@@ -456,6 +558,37 @@ def inad3Clear(event):
 def inad4Clear(event):
     for i in range(9):
         inad_4[i].delete(0, tk.END)
+
+# 3人総当たりのデータをクリアする関数
+def rrClear(event):
+    rr_pool.delete(0, tk.END)
+    rr_p1.delete(0, tk.END)
+    rr_p2.delete(0, tk.END)
+    rr_p3.delete(0, tk.END)
+    rr_p1_h.delete(0, tk.END)
+    rr_p2_h.delete(0, tk.END)
+    rr_p3_h.delete(0, tk.END)
+    rr_p1_rank.set(0)
+    rr_p2_rank.set(0)
+    rr_p3_rank.set(0)
+    rr_1vs2_1.set(0)
+    rr_1vs2_2.set(0)
+    rr_1vs3_1.set(0)
+    rr_1vs3_3.set(0)
+    rr_2vs3_2.set(0)
+    rr_2vs3_3.set(0)
+
+# LatteCon.exeを最前面に固定する関数
+def alwaysOnTop():
+    root.attributes("-topmost", always_top_value.get())
+
+# メニューバーの作成
+menubar = tk.Menu(root)
+root.config(menu=menubar)
+config_menu = tk.Menu(menubar, tearoff=False)
+always_top_value = tk.BooleanVar()
+config_menu.add_checkbutton(label = "常に最前面に表示する", variable=always_top_value, command=alwaysOnTop)
+menubar.add_cascade(label="設定", menu=config_menu)
 
 # Notebookウィジェットの作成
 notebook = ttk.Notebook(root)
@@ -609,8 +742,12 @@ pTeam2 = ttk.Entry(scoreboard, width=7)
 pTeam2.place(x=245, y=180)
 
 Button_sb_change = ttk.Button(scoreboard, text=u'⇔', width=7)
-Button_sb_change.bind("<Button-1>",sbExchange) 
+Button_sb_change.bind("<Button-1>",sbSwap) 
 Button_sb_change.place(x=187, y=178)
+
+Button_sb_clear = ttk.Button(scoreboard, text=u'Clear', width=7)
+Button_sb_clear.bind("<Button-1>",sbClear) 
+Button_sb_clear.place(x=185, y=350)
 
 game_text = ['p1', 'no', 'p2']
 game1_var = tk.IntVar()
@@ -1160,6 +1297,10 @@ cb_setScore.set(3)
 s = ttk.Spinbox(crewbattle, textvariable=cb_setScore, from_=0, to=99, increment=1, width=3)
 s.place(x=455, y=343)
 
+Button_cb_swap = ttk.Button(crewbattle, text=u'⇐ Swap ⇒', width=17)
+Button_cb_swap.bind("<Button-1>",cbSwap) 
+Button_cb_swap.place(x=135, y=380)
+
 # ------------- 事前入力 -------------
 label = ttk.Label(inadvance, text="■クルーバトルメンバー事前入力")
 label.place(x=5, y=5)
@@ -1349,6 +1490,10 @@ rr_pl_p3 = ttk.Entry(roundrobin, width=20)
 rr_pl_p3.place(x=80, y=300)
 rr_pl_p3_xid = ttk.Entry(roundrobin, width=20)
 rr_pl_p3_xid.place(x=220, y=300)
+
+Button_rr_clear = ttk.Button(roundrobin, text=u'AllClear', width=14)
+Button_rr_clear.bind("<Button-1>",rrClear) 
+Button_rr_clear.place(x=10, y=190)
 
 #----------------------------------------------------------------------------------
 #

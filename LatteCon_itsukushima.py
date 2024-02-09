@@ -7,31 +7,18 @@ import math
 
 # rootメインウィンドウの設定
 root = tk.Tk()
-root.title("LatteCon")
+root.title("LatteCon for イツクシマ")
 root.geometry("530x500")
 
 timestamp = math.floor(time.time())
 
 
-# def
+# 入力データをJSONに保存する関数
 def SetJSON(event):
     GF_WL1 = ""
     GF_WL2 = ""
     cb_autocalc = "0"
     timestamp = math.floor(time.time())
-    if (combo_GF_WL1.get() == "GF時に使用する項目"):
-        GF_WL1 = "no"
-    elif (combo_GF_WL1.get() == "[W]"):
-        GF_WL1 = "W"
-    elif (combo_GF_WL1.get() == "[L]"):
-        GF_WL1 = "L"
-
-    if (combo_GF_WL2.get() == "GF時に使用する項目"):
-        GF_WL2 = "no"
-    elif (combo_GF_WL2.get() == "[W]"):
-        GF_WL2 = "W"
-    elif (combo_GF_WL2.get() == "[L]"):
-        GF_WL2 = "L"
 
     if (cb_autocalcVal.get() == True):
         cb_autocalc = "1"
@@ -53,16 +40,8 @@ def SetJSON(event):
         'pTeam2': pTeam2.get(),
         'stage': stage_text[stage_var.get()],
         'stage_typing': stage_typing.get(),
-        'bestofN': bestofN.get(),
-        'boN': combo_setstory.get().lower(),
-        'game1': game_text[game1_var.get()],
-        'game2': game_text[game2_var.get()],
-        'game3': game_text[game3_var.get()],
-        'game4': game_text[game4_var.get()],
-        'game5': game_text[game5_var.get()],
-        'GF-WL1': GF_WL1,
-        'GF-WL2': GF_WL2,
-        'tournament_name': tournament_name.get(),
+        'pScore1': str(pScore1.get()),
+        'pScore2': str(pScore2.get()),
         'mc_name1': mc_name1.get(),
         'mc_name2': mc_name2.get(),
         'mc_xid1': mc_xid1.get(),
@@ -109,8 +88,7 @@ def SetJSON(event):
         'top8_4_4_score': str(top8_4_4_score.get()),
         'cb_memberNum': str(cb_memberNum.get()),
         'cb_autocalc': cb_autocalc,
-        'cb_upperleft': cb_upperleft.get(),
-        'cb_upperright': cb_upperright.get(),
+        'cb_upperColumn': cb_upperColumn.get(),
         'cb_team1': cb_team1.get(),
         'cb_team2': cb_team2.get(),
         'cb_team1_score': str(cb_team1_score.get()),
@@ -218,9 +196,10 @@ def SetJSON(event):
         'rr_pl_p2_xid': rr_pl_p2_xid.get(),
         'rr_pl_p3_xid': rr_pl_p3_xid.get()
     }
-    with open("datafile/LatteCon.json", "w", encoding="utf-8") as outputFile:
+    with open("datafile/LatteCon_itsukushima.json", "w", encoding="utf-8") as outputFile:
         json.dump(dic, outputFile, indent=4, ensure_ascii=False )
 
+# クルーバトルのメンバー名をクリアする関数
 def cbClearAllName(event):
     cb_1_1.delete(0, tk.END)
     cb_1_2.delete(0, tk.END)
@@ -241,6 +220,7 @@ def cbClearAllName(event):
     cb_2_8.delete(0, tk.END)
     cb_2_9.delete(0, tk.END)
 
+# クルーバトルの全スコアを任意の数値にセットする関数
 def cbSetAllScore(event):
     cb_1_1_score.set(cb_setScore.get())
     cb_1_2_score.set(cb_setScore.get())
@@ -261,6 +241,7 @@ def cbSetAllScore(event):
     cb_2_8_score.set(cb_setScore.get())
     cb_2_9_score.set(cb_setScore.get())
 
+# クルーバトルの左チームメンバーを事前入力データからセットする関数
 def cbSetLMember(event):
     cb_1_1.delete(0, tk.END)
     cb_1_2.delete(0, tk.END)
@@ -312,6 +293,7 @@ def cbSetLMember(event):
         cb_1_8.insert(tk.END, inad_4[7].get())
         cb_1_9.insert(tk.END, inad_4[8].get())
 
+# クルーバトルの右チームメンバーを事前入力データからセットする関数
 def cbSetRMember(event):
     cb_2_1.delete(0, tk.END)
     cb_2_2.delete(0, tk.END)
@@ -363,7 +345,100 @@ def cbSetRMember(event):
         cb_2_8.insert(tk.END, inad_4[7].get())
         cb_2_9.insert(tk.END, inad_4[8].get())
 
-def sbExchange(event):
+# クルーバトルの左右データを入れ替える関数
+def cbSwap(event):
+    exchangeVal = cb_team1.get()
+    cb_team1.delete(0, tk.END)
+    cb_team1.insert(tk.END, cb_team2.get())
+    cb_team2.delete(0, tk.END)
+    cb_team2.insert(tk.END, exchangeVal)
+    exchangeVal = cb_team1_score.get()
+    cb_team1_score.set(cb_team2_score.get())
+    cb_team2_score.set(exchangeVal)
+    exchangeVal = cb_1_1.get()
+    cb_1_1.delete(0, tk.END)
+    cb_1_1.insert(tk.END, cb_2_1.get())
+    cb_2_1.delete(0, tk.END)
+    cb_2_1.insert(tk.END, exchangeVal)
+    exchangeVal = cb_1_2.get()
+    cb_1_2.delete(0, tk.END)
+    cb_1_2.insert(tk.END, cb_2_2.get())
+    cb_2_2.delete(0, tk.END)
+    cb_2_2.insert(tk.END, exchangeVal)
+    exchangeVal = cb_1_3.get()
+    cb_1_3.delete(0, tk.END)
+    cb_1_3.insert(tk.END, cb_2_3.get())
+    cb_2_3.delete(0, tk.END)
+    cb_2_3.insert(tk.END, exchangeVal)
+    exchangeVal = cb_1_4.get()
+    cb_1_4.delete(0, tk.END)
+    cb_1_4.insert(tk.END, cb_2_4.get())
+    cb_2_4.delete(0, tk.END)
+    cb_2_4.insert(tk.END, exchangeVal)
+    exchangeVal = cb_1_5.get()
+    cb_1_5.delete(0, tk.END)
+    cb_1_5.insert(tk.END, cb_2_5.get())
+    cb_2_5.delete(0, tk.END)
+    cb_2_5.insert(tk.END, exchangeVal)
+    exchangeVal = cb_1_6.get()
+    cb_1_6.delete(0, tk.END)
+    cb_1_6.insert(tk.END, cb_2_6.get())
+    cb_2_6.delete(0, tk.END)
+    cb_2_6.insert(tk.END, exchangeVal)
+    exchangeVal = cb_1_7.get()
+    cb_1_7.delete(0, tk.END)
+    cb_1_7.insert(tk.END, cb_2_7.get())
+    cb_2_7.delete(0, tk.END)
+    cb_2_7.insert(tk.END, exchangeVal)
+    exchangeVal = cb_1_8.get()
+    cb_1_8.delete(0, tk.END)
+    cb_1_8.insert(tk.END, cb_2_8.get())
+    cb_2_8.delete(0, tk.END)
+    cb_2_8.insert(tk.END, exchangeVal)
+    exchangeVal = cb_1_9.get()
+    cb_1_9.delete(0, tk.END)
+    cb_1_9.insert(tk.END, cb_2_9.get())
+    cb_2_9.delete(0, tk.END)
+    cb_2_9.insert(tk.END, exchangeVal)
+    exchangeVal = cb_1_1_score.get()
+    cb_1_1_score.set(cb_2_1_score.get())
+    cb_2_1_score.set(exchangeVal)
+    exchangeVal = cb_1_2_score.get()
+    cb_1_2_score.set(cb_2_2_score.get())
+    cb_2_2_score.set(exchangeVal)
+    exchangeVal = cb_1_3_score.get()
+    cb_1_3_score.set(cb_2_3_score.get())
+    cb_2_3_score.set(exchangeVal)
+    exchangeVal = cb_1_4_score.get()
+    cb_1_4_score.set(cb_2_4_score.get())
+    cb_2_4_score.set(exchangeVal)
+    exchangeVal = cb_1_5_score.get()
+    cb_1_5_score.set(cb_2_5_score.get())
+    cb_2_5_score.set(exchangeVal)
+    exchangeVal = cb_1_6_score.get()
+    cb_1_6_score.set(cb_2_6_score.get())
+    cb_2_6_score.set(exchangeVal)
+    exchangeVal = cb_1_7_score.get()
+    cb_1_7_score.set(cb_2_7_score.get())
+    cb_2_7_score.set(exchangeVal)
+    exchangeVal = cb_1_8_score.get()
+    cb_1_8_score.set(cb_2_8_score.get())
+    cb_2_8_score.set(exchangeVal)
+    exchangeVal = cb_1_9_score.get()
+    cb_1_9_score.set(cb_2_9_score.get())
+    cb_2_9_score.set(exchangeVal)
+
+# スコアボードのデータをクリアする関数
+def sbClear(event):
+    pName1.delete(0, tk.END)
+    pName2.delete(0, tk.END)
+    pTeam1.delete(0, tk.END)
+    pTeam2.delete(0, tk.END)
+    pScore1.set(0)
+    pScore2.set(0)
+
+# スコアボードの左右データを入れ替える関数
+def sbSwap(event):
     exchangeVal = pName1.get()
     pName1.delete(0, tk.END)
     pName1.insert(tk.END, pName2.get())
@@ -374,31 +449,11 @@ def sbExchange(event):
     pTeam1.insert(tk.END, pTeam2.get())
     pTeam2.delete(0, tk.END)
     pTeam2.insert(tk.END, exchangeVal)
-    if (game1_var.get() == 0):
-        game1_var.set(2)
-    elif (game1_var.get() == 2):
-        game1_var.set(0)
+    exchangeVal = pScore1.get()
+    pScore1.set(pScore2.get())
+    pScore2.set(exchangeVal)
 
-    if (game2_var.get() == 0):
-        game2_var.set(2)
-    elif (game2_var.get() == 2):
-        game2_var.set(0)
-
-    if (game3_var.get() == 0):
-        game3_var.set(2)
-    elif (game3_var.get() == 2):
-        game3_var.set(0)
-
-    if (game4_var.get() == 0):
-        game4_var.set(2)
-    elif (game4_var.get() == 2):
-        game4_var.set(0)
-
-    if (game5_var.get() == 0):
-        game5_var.set(2)
-    elif (game5_var.get() == 2):
-        game5_var.set(0)
-
+# TOP8ブラケットの全データをクリアする関数
 def top8ClearAll(event):
     top8_1_1.delete(0, tk.END)
     top8_1_2.delete(0, tk.END)
@@ -441,6 +496,7 @@ def top8ClearAll(event):
     top8_4_3_score.set(0)
     top8_4_4_score.set(0)
 
+# 事前入力データをクリアする関数
 def inad1Clear(event):
     for i in range(9):
         inad_1[i].delete(0, tk.END)
@@ -456,6 +512,18 @@ def inad3Clear(event):
 def inad4Clear(event):
     for i in range(9):
         inad_4[i].delete(0, tk.END)
+
+# LatteCon.exeを最前面に固定する関数
+def alwaysOnTop():
+    root.attributes("-topmost", always_top_value.get())
+
+# メニューバーの作成
+menubar = tk.Menu(root)
+root.config(menu=menubar)
+config_menu = tk.Menu(menubar, tearoff=False)
+always_top_value = tk.BooleanVar()
+config_menu.add_checkbutton(label = "常に最前面に表示する", variable=always_top_value, command=alwaysOnTop)
+menubar.add_cascade(label="設定", menu=config_menu)
 
 # Notebookウィジェットの作成
 notebook = ttk.Notebook(root)
@@ -478,42 +546,35 @@ notebook.add(roundrobin, text="3人総当たり")
 
 # ウィンドウ上部に配置するウィジェットの作成
 Button_save = tk.Button(text=u'適用する')
-Button_save.bind("<Button-1>",SetJSON) 
-
+Button_save.bind("<Button-1>",SetJSON)
 Button_save.pack(anchor = tk.NW)
+
 notebook.pack(expand=True, fill='both', padx=10, pady=10)
+
 
 # -------------スコアボード-------------
 # ラベル
-stage_info_text = ['R1','R2','R3','R4','R5','R6','R7','QF','SF',' F','GF','GF2','予選']
+stage_info_text = ['Pool A',' Pool B','R1','R2','R3','R4','R5','R6','R7','QF','SF',' F','GF','GF2','予選']
 for i in range(len(stage_info_text)):
     label_stage_info = ttk.Label(scoreboard, text=stage_info_text[i])
-    if (i <= 10):
-        label_stage_info.place(x=55 + (i *24), y=0)
-    elif (i == 11):
-        label_stage_info.place(x=315, y=0)
-    elif (i == 12):
-        label_stage_info.place(x=339, y=0)
+    if (i <= 1):
+        label_stage_info.place(x=10 + (i *70), y=25)
+    elif (i <= 12):
+        label_stage_info.place(x=55 + ((i - 2) *24), y=50)
+    elif (i == 13):
+        label_stage_info.place(x=315, y=50)
+    elif (i == 14):
+        label_stage_info.place(x=339, y=50)
 
 label_stage_top = ttk.Label(scoreboard, text="勝者側")
-label_stage_top.place(x=10, y=15)
+label_stage_top.place(x=10, y=65)
 
 label_stage_bottom = ttk.Label(scoreboard, text="敗者側")
-label_stage_bottom.place(x=10, y=35)
+label_stage_bottom.place(x=10, y=85)
 
 label_stage_typing = ttk.Label(scoreboard, text="直接入力")
-label_stage_typing.place(x=5, y=55)
+label_stage_typing.place(x=5, y=105)
 
-label_tournament_name = ttk.Label(scoreboard, text="大会名")
-label_tournament_name.place(x=5, y=90)
-label_tournament_name = ttk.Label(scoreboard, text="(scoreboard-type2のみ)")
-label_tournament_name.place(x=5, y=110)
-
-label_BESTOF = ttk.Label(scoreboard, text="BEST OF ~")
-label_BESTOF.place(x=250, y=90)
-
-label_setstory = ttk.Label(scoreboard, text="SET STORY")
-label_setstory.place(x=250, y=125)
 
 label_tournament_name = ttk.Label(scoreboard, text="P1 Team")
 label_tournament_name.place(x=5, y=160)
@@ -524,22 +585,10 @@ label_tournament_name.place(x=245, y=160)
 label_tournament_name = ttk.Label(scoreboard, text="P2 Name")
 label_tournament_name.place(x=325, y=160)
 
-label_game1 = ttk.Label(scoreboard, text="P1   -   P2")
-label_game1.place(x=185, y=210)
-
-label_game1 = ttk.Label(scoreboard, text="GAME1")
-label_game1.place(x=140, y=225)
-label_game2 = ttk.Label(scoreboard, text="GAME2")
-label_game2.place(x=140, y=250)
-label_game3 = ttk.Label(scoreboard, text="GAME3")
-label_game3.place(x=140, y=275)
-label_game4 = ttk.Label(scoreboard, text="GAME4")
-label_game4.place(x=140, y=300)
-label_game5 = ttk.Label(scoreboard, text="GAME5")
-label_game5.place(x=140, y=325)
-
 # ウィジェット
 stage_text = [
+    'Pool A',
+    'Pool B',
     'WINNERS ROUND1',
     'WINNERS ROUND2',
     'WINNERS ROUND3',
@@ -569,91 +618,47 @@ stage_var = tk.IntVar()
 stage_var.set(0)
 for i in range(len(stage_text)):
     stage = ttk.Radiobutton(scoreboard, value=i, variable=stage_var)
-    if (i <= 12):
-        stage.place(x=55 + (i *24), y=15)
-    elif (i <= 22):
-        stage.place(x=55 + ((i - 13) *24), y=35)
+    if (i <= 1):
+        stage.place(x=55 + (i *70), y=25)
+    elif (i <= 14):
+        stage.place(x=55 + ((i - 2) *24), y=65)
+    elif (i <= 24):
+        stage.place(x=55 + ((i - 15) *24), y=85)
     else:
-        stage.place(x=55, y=55)
+        stage.place(x=55, y=105)
 
 stage_typing = ttk.Entry(scoreboard, width=20)
-stage_typing.place(x=80, y=55)
-
-tournament_name = ttk.Entry(scoreboard, width=20)
-tournament_name.place(x=80, y=90)
-
-bestofN = ttk.Entry(scoreboard, width=13)
-# bestofN.insert(tk.END,"BEST OF 3")
-bestofN.place(x=320, y=90)
-
-option_setstory = ('BO3', 'BO5')
-setstory_variable = tk.StringVar()
-combo_setstory = ttk.Combobox(scoreboard, values=option_setstory, textvariable=setstory_variable, state="readonly", width=10)
-combo_setstory.set(option_setstory[0])
-combo_setstory.place(x=320, y=125)
+stage_typing.place(x=80, y=105)
 
 pName1 = ttk.Entry(scoreboard, width=20)
-# pName1.insert(tk.END,"プレイヤー1")
 pName1.place(x=55, y=180)
 
 pName2 = ttk.Entry(scoreboard, width=20)
-# pName2.insert(tk.END,"プレイヤー2")
 pName2.place(x=295, y=180)
 
 pTeam1 = ttk.Entry(scoreboard, width=7)
-# pTeam1.insert(tk.END,"TEAM")
 pTeam1.place(x=5, y=180)
 
 pTeam2 = ttk.Entry(scoreboard, width=7)
-# pTeam2.insert(tk.END,"TEAM")
 pTeam2.place(x=245, y=180)
 
+pScore1 = tk.IntVar()
+pScore1.set(0)
+s = ttk.Spinbox(scoreboard, textvariable=pScore1, from_=0, to=99, increment=1, width=5)
+s.place(x=130, y=210)
+
+pScore2 = tk.IntVar()
+pScore2.set(0)
+s = ttk.Spinbox(scoreboard, textvariable=pScore2, from_=0, to=99, increment=1, width=5)
+s.place(x=245, y=210)
+
 Button_sb_change = ttk.Button(scoreboard, text=u'⇔', width=7)
-Button_sb_change.bind("<Button-1>",sbExchange) 
+Button_sb_change.bind("<Button-1>",sbSwap) 
 Button_sb_change.place(x=187, y=178)
 
-game_text = ['p1', 'no', 'p2']
-game1_var = tk.IntVar()
-game1_var.set(1)
-for i in range(len(game_text)):
-    game1 = ttk.Radiobutton(scoreboard, value=i, variable=game1_var)
-    game1.place(x=185 + (i *18), y=225)
-
-game2_var = tk.IntVar()
-game2_var.set(1)
-for i in range(len(game_text)):
-    game2 = ttk.Radiobutton(scoreboard, value=i, variable=game2_var)
-    game2.place(x=185 + (i *18), y=250)
-
-game3_var = tk.IntVar()
-game3_var.set(1)
-for i in range(len(game_text)):
-    game3 = ttk.Radiobutton(scoreboard, value=i, variable=game3_var)
-    game3.place(x=185 + (i *18), y=275)
-
-game4_var = tk.IntVar()
-game4_var.set(1)
-for i in range(len(game_text)):
-    game4 = ttk.Radiobutton(scoreboard, value=i, variable=game4_var)
-    game4.place(x=185 + (i *18), y=300)
-
-game5_var = tk.IntVar()
-game5_var.set(1)
-for i in range(len(game_text)):
-    game5 = ttk.Radiobutton(scoreboard, value=i, variable=game5_var)
-    game5.place(x=185 + (i *18), y=325)
-
-option_GF_WL1 = ('GF時に使用する項目', '[W]', '[L]')
-GF_WL1_variable = tk.StringVar()
-combo_GF_WL1 = ttk.Combobox(scoreboard, values=option_GF_WL1, textvariable=GF_WL1_variable, state="readonly", width=17)
-combo_GF_WL1.set(option_GF_WL1[0])
-combo_GF_WL1.place(x=5, y=210)
-
-option_GF_WL2 = ('GF時に使用する項目', '[W]', '[L]')
-GF_WL2_variable = tk.StringVar()
-combo_GF_WL2 = ttk.Combobox(scoreboard, values=option_GF_WL2, textvariable=GF_WL2_variable, state="readonly", width=17)
-combo_GF_WL2.set(option_GF_WL1[0])
-combo_GF_WL2.place(x=295, y=210)
+Button_sb_clear = ttk.Button(scoreboard, text=u'Clear', width=7)
+Button_sb_clear.bind("<Button-1>",sbClear) 
+Button_sb_clear.place(x=187, y=208)
 
 # ------------- MC -------------
 # ラベル
@@ -914,6 +919,9 @@ Button_top8_AllClear.place(x=5, y=330)
 
 # ------------- クルーバトル -------------
 # ラベル
+label = ttk.Label(crewbattle, text="左上入力欄")
+label.place(x=5, y=5)
+
 label = ttk.Label(crewbattle, text="LEFT TEAM")
 label.place(x=5, y=53)
 label = ttk.Label(crewbattle, text="RIGHT TEAM")
@@ -956,13 +964,9 @@ label = ttk.Label(crewbattle, text="NO SELECT")
 label.place(x=280, y=375)
 
 # ウィジェット
-cb_upperleft = ttk.Entry(crewbattle, width=20)
+cb_upperColumn = ttk.Entry(crewbattle, width=20)
 # cb_upperleft.insert(tk.END,"CREW BATTLE")
-cb_upperleft.place(x=5, y=25)
-
-cb_upperright = ttk.Entry(crewbattle, width=20)
-# cb_upperright.insert(tk.END,"クルーバトル")
-cb_upperright.place(x=245, y=25)
+cb_upperColumn.place(x=5, y=25)
 
 cb_team1 = ttk.Entry(crewbattle, width=20)
 # cb_team1.insert(tk.END,"LEFT TEAM")
@@ -1160,6 +1164,10 @@ cb_setScore.set(3)
 s = ttk.Spinbox(crewbattle, textvariable=cb_setScore, from_=0, to=99, increment=1, width=3)
 s.place(x=455, y=343)
 
+Button_cb_swap = ttk.Button(crewbattle, text=u'⇐ Swap ⇒', width=17)
+Button_cb_swap.bind("<Button-1>",cbSwap) 
+Button_cb_swap.place(x=135, y=380)
+
 # ------------- 事前入力 -------------
 label = ttk.Label(inadvance, text="■クルーバトルメンバー事前入力")
 label.place(x=5, y=5)
@@ -1350,180 +1358,6 @@ rr_pl_p3.place(x=80, y=300)
 rr_pl_p3_xid = ttk.Entry(roundrobin, width=20)
 rr_pl_p3_xid.place(x=220, y=300)
 
-#----------------------------------------------------------------------------------
-#
-#                           jsonファイルの読み込み処理
-#
-#----------------------------------------------------------------------------------
-jsonfile = "datafile/LatteCon.json"
-jsonfile_open = open(jsonfile, "r", encoding="utf-8")
-jsonfile_load = json.load(jsonfile_open)
-jsonfile_open.close()
 
-# スコアボード
-pName1.insert(tk.END, jsonfile_load["pName1"])
-pName2.insert(tk.END, jsonfile_load["pName2"])
-pTeam1.insert(tk.END, jsonfile_load["pTeam1"])
-pTeam2.insert(tk.END, jsonfile_load["pTeam2"])
-stage_var.set(stage_text.index(jsonfile_load["stage"]))
-stage_typing.insert(tk.END, jsonfile_load["stage_typing"])
-bestofN.insert(tk.END, jsonfile_load["bestofN"])
-combo_setstory.set(jsonfile_load["boN"].upper())
-game1_var.set(game_text.index(jsonfile_load["game1"]))
-game2_var.set(game_text.index(jsonfile_load["game2"]))
-game3_var.set(game_text.index(jsonfile_load["game3"]))
-game4_var.set(game_text.index(jsonfile_load["game4"]))
-game5_var.set(game_text.index(jsonfile_load["game5"]))
-set_gfwl1 = jsonfile_load["GF-WL1"]
-set_gfwl2 = jsonfile_load["GF-WL2"]
-if (jsonfile_load["GF-WL1"] == "no"):
-    set_gfwl1 = "GF時に使用する項目"
-elif (jsonfile_load["GF-WL1"] == "W"):
-    set_gfwl1 = "[W]"
-else:
-    set_gfwl1 = "[L]"
-
-if (jsonfile_load["GF-WL2"] == "no"):
-    set_gfwl2 = "GF時に使用する項目"
-elif (jsonfile_load["GF-WL2"] == "W"):
-    set_gfwl2 = "[W]"
-else:
-    set_gfwl2 = "[L]"
-
-combo_GF_WL1.set(set_gfwl1)
-combo_GF_WL2.set(set_gfwl2)
-
-tournament_name.insert(tk.END, jsonfile_load["tournament_name"])
-
-# MC
-mc_name1.insert(tk.END, jsonfile_load["mc_name1"])
-mc_name2.insert(tk.END, jsonfile_load["mc_name2"])
-mc_xid1.insert(tk.END, jsonfile_load["mc_xid1"])
-mc_xid2.insert(tk.END, jsonfile_load["mc_xid2"])
-
-# TOP8
-top8_1_1.insert(tk.END, jsonfile_load["top8_1_1"])
-top8_1_2.insert(tk.END, jsonfile_load["top8_1_2"])
-top8_1_3.insert(tk.END, jsonfile_load["top8_1_3"])
-top8_1_4.insert(tk.END, jsonfile_load["top8_1_4"])
-top8_1_5.insert(tk.END, jsonfile_load["top8_1_5"])
-top8_1_6.insert(tk.END, jsonfile_load["top8_1_6"])
-top8_1_7.insert(tk.END, jsonfile_load["top8_1_7"])
-top8_1_8.insert(tk.END, jsonfile_load["top8_1_8"])
-top8_2_1.insert(tk.END, jsonfile_load["top8_2_1"])
-top8_2_2.insert(tk.END, jsonfile_load["top8_2_2"])
-top8_2_3.insert(tk.END, jsonfile_load["top8_2_3"])
-top8_2_4.insert(tk.END, jsonfile_load["top8_2_4"])
-top8_2_5.insert(tk.END, jsonfile_load["top8_2_5"])
-top8_2_6.insert(tk.END, jsonfile_load["top8_2_6"])
-top8_3_1.insert(tk.END, jsonfile_load["top8_3_1"])
-top8_3_2.insert(tk.END, jsonfile_load["top8_3_2"])
-top8_3_3.insert(tk.END, jsonfile_load["top8_3_3"])
-top8_3_4.insert(tk.END, jsonfile_load["top8_3_4"])
-top8_4_3.insert(tk.END, jsonfile_load["top8_4_3"])
-top8_4_4.insert(tk.END, jsonfile_load["top8_4_4"])
-top8_1_1_score.set(int(jsonfile_load["top8_1_1_score"]))
-top8_1_2_score.set(int(jsonfile_load["top8_1_2_score"]))
-top8_1_3_score.set(int(jsonfile_load["top8_1_3_score"]))
-top8_1_4_score.set(int(jsonfile_load["top8_1_4_score"]))
-top8_1_5_score.set(int(jsonfile_load["top8_1_5_score"]))
-top8_1_6_score.set(int(jsonfile_load["top8_1_6_score"]))
-top8_1_7_score.set(int(jsonfile_load["top8_1_7_score"]))
-top8_1_8_score.set(int(jsonfile_load["top8_1_8_score"]))
-top8_2_1_score.set(int(jsonfile_load["top8_2_1_score"]))
-top8_2_2_score.set(int(jsonfile_load["top8_2_2_score"]))
-top8_2_3_score.set(int(jsonfile_load["top8_2_3_score"]))
-top8_2_4_score.set(int(jsonfile_load["top8_2_4_score"]))
-top8_2_5_score.set(int(jsonfile_load["top8_2_5_score"]))
-top8_2_6_score.set(int(jsonfile_load["top8_2_6_score"]))
-top8_3_1_score.set(int(jsonfile_load["top8_3_1_score"]))
-top8_3_2_score.set(int(jsonfile_load["top8_3_2_score"]))
-top8_3_3_score.set(int(jsonfile_load["top8_3_3_score"]))
-top8_3_4_score.set(int(jsonfile_load["top8_3_4_score"]))
-top8_4_3_score.set(int(jsonfile_load["top8_4_3_score"]))
-top8_4_4_score.set(int(jsonfile_load["top8_4_4_score"]))
-
-# クルーバトル
-cb_memberNum.set(int(jsonfile_load["cb_memberNum"]))
-if (jsonfile_load["cb_autocalc"] == "1"):
-    cb_autocalcVal.set(True)
-else:
-    cb_autocalcVal.set(False)
-
-cb_upperleft.insert(tk.END, jsonfile_load["cb_upperleft"])
-cb_upperright.insert(tk.END, jsonfile_load["cb_upperright"])
-cb_team1.insert(tk.END, jsonfile_load["cb_team1"])
-cb_team2.insert(tk.END, jsonfile_load["cb_team2"])
-cb_team1_score.set(int(jsonfile_load["cb_team1_score"]))
-cb_team2_score.set(int(jsonfile_load["cb_team2_score"]))
-Lmember_var.set(cb_member_text.index(jsonfile_load["select_Lmember"]))
-Rmember_var.set(cb_member_text.index(jsonfile_load["select_Rmember"]))
-cb_1_1.insert(tk.END, jsonfile_load["cb_1_1"])
-cb_1_2.insert(tk.END, jsonfile_load["cb_1_2"])
-cb_1_3.insert(tk.END, jsonfile_load["cb_1_3"])
-cb_1_4.insert(tk.END, jsonfile_load["cb_1_4"])
-cb_1_5.insert(tk.END, jsonfile_load["cb_1_5"])
-cb_1_6.insert(tk.END, jsonfile_load["cb_1_6"])
-cb_1_7.insert(tk.END, jsonfile_load["cb_1_7"])
-cb_1_8.insert(tk.END, jsonfile_load["cb_1_8"])
-cb_1_9.insert(tk.END, jsonfile_load["cb_1_9"])
-cb_2_1.insert(tk.END, jsonfile_load["cb_2_1"])
-cb_2_2.insert(tk.END, jsonfile_load["cb_2_2"])
-cb_2_3.insert(tk.END, jsonfile_load["cb_2_3"])
-cb_2_4.insert(tk.END, jsonfile_load["cb_2_4"])
-cb_2_5.insert(tk.END, jsonfile_load["cb_2_5"])
-cb_2_6.insert(tk.END, jsonfile_load["cb_2_6"])
-cb_2_7.insert(tk.END, jsonfile_load["cb_2_7"])
-cb_2_8.insert(tk.END, jsonfile_load["cb_2_8"])
-cb_2_9.insert(tk.END, jsonfile_load["cb_2_9"])
-cb_1_1_score.set(int(jsonfile_load["cb_1_1_score"]))
-cb_1_2_score.set(int(jsonfile_load["cb_1_2_score"]))
-cb_1_3_score.set(int(jsonfile_load["cb_1_3_score"]))
-cb_1_4_score.set(int(jsonfile_load["cb_1_4_score"]))
-cb_1_5_score.set(int(jsonfile_load["cb_1_5_score"]))
-cb_1_6_score.set(int(jsonfile_load["cb_1_6_score"]))
-cb_1_7_score.set(int(jsonfile_load["cb_1_7_score"]))
-cb_1_8_score.set(int(jsonfile_load["cb_1_8_score"]))
-cb_1_9_score.set(int(jsonfile_load["cb_1_9_score"]))
-cb_2_1_score.set(int(jsonfile_load["cb_2_1_score"]))
-cb_2_2_score.set(int(jsonfile_load["cb_2_2_score"]))
-cb_2_3_score.set(int(jsonfile_load["cb_2_3_score"]))
-cb_2_4_score.set(int(jsonfile_load["cb_2_4_score"]))
-cb_2_5_score.set(int(jsonfile_load["cb_2_5_score"]))
-cb_2_6_score.set(int(jsonfile_load["cb_2_6_score"]))
-cb_2_7_score.set(int(jsonfile_load["cb_2_7_score"]))
-cb_2_8_score.set(int(jsonfile_load["cb_2_8_score"]))
-cb_2_9_score.set(int(jsonfile_load["cb_2_9_score"]))
-
-# 事前入力
-for i in range(9):
-    inad_1[i].insert(tk.END, jsonfile_load["inad_1_" + str(i+1)])
-    inad_2[i].insert(tk.END, jsonfile_load["inad_2_" + str(i+1)])
-    inad_3[i].insert(tk.END, jsonfile_load["inad_3_" + str(i+1)])
-    inad_4[i].insert(tk.END, jsonfile_load["inad_4_" + str(i+1)])
-
-# 3人総当たり
-rr_pool.insert(tk.END, jsonfile_load["rr_pool"])
-rr_p1.insert(tk.END, jsonfile_load["rr_p1"])
-rr_p2.insert(tk.END, jsonfile_load["rr_p2"])
-rr_p3.insert(tk.END, jsonfile_load["rr_p3"])
-rr_p1_h.insert(tk.END, jsonfile_load["rr_p1"])
-rr_p2_h.insert(tk.END, jsonfile_load["rr_p2"])
-rr_p3_h.insert(tk.END, jsonfile_load["rr_p3"])
-rr_1vs2_1.set(int(jsonfile_load["rr_1vs2_1"]))
-rr_1vs2_2.set(int(jsonfile_load["rr_1vs2_2"]))
-rr_1vs3_1.set(int(jsonfile_load["rr_1vs3_1"]))
-rr_1vs3_3.set(int(jsonfile_load["rr_1vs3_3"]))
-rr_2vs3_2.set(int(jsonfile_load["rr_2vs3_2"]))
-rr_2vs3_3.set(int(jsonfile_load["rr_2vs3_3"]))
-rr_pl_p1.insert(tk.END, jsonfile_load["rr_pl_p1"])
-rr_pl_p2.insert(tk.END, jsonfile_load["rr_pl_p2"])
-rr_pl_p3.insert(tk.END, jsonfile_load["rr_pl_p3"])
-rr_pl_p1_xid.insert(tk.END, jsonfile_load["rr_pl_p1_xid"])
-rr_pl_p2_xid.insert(tk.END, jsonfile_load["rr_pl_p2_xid"])
-rr_pl_p3_xid.insert(tk.END, jsonfile_load["rr_pl_p3_xid"])
-rr_p1_rank.set(int(jsonfile_load["rr_p1_rank"]))
-rr_p2_rank.set(int(jsonfile_load["rr_p2_rank"]))
-rr_p3_rank.set(int(jsonfile_load["rr_p3_rank"]))
 
 root.mainloop()
