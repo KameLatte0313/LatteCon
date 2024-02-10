@@ -7,6 +7,8 @@ LatteConは格闘ゲームの大会で使用されることを想定し、様々
 
 ※現時点ではWindowsでのみ使用可能です。Macを使用している方はご注意ください。
 
+<img src="https://github.com/KameLatte0313/LatteCon/assets/75975584/3615af27-3b2b-4396-a241-d6931af5b71c"  style="width:400px;height:auto;">
+
 ## 導入方法
 ダウンロードしたzipファイルを解凍します。
 
