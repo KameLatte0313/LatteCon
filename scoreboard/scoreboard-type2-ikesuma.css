@@ -1,0 +1,420 @@
+body {
+	margin:0px;
+	background-color: rgba(0, 0, 0, 0);
+	font-family: 'corpoM','corpoB',"logotypejp_mp_b","コーポレート・ロゴＢ","Noto Sans CJK JP Heavy","OmePlus P Gothic medium",/*"MLRPG",*/ "07鉄瓶ゴシック","なごみ極細ゴシック 特細","JFドットM+H12","ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Arial,"メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	color:#FFFFFF;
+	word-break: break-all;
+}
+
+#container {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 1920px;
+	height: 1080px;
+    /* opacity: 0.98; */
+}
+
+/* base */
+#base {
+    position: absolute;
+    width: 1920px;
+    height: 250px;
+    top: 0px;
+    /* background-color: #f00; */
+    /* opacity: 0.99; */
+}
+
+#l-bar {
+    position: absolute;
+    width: 400px;
+    height: 35px;
+    top: 55px;
+    left: 364px;
+    /* background-color: #505050; */
+    /* background: linear-gradient(0deg, #ffffff, #999999); */
+    background: linear-gradient(0deg, #ececec, #dbdbdb);
+    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 100%, 16px 100%);
+}
+
+#r-bar {
+    position: absolute;
+    width: 400px;
+    height: 35px;
+    top: 55px;
+    right: 364px;
+    /* background-color: #505050; */
+    /* background: linear-gradient(0deg, #ffffff, #999999); */
+    background: linear-gradient(0deg, #ececec, #dbdbdb);
+    clip-path: polygon(8px 0, 100% 0, calc(100% - 16px) 100%, 0 100%);
+}
+
+#stage {
+    position: absolute;
+    width: 400px;
+    height: 35px;
+    top: 0px;
+    right: 20px;
+    /* margin-right: 20px; */
+    /* color: #171717; */
+    color: #4f4b4c;
+    text-align: right;
+    line-height: 35px;
+    font-weight: bold;
+    font-size: 22px;
+    /* background-color: aquamarine; */
+
+    font-family: "corpoM";
+}
+
+#bestofN {
+    position: absolute;
+    width: 400px;
+    height: 35px;
+    top: 0px;
+    left: 20px;
+    /* margin-left: 20px; */
+    /* color: #171717; */
+    color: #4f4b4c;
+    text-align: left;
+    line-height: 35px;
+    font-weight: bold;
+    font-size: 22px;
+    /* background-color: aquamarine; */
+
+    font-family: "corpoM";
+}
+
+#center-bar {
+    position: absolute;
+    width: 244px;
+    height: 35px;
+    top: 55px;
+    left: 838px;
+    /* background-color: #000; */
+    /* background: linear-gradient(0deg, #ffffff, #999999); */
+    background: linear-gradient(0deg, #ececec, #dbdbdb);
+    clip-path: polygon(0 0, 100% 0, calc(100% - 7px) 100%, 7px 100%);
+    /* text-align: center; */
+}
+
+#tournament_name {
+    position: absolute;
+    /* width: 230px;
+    height: 40px; */
+    top: 0px;
+    /* left: 8px; */
+    text-align: center;
+    line-height: 35px;
+    /* color: #171717; */
+    color: #4f4b4c;
+    font-size: 22px;
+    font-weight: bold;
+    font-family: 'corpoB';
+    /* width: 100%; */
+    white-space: nowrap;
+}
+
+/* プレイヤー1 */
+#l-name {
+    position: absolute;
+    width: 450px;
+    height: 50px;
+    top: 0px;
+    left: 306px;
+    /* background-color: #171717; */
+    background: linear-gradient(0deg, #f1f1f1, #e6e6e6);
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 100%, 20px 100%);
+    border-top: 5px solid #1fb9ff;
+}
+
+#player1 {
+    position: absolute;
+    /* width: 400px;
+    height: 95px; */
+    /* top: 100px; */
+    right: 0px;
+    /* margin-right: 20px; */
+    text-align: right;
+    line-height: 50px;
+    color: #4f4b4c;
+    font-size: 35px;
+    font-weight: bold;
+    font-family: 'corpoB';
+    z-index: 5;
+    /* background-color: red; */
+}
+
+#gf-wl1 {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 0px;
+    left: 40px;
+    text-align: center;
+    line-height: 50px;
+    color: #4f4b4c;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'corpoM';
+    opacity: 0;
+    /* background-color: red; */
+}
+
+#l-score {
+    position: absolute;
+    width: 100px;
+    height: 90px;
+    top: 0px;
+    left: 745px;
+    /* background-color: #FE3334; */
+    background: linear-gradient(0deg, #8fd8f8, #1fb9ff);
+    clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 100%, 18px 100%);
+}
+
+#score1 {
+    position: absolute;
+    width: 100px;
+    height: 90px;
+    /* top: 840px; */
+    /* left: 360px; */
+    text-align: center;
+    line-height: 90px;
+    font-size: 50px;
+    font-weight: bold;
+    font-family: 'corpoM';
+    color: white;
+    /* background-color: blue; */
+}
+
+/* プレイヤー2 */
+#r-name {
+    position: absolute;
+    width: 450px;
+    height: 50px;
+    top: 0px;
+    border-top: 5px solid #1fb9ff;
+    right: 306px;
+    /* background-color: #171717; */
+    background: linear-gradient(0deg, #f1f1f1, #e6e6e6);
+    /* border-bottom: 5px solid #298BFF; */
+    clip-path: polygon(10px 0, 100% 0, calc(100% - 20px) 100%, 0 100%);
+}
+
+#player2 {
+    position: absolute;
+    /* width: 400px;
+    height: 95px; */
+    /* top: 100px; */
+    left: 0px;
+    /* margin-left: 20px; */
+    text-align: left;
+    line-height: 50px;
+    color: #4f4b4c;
+    font-size: 35px;
+    font-weight: bold;
+    font-family: 'corpoB';
+    z-index: 5;
+    /* background-color: red; */
+}
+
+#gf-wl2 {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 0px;
+    right: 40px;
+    text-align: center;
+    line-height: 50px;
+    color: #4f4b4c;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'corpoM';
+    opacity: 0;
+    /* background-color: aqua; */
+}
+
+#r-score {
+    position: absolute;
+    width: 100px;
+    height: 90px;
+    top: 0px;
+    right: 745px;
+    /* background-color: #298BFF; */
+    background: linear-gradient(0deg, #8fd8f8, #1fb9ff);
+    clip-path: polygon(18px 0, 100% 0, calc(100% - 18px) 100%, 0 100%);
+}
+
+#score2 {
+    position: absolute;
+    width: 100px;
+    height: 90px;
+    /* top: 840px; */
+    /* left: 360px; */
+    text-align: center;
+    line-height: 90px;
+    font-size: 50px;
+    font-weight: bold;
+    font-family: 'corpoM';
+    color: white;
+    /* background-color: blue; */
+}
+
+#boN-bg {
+    position: absolute;
+    width: 270px;
+    height: 55px;
+    top: 0px;
+    left: 825px;
+    /* background-color: #000; */
+    background: linear-gradient(0deg, #f1f1f1, #e6e6e6);
+    clip-path: polygon(0 0, 100% 0, calc(100% - 11px) 100%, 11px 100%);
+}
+
+/* bo3-scorebar */
+#bo3-scorebar {
+    position: absolute;
+    width: 270px;
+    height: 55px;
+    top: 0px;
+    left: 825px;
+    opacity: 0;
+    /* background-color: #000; */
+    background: linear-gradient(0deg, #f1f1f1, #e6e6e6);
+    clip-path: polygon(0 0, 100% 0, calc(100% - 11px) 100%, 11px 100%);
+}
+
+#bo3-scorebar div {
+    width: 83.3px;
+    height: 30px;
+    top: 12.5px;
+    position: absolute;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: 'corpoM';
+    line-height: 40px;
+    color: white;
+    /* border: solid black;
+    border-width: 4px 2px 4px 2px;
+    box-sizing: border-box; */
+}
+
+.bo3-game1 {
+    left: 10px;
+    clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 100%, 6px 100%);
+}
+
+.bo3-game2 {
+    left: 93.3px;
+    clip-path: polygon(0 0, 100% 0, calc(100% - 6px) 100%, 6px 100%);
+}
+
+.bo3-game3 {
+    right: 10px;
+    clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+}
+
+/* bo5-scorebar */
+#bo5-scorebar {
+    position: absolute;
+    width: 270px;
+    height: 55px;
+    top: 0px;
+    left: 825px;
+    opacity: 0;
+    /* background-color: #000; */
+    background: linear-gradient(0deg, #f1f1f1, #e6e6e6);
+    clip-path: polygon(0 0, 100% 0, calc(100% - 11px) 100%, 11px 100%);
+}
+
+#bo5-scorebar div {
+    /* width: 54px; */
+    width: 50px;
+    height: 30px;
+    top: 12.5px;
+    position: absolute;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'corpoM';
+    line-height: 40px;
+    color: white;
+    /* border: solid black; */
+    /* border-style: solid;
+    border-color: #000;
+    border-width: 4px 2px 2px 2px;
+    box-sizing: border-box; */
+}
+
+.bo5-game1 {
+    left: 10px;
+    clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 100%, 6px 100%);
+}
+
+.bo5-game2 {
+    left: 60px;
+    clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 100%, 6px 100%);
+}
+
+.bo5-game3 {
+    left: 110px;
+    clip-path: polygon(0 0, 100% 0, calc(100% - 6px) 100%, 6px 100%);
+}
+
+.bo5-game4 {
+    right: 60px;
+    clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+}
+
+.bo5-game5 {
+    right: 10px;
+    clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%);
+}
+
+.ss-num {
+    z-index: 10;
+}
+
+.ss-no {
+    /* background: linear-gradient(0deg, #dddddd, #999999); */
+    background: linear-gradient(0deg, #696969, #3a3a3a);
+    z-index: 9;
+    opacity: 0;
+}
+
+.ss-red {
+    /* background-color: #FE3334; */
+    background: linear-gradient(0deg, #FE3334, #b61b1b);
+    z-index: 9;
+    opacity: 0;
+}
+
+.ss-blue {
+    /* background-color: #298BFF; */
+    background: linear-gradient(0deg, #298BFF, #16529b);
+    z-index: 9;
+    opacity: 0;
+}
+
+.ss-bg {
+    /* background: linear-gradient(0deg, #dddddd, #999999); */
+    background: linear-gradient(0deg, #696969, #3a3a3a);
+    z-index: 8;
+}
+
+/* .no {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.p1 {
+    background: rgba(254, 51, 52, 0.7);
+}
+
+.p2 {
+    background: rgba(41, 139, 255, 0.7);
+} */
+
+.hidden {
+	display: none;
+}
