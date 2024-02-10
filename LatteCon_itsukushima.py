@@ -131,6 +131,13 @@ def SetJSON(event):
         'cb_2_7_score': str(cb_2_7_score.get()),
         'cb_2_8_score': str(cb_2_8_score.get()),
         'cb_2_9_score': str(cb_2_9_score.get()),
+        'tt_team1': tt_team1.get(),
+        'tt_team2': tt_team2.get(),
+        'tt_team3': tt_team3.get(),
+        'tt_team4': tt_team4.get(),
+        'tt_round1_left': tt_text[tt_round1_left_var.get()],
+        'tt_round1_right': tt_text[tt_round1_right_var.get()],
+        'tt_round2': tt_text[tt_round2_var.get()],
         'inad_1_1': inad_1[0].get(),
         'inad_1_2': inad_1[1].get(),
         'inad_1_3': inad_1[2].get(),
@@ -513,6 +520,25 @@ def inad4Clear(event):
     for i in range(9):
         inad_4[i].delete(0, tk.END)
 
+# 3人総当たりのデータをクリアする関数
+def rrClear(event):
+    rr_pool.delete(0, tk.END)
+    rr_p1.delete(0, tk.END)
+    rr_p2.delete(0, tk.END)
+    rr_p3.delete(0, tk.END)
+    rr_p1_h.delete(0, tk.END)
+    rr_p2_h.delete(0, tk.END)
+    rr_p3_h.delete(0, tk.END)
+    rr_p1_rank.set(0)
+    rr_p2_rank.set(0)
+    rr_p3_rank.set(0)
+    rr_1vs2_1.set(0)
+    rr_1vs2_2.set(0)
+    rr_1vs3_1.set(0)
+    rr_1vs3_3.set(0)
+    rr_2vs3_2.set(0)
+    rr_2vs3_3.set(0)
+
 # LatteCon.exeを最前面に固定する関数
 def alwaysOnTop():
     root.attributes("-topmost", always_top_value.get())
@@ -534,6 +560,7 @@ mc = tk.Frame(notebook)
 TOP8 = tk.Frame(notebook)
 crewbattle = tk.Frame(notebook)
 inadvance = tk.Frame(notebook)
+teamTournament = tk.Frame(notebook)
 roundrobin = tk.Frame(notebook)
 
 # notebookにタブを追加
@@ -542,6 +569,7 @@ notebook.add(mc, text="MC")
 notebook.add(TOP8, text="TOP8")
 notebook.add(crewbattle, text="クルーバトル")
 notebook.add(inadvance, text="事前入力")
+notebook.add(teamTournament, text="チームブラケット")
 notebook.add(roundrobin, text="3人総当たり")
 
 # ウィンドウ上部に配置するウィジェットの作成
@@ -1212,6 +1240,94 @@ Button_inad4Clear = ttk.Button(inadvance, text=u'Clear', width=14)
 Button_inad4Clear.bind("<Button-1>",inad4Clear) 
 Button_inad4Clear.place(x=350, y=310)
 
+# ------------- クルーバトル-チームトーナメント表 -------------
+label = ttk.Label(teamTournament, text="|")
+label.place(x=50, y=140)
+label = ttk.Label(teamTournament, text="|")
+label.place(x=50, y=160)
+label = ttk.Label(teamTournament, text="|")
+label.place(x=50, y=180)
+
+label = ttk.Label(teamTournament, text="━━━━━━━━━━━")
+label.place(x=50, y=125)
+
+label = ttk.Label(teamTournament, text="|")
+label.place(x=180, y=140)
+label = ttk.Label(teamTournament, text="|")
+label.place(x=180, y=160)
+label = ttk.Label(teamTournament, text="|")
+label.place(x=180, y=180)
+
+label = ttk.Label(teamTournament, text="|")
+label.place(x=310, y=140)
+label = ttk.Label(teamTournament, text="|")
+label.place(x=310, y=160)
+label = ttk.Label(teamTournament, text="|")
+label.place(x=310, y=180)
+
+label = ttk.Label(teamTournament, text="━━━━━━━━━━━")
+label.place(x=310, y=125)
+
+label = ttk.Label(teamTournament, text="|")
+label.place(x=440, y=140)
+label = ttk.Label(teamTournament, text="|")
+label.place(x=440, y=160)
+label = ttk.Label(teamTournament, text="|")
+label.place(x=440, y=180)
+
+label = ttk.Label(teamTournament, text="|")
+label.place(x=115, y=75)
+label = ttk.Label(teamTournament, text="|")
+label.place(x=115, y=95)
+label = ttk.Label(teamTournament, text="|")
+label.place(x=115, y=115)
+
+label = ttk.Label(teamTournament, text="━━━━━━━━━━━━━━━━━━━━━━")
+label.place(x=115, y=60)
+
+label = ttk.Label(teamTournament, text="|")
+label.place(x=375, y=75)
+label = ttk.Label(teamTournament, text="|")
+label.place(x=375, y=95)
+label = ttk.Label(teamTournament, text="|")
+label.place(x=375, y=115)
+
+label = ttk.Label(teamTournament, text="|")
+label.place(x=245, y=30)
+label = ttk.Label(teamTournament, text="|")
+label.place(x=245, y=50)
+
+tt_team1 = ttk.Entry(teamTournament, width=15)
+tt_team1.place(x=5, y=200)
+
+tt_team2 = ttk.Entry(teamTournament, width=15)
+tt_team2.place(x=135, y=200)
+
+tt_team3 = ttk.Entry(teamTournament, width=15)
+tt_team3.place(x=265, y=200)
+
+tt_team4 = ttk.Entry(teamTournament, width=15)
+tt_team4.place(x=395, y=200)
+
+tt_text = ['left', 'no', 'right']
+tt_round1_left_var = tk.IntVar()
+tt_round1_left_var.set(1)
+for i in range(len(tt_text)):
+    round1_left = ttk.Radiobutton(teamTournament, value=i, variable=tt_round1_left_var)
+    round1_left.place(x=60 + (i *50), y=140)
+
+tt_round1_right_var = tk.IntVar()
+tt_round1_right_var.set(1)
+for i in range(len(tt_text)):
+    round1_right = ttk.Radiobutton(teamTournament, value=i, variable=tt_round1_right_var)
+    round1_right.place(x=320 + (i *50), y=140)
+
+tt_round2_var = tk.IntVar()
+tt_round2_var.set(1)
+for i in range(len(tt_text)):
+    round2 = ttk.Radiobutton(teamTournament, value=i, variable=tt_round2_var)
+    round2.place(x=125 + (i *115), y=75)
+
 # 3人総当たり
 label = ttk.Label(roundrobin, text="------------------------------------------------------------------------------------------------")
 label.place(x=5, y=50)
@@ -1358,6 +1474,167 @@ rr_pl_p3.place(x=80, y=300)
 rr_pl_p3_xid = ttk.Entry(roundrobin, width=20)
 rr_pl_p3_xid.place(x=220, y=300)
 
+Button_rr_clear = ttk.Button(roundrobin, text=u'AllClear', width=14)
+Button_rr_clear.bind("<Button-1>",rrClear) 
+Button_rr_clear.place(x=10, y=190)
 
+#----------------------------------------------------------------------------------
+#
+#                           jsonファイルの読み込み処理
+#
+#----------------------------------------------------------------------------------
+jsonfile = "datafile/LatteCon_itsukushima.json"
+jsonfile_open = open(jsonfile, "r", encoding="utf-8")
+jsonfile_load = json.load(jsonfile_open)
+jsonfile_open.close()
+
+# スコアボード
+pName1.insert(tk.END, jsonfile_load["pName1"])
+pName2.insert(tk.END, jsonfile_load["pName2"])
+pTeam1.insert(tk.END, jsonfile_load["pTeam1"])
+pTeam2.insert(tk.END, jsonfile_load["pTeam2"])
+stage_var.set(stage_text.index(jsonfile_load["stage"]))
+stage_typing.insert(tk.END, jsonfile_load["stage_typing"])
+pScore1.set(int(jsonfile_load["pScore1"]))
+pScore2.set(int(jsonfile_load["pScore2"]))
+
+# MC
+mc_name1.insert(tk.END, jsonfile_load["mc_name1"])
+mc_name2.insert(tk.END, jsonfile_load["mc_name2"])
+mc_xid1.insert(tk.END, jsonfile_load["mc_xid1"])
+mc_xid2.insert(tk.END, jsonfile_load["mc_xid2"])
+
+# TOP8
+top8_1_1.insert(tk.END, jsonfile_load["top8_1_1"])
+top8_1_2.insert(tk.END, jsonfile_load["top8_1_2"])
+top8_1_3.insert(tk.END, jsonfile_load["top8_1_3"])
+top8_1_4.insert(tk.END, jsonfile_load["top8_1_4"])
+top8_1_5.insert(tk.END, jsonfile_load["top8_1_5"])
+top8_1_6.insert(tk.END, jsonfile_load["top8_1_6"])
+top8_1_7.insert(tk.END, jsonfile_load["top8_1_7"])
+top8_1_8.insert(tk.END, jsonfile_load["top8_1_8"])
+top8_2_1.insert(tk.END, jsonfile_load["top8_2_1"])
+top8_2_2.insert(tk.END, jsonfile_load["top8_2_2"])
+top8_2_3.insert(tk.END, jsonfile_load["top8_2_3"])
+top8_2_4.insert(tk.END, jsonfile_load["top8_2_4"])
+top8_2_5.insert(tk.END, jsonfile_load["top8_2_5"])
+top8_2_6.insert(tk.END, jsonfile_load["top8_2_6"])
+top8_3_1.insert(tk.END, jsonfile_load["top8_3_1"])
+top8_3_2.insert(tk.END, jsonfile_load["top8_3_2"])
+top8_3_3.insert(tk.END, jsonfile_load["top8_3_3"])
+top8_3_4.insert(tk.END, jsonfile_load["top8_3_4"])
+top8_4_3.insert(tk.END, jsonfile_load["top8_4_3"])
+top8_4_4.insert(tk.END, jsonfile_load["top8_4_4"])
+top8_1_1_score.set(int(jsonfile_load["top8_1_1_score"]))
+top8_1_2_score.set(int(jsonfile_load["top8_1_2_score"]))
+top8_1_3_score.set(int(jsonfile_load["top8_1_3_score"]))
+top8_1_4_score.set(int(jsonfile_load["top8_1_4_score"]))
+top8_1_5_score.set(int(jsonfile_load["top8_1_5_score"]))
+top8_1_6_score.set(int(jsonfile_load["top8_1_6_score"]))
+top8_1_7_score.set(int(jsonfile_load["top8_1_7_score"]))
+top8_1_8_score.set(int(jsonfile_load["top8_1_8_score"]))
+top8_2_1_score.set(int(jsonfile_load["top8_2_1_score"]))
+top8_2_2_score.set(int(jsonfile_load["top8_2_2_score"]))
+top8_2_3_score.set(int(jsonfile_load["top8_2_3_score"]))
+top8_2_4_score.set(int(jsonfile_load["top8_2_4_score"]))
+top8_2_5_score.set(int(jsonfile_load["top8_2_5_score"]))
+top8_2_6_score.set(int(jsonfile_load["top8_2_6_score"]))
+top8_3_1_score.set(int(jsonfile_load["top8_3_1_score"]))
+top8_3_2_score.set(int(jsonfile_load["top8_3_2_score"]))
+top8_3_3_score.set(int(jsonfile_load["top8_3_3_score"]))
+top8_3_4_score.set(int(jsonfile_load["top8_3_4_score"]))
+top8_4_3_score.set(int(jsonfile_load["top8_4_3_score"]))
+top8_4_4_score.set(int(jsonfile_load["top8_4_4_score"]))
+
+# クルーバトル
+cb_memberNum.set(int(jsonfile_load["cb_memberNum"]))
+if (jsonfile_load["cb_autocalc"] == "1"):
+    cb_autocalcVal.set(True)
+else:
+    cb_autocalcVal.set(False)
+
+cb_upperColumn.insert(tk.END, jsonfile_load["cb_upperColumn"])
+cb_team1.insert(tk.END, jsonfile_load["cb_team1"])
+cb_team2.insert(tk.END, jsonfile_load["cb_team2"])
+cb_team1_score.set(int(jsonfile_load["cb_team1_score"]))
+cb_team2_score.set(int(jsonfile_load["cb_team2_score"]))
+Lmember_var.set(cb_member_text.index(jsonfile_load["select_Lmember"]))
+Rmember_var.set(cb_member_text.index(jsonfile_load["select_Rmember"]))
+cb_1_1.insert(tk.END, jsonfile_load["cb_1_1"])
+cb_1_2.insert(tk.END, jsonfile_load["cb_1_2"])
+cb_1_3.insert(tk.END, jsonfile_load["cb_1_3"])
+cb_1_4.insert(tk.END, jsonfile_load["cb_1_4"])
+cb_1_5.insert(tk.END, jsonfile_load["cb_1_5"])
+cb_1_6.insert(tk.END, jsonfile_load["cb_1_6"])
+cb_1_7.insert(tk.END, jsonfile_load["cb_1_7"])
+cb_1_8.insert(tk.END, jsonfile_load["cb_1_8"])
+cb_1_9.insert(tk.END, jsonfile_load["cb_1_9"])
+cb_2_1.insert(tk.END, jsonfile_load["cb_2_1"])
+cb_2_2.insert(tk.END, jsonfile_load["cb_2_2"])
+cb_2_3.insert(tk.END, jsonfile_load["cb_2_3"])
+cb_2_4.insert(tk.END, jsonfile_load["cb_2_4"])
+cb_2_5.insert(tk.END, jsonfile_load["cb_2_5"])
+cb_2_6.insert(tk.END, jsonfile_load["cb_2_6"])
+cb_2_7.insert(tk.END, jsonfile_load["cb_2_7"])
+cb_2_8.insert(tk.END, jsonfile_load["cb_2_8"])
+cb_2_9.insert(tk.END, jsonfile_load["cb_2_9"])
+cb_1_1_score.set(int(jsonfile_load["cb_1_1_score"]))
+cb_1_2_score.set(int(jsonfile_load["cb_1_2_score"]))
+cb_1_3_score.set(int(jsonfile_load["cb_1_3_score"]))
+cb_1_4_score.set(int(jsonfile_load["cb_1_4_score"]))
+cb_1_5_score.set(int(jsonfile_load["cb_1_5_score"]))
+cb_1_6_score.set(int(jsonfile_load["cb_1_6_score"]))
+cb_1_7_score.set(int(jsonfile_load["cb_1_7_score"]))
+cb_1_8_score.set(int(jsonfile_load["cb_1_8_score"]))
+cb_1_9_score.set(int(jsonfile_load["cb_1_9_score"]))
+cb_2_1_score.set(int(jsonfile_load["cb_2_1_score"]))
+cb_2_2_score.set(int(jsonfile_load["cb_2_2_score"]))
+cb_2_3_score.set(int(jsonfile_load["cb_2_3_score"]))
+cb_2_4_score.set(int(jsonfile_load["cb_2_4_score"]))
+cb_2_5_score.set(int(jsonfile_load["cb_2_5_score"]))
+cb_2_6_score.set(int(jsonfile_load["cb_2_6_score"]))
+cb_2_7_score.set(int(jsonfile_load["cb_2_7_score"]))
+cb_2_8_score.set(int(jsonfile_load["cb_2_8_score"]))
+cb_2_9_score.set(int(jsonfile_load["cb_2_9_score"]))
+
+# 事前入力
+for i in range(9):
+    inad_1[i].insert(tk.END, jsonfile_load["inad_1_" + str(i+1)])
+    inad_2[i].insert(tk.END, jsonfile_load["inad_2_" + str(i+1)])
+    inad_3[i].insert(tk.END, jsonfile_load["inad_3_" + str(i+1)])
+    inad_4[i].insert(tk.END, jsonfile_load["inad_4_" + str(i+1)])
+
+# チームブラケット
+tt_team1.insert(tk.END, jsonfile_load["tt_team1"])
+tt_team2.insert(tk.END, jsonfile_load["tt_team2"])
+tt_team3.insert(tk.END, jsonfile_load["tt_team3"])
+tt_team4.insert(tk.END, jsonfile_load["tt_team4"])
+tt_round1_left_var.set(tt_text.index(jsonfile_load["tt_round1_left"]))
+tt_round1_right_var.set(tt_text.index(jsonfile_load["tt_round1_right"]))
+tt_round2_var.set(tt_text.index(jsonfile_load["tt_round2"]))
+
+# 3人総当たり
+rr_pool.insert(tk.END, jsonfile_load["rr_pool"])
+rr_p1.insert(tk.END, jsonfile_load["rr_p1"])
+rr_p2.insert(tk.END, jsonfile_load["rr_p2"])
+rr_p3.insert(tk.END, jsonfile_load["rr_p3"])
+rr_p1_h.insert(tk.END, jsonfile_load["rr_p1"])
+rr_p2_h.insert(tk.END, jsonfile_load["rr_p2"])
+rr_p3_h.insert(tk.END, jsonfile_load["rr_p3"])
+rr_1vs2_1.set(int(jsonfile_load["rr_1vs2_1"]))
+rr_1vs2_2.set(int(jsonfile_load["rr_1vs2_2"]))
+rr_1vs3_1.set(int(jsonfile_load["rr_1vs3_1"]))
+rr_1vs3_3.set(int(jsonfile_load["rr_1vs3_3"]))
+rr_2vs3_2.set(int(jsonfile_load["rr_2vs3_2"]))
+rr_2vs3_3.set(int(jsonfile_load["rr_2vs3_3"]))
+rr_pl_p1.insert(tk.END, jsonfile_load["rr_pl_p1"])
+rr_pl_p2.insert(tk.END, jsonfile_load["rr_pl_p2"])
+rr_pl_p3.insert(tk.END, jsonfile_load["rr_pl_p3"])
+rr_pl_p1_xid.insert(tk.END, jsonfile_load["rr_pl_p1_xid"])
+rr_pl_p2_xid.insert(tk.END, jsonfile_load["rr_pl_p2_xid"])
+rr_pl_p3_xid.insert(tk.END, jsonfile_load["rr_pl_p3_xid"])
+rr_p1_rank.set(int(jsonfile_load["rr_p1_rank"]))
+rr_p2_rank.set(int(jsonfile_load["rr_p2_rank"]))
+rr_p3_rank.set(int(jsonfile_load["rr_p3_rank"]))
 
 root.mainloop()
