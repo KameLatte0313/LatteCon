@@ -1,4 +1,4 @@
-('D:\\code\\scoreboard\\SHIGベース\\LatteCon_forSSBU_1.0\\build\\LatteCon_itsukushima\\PYZ-00.pyz',
+('D:\\code\\scoreboard\\SHIGベース\\LatteCon\\build\\LatteCon_itsukushima\\PYZ-00.pyz',
  [('_compat_pickle',
    'C:\\Users\\kame8\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\_compat_pickle.py',
    'PYMODULE'),

@@ -34,5 +34,5 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon=['LatteCon_logo.ico'],
+    icon=['LatteCon_logo_itsukushima.ico'],
 )

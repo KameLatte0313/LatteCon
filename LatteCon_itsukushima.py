@@ -40,6 +40,7 @@ def SetJSON(event):
         'pTeam2': pTeam2.get(),
         'stage': stage_text[stage_var.get()],
         'stage_typing': stage_typing.get(),
+        'bestofN': combo_bestof.get(),
         'pScore1': str(pScore1.get()),
         'pScore2': str(pScore2.get()),
         'mc_name1': mc_name1.get(),
@@ -582,17 +583,13 @@ notebook.pack(expand=True, fill='both', padx=10, pady=10)
 
 # -------------スコアボード-------------
 # ラベル
-stage_info_text = ['Pool A',' Pool B','R1','R2','R3','R4','R5','R6','R7','QF','SF',' F','GF','GF2','予選']
+stage_info_text = ['Pool A',' Pool B','128','96','64','48','32','24','16','12',' 8',' 6',' 4','SF',' F', 'GF', 'GF2'] 
 for i in range(len(stage_info_text)):
     label_stage_info = ttk.Label(scoreboard, text=stage_info_text[i])
     if (i <= 1):
         label_stage_info.place(x=10 + (i *70), y=25)
-    elif (i <= 12):
-        label_stage_info.place(x=55 + ((i - 2) *24), y=50)
-    elif (i == 13):
-        label_stage_info.place(x=315, y=50)
-    elif (i == 14):
-        label_stage_info.place(x=339, y=50)
+    else:
+        label_stage_info.place(x=55 + ((i - 2) *27), y=50)
 
 label_stage_top = ttk.Label(scoreboard, text="勝者側")
 label_stage_top.place(x=10, y=65)
@@ -603,6 +600,8 @@ label_stage_bottom.place(x=10, y=85)
 label_stage_typing = ttk.Label(scoreboard, text="直接入力")
 label_stage_typing.place(x=5, y=105)
 
+label = ttk.Label(scoreboard, text="BEST OF ~")
+label.place(x=5, y=135)
 
 label_tournament_name = ttk.Label(scoreboard, text="P1 Team")
 label_tournament_name.place(x=5, y=160)
@@ -617,46 +616,57 @@ label_tournament_name.place(x=325, y=160)
 stage_text = [
     'Pool A',
     'Pool B',
-    'WINNERS ROUND1',
-    'WINNERS ROUND2',
-    'WINNERS ROUND3',
-    'WINNERS ROUND4',
-    'WINNERS ROUND5',
-    'WINNERS ROUND6',
-    'WINNERS ROUND7',
-    'WINNERS QUARTER-FINAL',
-    'WINNERS SEMI-FINAL',
-    'WINNERS FINAL',
-    'GRAND FINAL',
-    'GRAND FINAL RESET',
-    'POOLS',
-    'LOSERS ROUND1',
-    'LOSERS ROUND2',
-    'LOSERS ROUND3',
-    'LOSERS ROUND4',
-    'LOSERS ROUND5',
-    'LOSERS ROUND6',
-    'LOSERS ROUND7',
-    'LOSERS QUARTER-FINAL',
-    'LOSERS SEMI-FINAL',
-    'LOSERS FINAL',
+    'Winners TOP48',
+    'Winners TOP24',
+    'Winners TOP12',
+    'Winners Semi-Final',
+    'Winners Final',
+    'Losers TOP128',
+    'Losers TOP96',
+    'Losers TOP64',
+    'Losers TOP48',
+    'Losers TOP32',
+    'Losers TOP24',
+    'Losers TOP16',
+    'Losers TOP12',
+    'Losers TOP8',
+    'Losers TOP6',
+    'Losers TOP4',
+    'Losers Final',
+    'Grand Final',
+    'Grand Final Reset',
     'stage_typing'
 ]
 stage_var = tk.IntVar()
 stage_var.set(0)
 for i in range(len(stage_text)):
     stage = ttk.Radiobutton(scoreboard, value=i, variable=stage_var)
+    # Pool A,B
     if (i <= 1):
         stage.place(x=55 + (i *70), y=25)
-    elif (i <= 14):
-        stage.place(x=55 + ((i - 2) *24), y=65)
-    elif (i <= 24):
-        stage.place(x=55 + ((i - 15) *24), y=85)
+    # Winners
+    elif (i <= 4):
+        stage.place(x=136 + ((i - 2) *54), y=65)
+    elif (i <= 6):
+        stage.place(x=352 + ((i - 5) *27), y=65)
+    # Losers
+    elif (i <= 17):
+        stage.place(x=55 + ((i - 7) *27), y=85)
+    elif (i == 18):
+        stage.place(x=55 + ((i - 6) *27), y=85)
+    elif (i <= 20):
+        stage.place(x=55 + ((i - 6) *27), y=65)
     else:
         stage.place(x=55, y=105)
 
 stage_typing = ttk.Entry(scoreboard, width=20)
 stage_typing.place(x=80, y=105)
+
+option_bestof = ('BO3', 'BO5')
+bestof_variable = tk.StringVar()
+combo_bestof = ttk.Combobox(scoreboard, values=option_bestof, textvariable=bestof_variable, state="readonly", width=10)
+combo_bestof.set(option_bestof[0])
+combo_bestof.place(x=80, y=135)
 
 pName1 = ttk.Entry(scoreboard, width=20)
 pName1.place(x=55, y=180)
@@ -1495,6 +1505,7 @@ pTeam1.insert(tk.END, jsonfile_load["pTeam1"])
 pTeam2.insert(tk.END, jsonfile_load["pTeam2"])
 stage_var.set(stage_text.index(jsonfile_load["stage"]))
 stage_typing.insert(tk.END, jsonfile_load["stage_typing"])
+combo_bestof.set(jsonfile_load["bestofN"])
 pScore1.set(int(jsonfile_load["pScore1"]))
 pScore2.set(int(jsonfile_load["pScore2"]))
 
