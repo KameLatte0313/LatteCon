@@ -22,6 +22,7 @@ var scObj;
 var scObjOld = {
     stage: '',
     stage_typing: '',
+    bestofN: '',
     pTeam1: '',
     pTeam2: '',
     pName1: '',
@@ -120,9 +121,9 @@ function update() {
         document.getElementById("pScore2").innerHTML = scObjOld['pScore2'] = scObj["pScore2"].toString();
         
         if (scObj['stage'] == "stage_typing") {
-            document.getElementById("stage").innerHTML = scObjOld['stage'] = scObj['stage_typing'];
+            document.getElementById("stage").innerHTML = scObjOld['stage'] = scObj['stage_typing'] + "/" + scObj['bestofN'];
         } else {
-            document.getElementById("stage").innerHTML = scObjOld['stage'] = scObj['stage'];
+            document.getElementById("stage").innerHTML = scObjOld['stage'] = scObj['stage'] + "/" + scObj['bestofN'];
         }
 
         firstupdate = false;
@@ -135,9 +136,9 @@ function update() {
         changeVal("pScore2");
 
         if (scObj['stage'] == "stage_typing") {
-            changeValtoData("stage", scObj['stage_typing']);
+            changeValtoData("stage", scObj['stage_typing'] + "/" + scObj['bestofN']);
         } else if (scObj['stage'] != "stage_typing") {
-            changeVal("stage");
+            changeValtoData("stage", scObj['stage'] + "/" + scObj['bestofN']);
         }
     }
     

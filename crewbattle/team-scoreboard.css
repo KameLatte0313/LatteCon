@@ -16,30 +16,27 @@ body {
 
 #background {
     position: absolute;
-    top: 20px;
-    left: 335px;
-    width: 1250px;
-    height: 154px;
-    background-image: url('../imgs/itsukushima-scoreboard-long-赤青グラデ.png');
-    background-size: 1250px 154px;
+    top: 12px;
+    width: 1920px;
+    height: 1080px;
+    background-image: url('../imgs/scoreboard.png');
+    background-size: 1920px 1080px;
 }
 
 #stagebackground {
     position: absolute;
-    width: 256px;
-    height: 65px;
-    top: 33px;
-    left: 11px;
-    background-image: url(../imgs/stage.png);
-    background-size: 256px 65px;
+    width: 1920px;
+    height: 1080px;
+    background-image: url(../imgs/Round.png);
+    background-size: 1920px 1080px;
 }
 
 #cb_upperColumn {
     position: absolute;
-    width: 211px;
+    width: 240px;
     height: 50px;
-    top: 40px;
-    left: 33px;
+    top: 39px;
+    left: 29px;
     color: white;
     font: bold;
     text-align: center;
