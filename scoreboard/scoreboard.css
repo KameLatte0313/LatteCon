@@ -18,7 +18,7 @@ body {
     position: absolute;
     width: 1920px;
     height: 1080px;
-    top: 12px;
+    top: 0px;
     background-image: url('../imgs/scoreboard.png');
     background-size: 1920px 1080px;
 }
@@ -36,37 +36,35 @@ body {
     position: absolute;
     width: 1920px;
     height: 1080px;
-    background-image: url(../imgs/Round.png);
     background-size: 1920px 1080px;
 }
 
 #stage {
     position: absolute;
-    width: 240px;
-    height: 50px;
-    top: 39px;
-    left: 29px;
-    color: white;
-    font: bold;
+    width: 225px;
+    height: 56px;
+    top: 40px;
+    left: 37px;
+    color: #333;
     text-align: center;
-    line-height: 50px;
+    line-height: 56px;
+    font-size: 25px;
     font-weight: bold;
-    font-size: 20px;
-    /* background-color: aqua; */
+    font-family: "游明朝", "YuMincho", serif;
 }
 
 #pName1 {
     position: absolute;
-    width: 403px;
-    height: 40px;
-    top: 63px;
-    left: 467px;
+    width: 390px;
+    height: 70px;
+    top: 41px;
+    left: 385px;
     text-align: center;
-    line-height: 40px;
-    color: white;
-    font-size: 30px;
+    line-height: 70px;
+    color: #333;
+    font-size: 35px;
     font-weight: bold;
-    font-family: 'corpoM';
+    font-family: "游明朝", "YuMincho", serif;
 }
 
 #score1background {
@@ -75,21 +73,21 @@ body {
     height: 78px;
     top: 40px;
     left: 282px;
-    background-image: url(../imgs/紅葉イラスト.png);
     background-size: 85px 78px;
 }
 
 #pScore1 {
     position: absolute;
-    width: 85px;
-    height: 78px;
-    top: 45px;
-    left: 282px;
+    width: 60px;
+    height: 70px;
+    top: 41px;
+    left: 775px;
     text-align: center;
-    line-height: 78px;
+    line-height: 70px;
     font-size: 35px;
     font-weight: bold;
-    color: white;
+    color: #fff;
+    font-family: "游明朝", "YuMincho", serif;
 }
 
 #score2background {
@@ -98,35 +96,35 @@ body {
     height: 78px;
     top: 40px;
     right: 282px;
-    background-image: url(../imgs/紅葉イラスト.png);
     background-size: 85px 78px;
 }
 
 #pScore2 {
     position: absolute;
-    width: 85px;
-    height: 78px;
-    top: 45px;
-    right: 282px;
+    width: 60px;
+    height: 70px;
+    top: 41px;
+    right: 775px;
     text-align: center;
-    line-height: 78px;
+    line-height: 70px;
     font-size: 35px;
     font-weight: bold;
-    color: white;
+    color: #fff;
+    font-family: "游明朝", "YuMincho", serif;
 }
 
 #pName2 {
     position: absolute;
-    width: 403px;
-    height: 40px;
-    top: 63px;
-    right: 467px;
+    width: 390px;
+    height: 70px;
+    top: 41px;
+    right: 385px;
     text-align: center;
-    line-height: 40px;
-    color: white;
-    font-size: 30px;
+    line-height: 70px;
+    color: #333;
+    font-size: 35px;
     font-weight: bold;
-    font-family: 'corpoM';
+    font-family: "游明朝", "YuMincho", serif;
 }
 
 .hidden {
