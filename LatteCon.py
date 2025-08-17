@@ -582,13 +582,73 @@ def rrClear(event):
 def alwaysOnTop():
     root.attributes("-topmost", always_top_value.get())
 
+# 左プレイヤーのスコアをプラス1する関数
+def incrementLeftScore(event):
+    if (game1_var.get() == 1):
+        game1_var.set(0)
+    elif (game2_var.get() == 1):
+        game2_var.set(0)
+    elif (game3_var.get() == 1):
+        game3_var.set(0)
+    elif (game4_var.get() == 1):
+        game4_var.set(0)
+    elif (game5_var.get() == 1):
+        game5_var.set(0)
+    
+    SetJSON(None)
+
+# 右プレイヤーのスコアをプラス1する関数
+def incrementRightScore(event):
+    if (game1_var.get() == 1):
+        game1_var.set(2)
+    elif (game2_var.get() == 1):
+        game2_var.set(2)
+    elif (game3_var.get() == 1):
+        game3_var.set(2)
+    elif (game4_var.get() == 1):
+        game4_var.set(2)
+    elif (game5_var.get() == 1):
+        game5_var.set(2)
+    
+    SetJSON(None)
+
+# ショートカットキー情報モーダレスを表示する関数
+def createShortCutInfoKeyModeless():
+    shortcut_modeless = tk.Toplevel()
+    shortcut_modeless.title("ショートカットキー情報") # ウィンドウタイトル
+    shortcut_modeless.geometry("300x200") # ウィンドウサイズ(幅x高さ)
+    label_ctrlS = ttk.Label(shortcut_modeless, text="・Ctrl + S → 更新")
+    label_ctrlS.place(x=10, y=15)
+    label_ctrlL = ttk.Label(shortcut_modeless, text="・Ctrl + L → 左プレイヤーのスコアをプラス１後に更新")
+    label_ctrlL.place(x=10, y=30)
+    label_ctrlR = ttk.Label(shortcut_modeless, text="・Ctrl + R → 右プレイヤーのスコアをプラス１後に更新")
+    label_ctrlR.place(x=10, y=45)
+
+# ショートカットキーの設定
+# Ctrl + S → スコアボードの更新
+root.bind("<Control-s>", SetJSON)
+root.bind("<Control-S>", SetJSON)
+
+# Ctrl + L → 左プレイヤーのスコアをプラス1
+root.bind("<Control-l>", incrementLeftScore)
+root.bind("<Control-L>", incrementLeftScore)
+
+# Ctrl + R → 右プレイヤーのスコアをプラス1
+root.bind("<Control-r>", incrementRightScore)
+root.bind("<Control-R>", incrementRightScore)
+
 # メニューバーの作成
 menubar = tk.Menu(root)
 root.config(menu=menubar)
+# 設定メニューの作成
 config_menu = tk.Menu(menubar, tearoff=False)
 always_top_value = tk.BooleanVar()
 config_menu.add_checkbutton(label = "常に最前面に表示する", variable=always_top_value, command=alwaysOnTop)
 menubar.add_cascade(label="設定", menu=config_menu)
+# ヘルプメニューの作成
+help_menu = tk.Menu(menubar, tearoff=False)
+help_menu.add_command(label = "ショートカットキー情報", command = createShortCutInfoKeyModeless)
+menubar.add_cascade(label="ヘルプ", menu=help_menu)
 
 # Notebookウィジェットの作成
 notebook = ttk.Notebook(root)
