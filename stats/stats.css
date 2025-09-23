@@ -1,0 +1,99 @@
+body {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 1920px;
+    height: 1080px;
+    font-family: "corpoB";
+}
+
+#recent_results1 {
+    position: absolute;
+    width: 260px;
+    height: 50px;
+    left: 30px;
+    bottom: 385px;
+    background: linear-gradient(0deg, #b61b1b, #FE3334);
+    clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 100%, 0 100%);
+    padding-left: 30px;
+    color: white;
+    line-height: 55px;
+    text-align: left;
+    font-size: 25px;
+    opacity: 0.99;
+}
+
+#recent_results2 {
+    position: absolute;
+    width: 260px;
+    height: 50px;
+    right: 30px;
+    bottom: 385px;
+    background: linear-gradient(0deg, #16529b, #298BFF);
+    clip-path: polygon(18px 0, 100% 0, 100% 100%, 0 100%);
+    padding-right: 30px;
+    color: white;
+    line-height: 55px;
+    text-align: right;
+    font-size: 25px;
+    opacity: 0.99;
+}
+
+#player1 {
+    position: absolute;
+    width: 600px;
+    height: 350px;
+    left: 30px;
+    bottom: 30px;
+    background: linear-gradient(0deg, #000, #222);
+    opacity: 0.998;
+    border-top: #b61b1b 5px solid;
+}
+
+#player2 {
+    position: absolute;
+    width: 600px;
+    height: 350px;
+    right: 30px;
+    bottom: 30px;
+    background: linear-gradient(0deg, #000, #222);
+    opacity: 0.998;
+    border-top: #16529b 5px solid;
+}
+
+.row1 {
+    margin-left: 30px;
+    display: flex;
+    width: 540px;
+    height: 70px;
+    color: white;
+    line-height: 70px;
+    font-size: 25px;
+    box-sizing: border-box;
+}
+
+.row2 {
+    margin-left: 30px;
+    display: flex;
+    width: 540px;
+    height: 70px;
+    color: white;
+    line-height: 70px;
+    font-size: 25px;
+    box-sizing: border-box;
+}
+
+.border_bottom {
+    border-bottom: #555 1px solid;
+}
+
+.tournament_name {
+    width: 70%;
+    text-align: left;
+    overflow: hidden;
+}
+
+.stats {
+    width: 30%;
+    text-align: center;
+}

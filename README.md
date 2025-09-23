@@ -67,7 +67,7 @@ LatteConコミュニティーサーバーをDiscordにて作成しました。
 ## LISCENSE
 
 ### LatteCon.exe
-Copyright (c) 2023, Kamelatte
+Copyright (c) 2023-2025, Kamelatte
 
 ## StreamControl.exe
 Original work Copyright (c) 2012-2015, Tan Yu Sheng
