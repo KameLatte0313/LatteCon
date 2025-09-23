@@ -1,9 +1,14 @@
-# tkinterのインポート
+# インポート
 import tkinter as tk
 import tkinter.ttk as ttk
+from tkinter import messagebox
 import json
 import time
 import math
+import requests
+import os
+import shutil
+import re
 
 # rootメインウィンドウの設定
 root = tk.Tk()
@@ -13,7 +18,7 @@ root.geometry("530x500")
 timestamp = math.floor(time.time())
 
 
-# 入力データをJSONに保存する関数
+#region 入力データをJSONに保存する関数
 def SetJSON(event):
     GF_WL1 = ""
     GF_WL2 = ""
@@ -47,6 +52,7 @@ def SetJSON(event):
 
     dic = {
         'timestamp': str(timestamp),
+        # スコアボードタブ
         'pName1': pName1.get(),
         'pName2': pName2.get(),
         'pTeam1': pTeam1.get(),
@@ -63,10 +69,45 @@ def SetJSON(event):
         'GF-WL1': GF_WL1,
         'GF-WL2': GF_WL2,
         'tournament_name': tournament_name.get(),
+        # 戦績タブ
+        'st_pName1': st_pName1.get(),
+        'st_pName2': st_pName2.get(),
+        'st_p1_0_tournament_name': st_p1PlacementsInfo[0][0].get(),
+        'st_p1_0_entrants': st_p1PlacementsInfo[0][1].get(),
+        'st_p1_0_placement': st_p1PlacementsInfo[0][2].get(),
+        'st_p1_1_tournament_name': st_p1PlacementsInfo[1][0].get(),
+        'st_p1_1_entrants': st_p1PlacementsInfo[1][1].get(),
+        'st_p1_1_placement': st_p1PlacementsInfo[1][2].get(),
+        'st_p1_2_tournament_name': st_p1PlacementsInfo[2][0].get(),
+        'st_p1_2_entrants': st_p1PlacementsInfo[2][1].get(),
+        'st_p1_2_placement': st_p1PlacementsInfo[2][2].get(),
+        'st_p1_3_tournament_name': st_p1PlacementsInfo[3][0].get(),
+        'st_p1_3_entrants': st_p1PlacementsInfo[3][1].get(),
+        'st_p1_3_placement': st_p1PlacementsInfo[3][2].get(),
+        'st_p1_4_tournament_name': st_p1PlacementsInfo[4][0].get(),
+        'st_p1_4_entrants': st_p1PlacementsInfo[4][1].get(),
+        'st_p1_4_placement': st_p1PlacementsInfo[4][2].get(),
+        'st_p2_0_tournament_name': st_p2PlacementsInfo[0][0].get(),
+        'st_p2_0_entrants': st_p2PlacementsInfo[0][1].get(),
+        'st_p2_0_placement': st_p2PlacementsInfo[0][2].get(),
+        'st_p2_1_tournament_name': st_p2PlacementsInfo[1][0].get(),
+        'st_p2_1_entrants': st_p2PlacementsInfo[1][1].get(),
+        'st_p2_1_placement': st_p2PlacementsInfo[1][2].get(),
+        'st_p2_2_tournament_name': st_p2PlacementsInfo[2][0].get(),
+        'st_p2_2_entrants': st_p2PlacementsInfo[2][1].get(),
+        'st_p2_2_placement': st_p2PlacementsInfo[2][2].get(),
+        'st_p2_3_tournament_name': st_p2PlacementsInfo[3][0].get(),
+        'st_p2_3_entrants': st_p2PlacementsInfo[3][1].get(),
+        'st_p2_3_placement': st_p2PlacementsInfo[3][2].get(),
+        'st_p2_4_tournament_name': st_p2PlacementsInfo[4][0].get(),
+        'st_p2_4_entrants': st_p2PlacementsInfo[4][1].get(),
+        'st_p2_4_placement': st_p2PlacementsInfo[4][2].get(),
+        # MCタブ
         'mc_name1': mc_name1.get(),
         'mc_name2': mc_name2.get(),
         'mc_xid1': mc_xid1.get(),
         'mc_xid2': mc_xid2.get(),
+        # TOP8タブ
         'top8_1_1': top8_1_1.get(),
         'top8_1_2': top8_1_2.get(),
         'top8_1_3': top8_1_3.get(),
@@ -107,6 +148,7 @@ def SetJSON(event):
         'top8_3_4_score': str(top8_3_4_score.get()),
         'top8_4_3_score': str(top8_4_3_score.get()),
         'top8_4_4_score': str(top8_4_4_score.get()),
+        # クルーバトルタブ
         'cb_memberNum': str(cb_memberNum.get()),
         'cb_autocalc': cb_autocalc,
         'cb_upperleft': cb_upperleft.get(),
@@ -153,6 +195,7 @@ def SetJSON(event):
         'cb_2_7_score': str(cb_2_7_score.get()),
         'cb_2_8_score': str(cb_2_8_score.get()),
         'cb_2_9_score': str(cb_2_9_score.get()),
+        # 事前入力タブ
         'inad_1_1': inad_1[0].get(),
         'inad_1_2': inad_1[1].get(),
         'inad_1_3': inad_1[2].get(),
@@ -189,6 +232,7 @@ def SetJSON(event):
         'inad_4_7': inad_4[6].get(),
         'inad_4_8': inad_4[7].get(),
         'inad_4_9': inad_4[8].get(),
+        # 3人総当たりタブ
         'rr_pool': rr_pool.get(),
         'rr_p1': rr_p1.get(),
         'rr_p2': rr_p2.get(),
@@ -220,6 +264,8 @@ def SetJSON(event):
     }
     with open("datafile/LatteCon.json", "w", encoding="utf-8") as outputFile:
         json.dump(dic, outputFile, indent=4, ensure_ascii=False )
+
+#endregion
 
 # クルーバトルのメンバー名をクリアする関数
 def cbClearAllName(event):
@@ -578,6 +624,520 @@ def rrClear(event):
     rr_2vs3_2.set(0)
     rr_2vs3_3.set(0)
 
+# (戦績出力タブ)大会ID取得用モーダレスを表示する関数
+def createGetTournamentIDModeless(event):
+    getTournamentID_modeless = tk.Toplevel()
+    getTournamentID_modeless.title("大会ID取得") # ウィンドウタイトル
+    getTournamentID_modeless.geometry("520x200") # ウィンドウサイズ(幅x高さ)
+
+    modeless_label_1 = ttk.Label(getTournamentID_modeless, text="大会IDはstart.ggのURLから取得できます。")
+    modeless_label_1.place(x=10, y=15)
+    modeless_label_2 = ttk.Label(getTournamentID_modeless, text="例：「https://www.start.gg/tournament/10-kagaribi-10/events」なら「10-kagaribi-10」が大会ID")
+    modeless_label_2.place(x=10, y=35)
+    modeless_label_3 = ttk.Label(getTournamentID_modeless, text="以下の機能を使うことで、start.ggのURLから大会IDを取得することが可能です。")
+    modeless_label_3.place(x=10, y=70)
+
+    modeless_label_url = ttk.Label(getTournamentID_modeless, text="大会URL")
+    modeless_label_url.place(x=10, y=100)
+    modeless_textbox_url = ttk.Entry(getTournamentID_modeless, width=38)
+    modeless_textbox_url.place(x=60, y=100)
+
+    modeless_button_GetTournamentID = ttk.Button(getTournamentID_modeless, text=u'URLから大会IDを取得', width=20)
+    modeless_button_GetTournamentID.place(x=300, y=97)
+
+    modeless_label_id = ttk.Label(getTournamentID_modeless, text="大会ID")
+    modeless_label_id.place(x=10, y=145)
+    modeless_textbox_id = ttk.Entry(getTournamentID_modeless, width=38)
+    modeless_textbox_id.place(x=60, y=145)
+
+    modeless_button_SetTournamentID = ttk.Button(getTournamentID_modeless, text=u'大会IDをセット', width=20)
+    modeless_button_SetTournamentID.place(x=300, y=142)
+
+    # (大会ID取得用モーダレス)URLから大会IDを取得する関数
+    def getTournamentIDfromURL(event):
+        url = modeless_textbox_url.get()
+        if url == "":
+            messagebox.showerror("エラー", "URLを入力してください。")
+            return
+        
+        pattern = r"^https://www\.start\.gg/tournament/([^/]+)"
+        m = re.match(pattern, url)
+        if m:
+            result = m.group(1)
+            modeless_textbox_id.delete(0, tk.END)
+            modeless_textbox_id.insert(tk.END, result)
+        else:
+            messagebox.showerror("エラー", "入力されたURLが正しい形式ではありません。")
+
+    # (大会ID取得用モーダレス)大会IDをセットする関数
+    def setTournamentID(event):
+        if modeless_textbox_id.get() == "":
+            messagebox.showerror("エラー", "大会IDが入力されていません。")
+            return
+        
+        api_tournamentID.delete(0, tk.END)
+        api_tournamentID.insert(tk.END, modeless_textbox_id.get())
+        messagebox.showinfo("確認", "大会IDをセットしました。")
+    
+    modeless_button_GetTournamentID.bind("<Button-1>", getTournamentIDfromURL)
+    modeless_button_SetTournamentID.bind("<Button-1>", setTournamentID)
+
+# (戦績出力タブ)大会IDからイベントIDを取得する関数
+def apiGetEventID(event):
+    # トークンが未入力の場合はエラー
+    if api_token.get() == "":
+        messagebox.showerror("エラー", "①start.ggトークンを入力してください。")
+        return
+    # 大会IDが未入力の場合はエラー
+    if api_tournamentID.get() == "":
+        messagebox.showerror("エラー", "②大会IDを入力してください。")
+        return
+
+    url = "https://api.start.gg/gql/alpha"
+    headers = {
+        "Authorization": "Bearer " + api_token.get(),
+        "Content-Type": "application/json"
+    }
+
+    query = """
+    query GetTournamentEvents($slug: String!) {
+    tournament(slug: $slug) {
+        id
+        name
+        events {
+        id
+        name
+        }
+    }
+    }
+    """
+    variables = {"slug": api_tournamentID.get()}  # 大会のIDを入力
+    response = requests.post(url, headers=headers, json={"query": query, "variables": variables})
+    # APIレスポンスを整形
+    data = response.json()
+    events = data.get("data", {}).get("tournament", {}).get("events", [])
+    # 確認用に大会名も取得しておく
+    tournament_name = data.get("data", {}).get("tournament", {}).get("name")
+    if events:
+        # 正常にresponseが得られた場合のみAPIトークンをjsonに保存
+        token_json = {
+            "token": api_token.get()
+        }
+        with open("datafile/token.json", "w", encoding="utf-8") as f:
+            json.dump(token_json, f, ensure_ascii=False, indent=4)
+        
+        eventsInfo = []
+        events_json = []
+        for event in events:
+            eventID = str(event.get("id")) + "/" + event.get("name")
+            eventsInfo.append(eventID)
+            events_json.append({
+                "event_name": event.get("name"),
+                "event_id": str(event.get("id"))
+            })
+        
+        api_eventID["values"] = eventsInfo
+        api_eventID.set("")
+        messagebox.showinfo("確認", "正常にイベントIDを取得しました。")
+
+        # 作成するディレクトリのパスを指定
+        dir_path = "./datafile/" + api_tournamentID.get()
+        # ディレクトリが存在するか確認
+        if not os.path.exists(dir_path):
+            os.mkdir(dir_path)
+        # 大会情報をjsonに記録
+        with open("datafile/tournaments.json", "r", encoding="utf-8") as f:
+            tournaments_json = json.load(f)
+        
+        tournament_exists_fg = False
+        for tournament in tournaments_json:
+            if tournament.get("tournament_id") == api_tournamentID.get():
+                tournament_exists_fg = True
+                break
+        
+        if not tournament_exists_fg:
+            tournaments_json.append({
+                "tournament_name": tournament_name,
+                "tournament_id": api_tournamentID.get(),
+                "events": events_json
+            })
+            with open("datafile/tournaments.json", "w", encoding="utf-8") as f:
+                json.dump(tournaments_json, f, ensure_ascii=False, indent=4)
+            # 戦績タブの大会コンボボックスを更新
+            current_tournamentInfoCombo = list(st_tournamentInfo["values"])
+            tournamentInfo = tournament_name + "/" + api_tournamentID.get()
+            current_tournamentInfoCombo.append(tournamentInfo)
+            st_tournamentInfo["values"] = current_tournamentInfoCombo
+    
+# (戦績出力タブ)イベントIDからイベント参加者一覧を取得する関数
+def apiGetEntrants(event):
+    # トークンが未入力の場合はエラー
+    if api_token.get() == "":
+        messagebox.showerror("エラー", "①start.ggトークンを入力してください。")
+        return
+    # 大会を選択してない場合はエラー
+    if api_eventID.get() == "":
+        messagebox.showerror("エラー", "①から大会を選択してください。")
+        return
+
+    url = "https://api.start.gg/gql/alpha"
+    headers = {
+        "Authorization": "Bearer " + api_token.get(),
+        "Content-Type": "application/json"
+    }
+
+    query = """
+    query GetEventEntrants($eventId: ID!, $page: Int!) {
+    event(id: $eventId) {
+        id
+        name
+        entrants(query: {page: $page, perPage: 512}) {
+        pageInfo {
+            totalPages
+        }
+        nodes {
+            name
+            participants {
+            gamerTag
+            user {
+                player {
+                    id
+                }
+            }
+            }
+        }
+        }
+    }
+    }
+    """
+    event_id = api_eventID.get().split('/')[0]
+    variables = {"eventId": event_id, "page": 1}
+    response = requests.post(url, headers=headers, json={"query": query, "variables": variables})
+    # APIレスポンスを整形
+    data = response.json()
+    players = data.get("data", {}).get("event", {}).get("entrants", {}).get("nodes", [])
+    if players:
+        listbox_entrants.delete(0, tk.END)
+        listbox_done_entrants.delete(0, tk.END)
+        for player in players:
+            name = player.get("participants", [])[0].get("gamerTag")
+            player_id = player.get("participants", [])[0].get("user", {}).get("player", {}).get("id")
+            listbox_entrants.insert(tk.END, name + "-" + str(player_id))
+
+# (戦績出力タブ)参加者一覧リストボックスの選択上限チェック
+def apiListboxSelected(event):
+    max_selection = 10
+    selected_players_index = listbox_entrants.curselection()
+    if len(selected_players_index) > max_selection:
+        messagebox.showerror("エラー", "10人以上の選択はできません。")
+        # 最後に選んだ要素を解除
+        listbox_entrants.selection_clear(selected_players_index[-1])
+
+# (戦績出力タブ)選択したプレイヤーの大会戦績を取得する関数
+def apiGetPlacements(event):
+    # トークンが未入力の場合はエラー
+    if api_token.get() == "":
+        messagebox.showerror("エラー", "①start.ggトークンを入力してください。")
+        return
+    
+    selected_players_index = listbox_entrants.curselection()
+
+    if len(selected_players_index) == 0:
+        messagebox.showerror("エラー", "⑥参加者一覧から戦績を出力したい人を選択してください。")
+        return
+
+    url = "https://api.start.gg/gql/alpha"
+    headers = {
+        "Authorization": "Bearer " + api_token.get(),
+        "Content-Type": "application/json"
+    }
+    query = """
+    query PlayerTournamentResults($playerId: ID!) {
+        player(id: $playerId) {
+            recentStandings(limit: 5) {
+                placement
+                entrant {
+                    name
+                    event {
+                        name
+                        numEntrants
+                        tournament {
+                            name
+                            numAttendees
+                        }
+                    }
+                }
+            }
+        }
+    }
+    """
+    
+    for index in selected_players_index:
+        # プレイヤー名にハイフンが入る場合を考慮して配列の一番後ろを取得
+        selected_player = listbox_entrants.get(index)
+        player_id = selected_player.split('-')[-1]
+        player_name = selected_player[0:len(selected_player)-len(player_id)-1].replace('/', '／')
+        variables = {"playerId": player_id}
+        response = requests.post(url, headers=headers, json={"query": query, "variables": variables})
+        # APIレスポンスを整形
+        data = response.json()
+        standings = data.get("data", {}).get("player", {}).get("recentStandings", [])
+        results = []
+        if standings:
+            for standing in standings:
+                tournament_name = standing.get("entrant", {}).get("event", {}).get("tournament", {}).get("name")
+                entrants_num = standing.get("entrant", {}).get("event", {}).get("numEntrants")
+                placement = standing.get("placement")
+                results.append({
+                    "tournament_name": tournament_name,
+                    "entrants": entrants_num,
+                    "placement": placement
+                })
+            # 戦績をjsonに出力
+            with open("datafile/" + api_tournamentID.get() +"/" + player_name + ".json", "w", encoding="utf-8") as f:
+                json.dump(results, f, ensure_ascii=False, indent=4)
+            listbox_done_entrants.insert(tk.END, selected_player)
+
+# (戦績出力タブ)リストボックスの選択解除
+def apiClearSelect(event):
+    listbox_entrants.selection_clear(0, tk.END)
+
+# (戦績タブ)大会コンボボックス選択時のイベント
+def stChangeTournamentCombo(event):
+    tournament_id = st_tournamentInfo.get().split('/')[-1]
+    folder_path = "datafile/" + tournament_id
+
+    # 指定した大会のフォルダが存在しない場合は作成する
+    if not os.path.exists(folder_path):
+        os.mkdir(folder_path)
+    
+    files = [f for f in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, f))]
+
+    st_listbox_entrants.delete(0, tk.END)
+    for file in files:
+        file_name = file.split('.')[0]
+        st_listbox_entrants.insert(tk.END, file_name)
+
+# (戦績タブ)大会情報削除ボタン押下時
+def stRemoveFolder(event):
+    # 大会を選択してない場合はエラー
+    if st_tournamentInfo.get() == "":
+        messagebox.showerror("エラー", "①から大会を選択してください。")
+        return
+
+    ret = messagebox.askyesno('確認', 'この大会情報を削除しますか？\nこの大会情報に紐づくプレイヤーの戦績も削除されます。')
+    if ret == True:
+        tournament_id = st_tournamentInfo.get().split('/')[-1]
+        folder_path = "datafile/" + tournament_id
+        # フォルダの削除
+        shutil.rmtree(folder_path)
+        # リストボックスのクリア
+        st_listbox_entrants.delete(0, tk.END)
+
+        try:
+            with open("datafile/tournaments.json", "r", encoding="utf-8") as f:
+                tournaments_json = json.load(f)
+            # 戦績タブのコンボボックス用リスト
+            tournamentsInfo = []
+            # tournaments.json書き換え用リスト
+            update_tournaments_json = []
+            for tournament in tournaments_json:
+                if tournament.get("tournament_id") != tournament_id:
+                    tournamentInfo = tournament.get("tournament_name") + "/" + tournament.get("tournament_id")
+                    tournamentsInfo.append(tournamentInfo)
+                    update_tournaments_json.append(tournament)
+            
+            st_tournamentInfo["values"] = tournamentsInfo
+            # 戦績タブのコンボボックスを何も選んでいない状態にする
+            st_tournamentInfo.set("")
+
+            # tournaments.jsonから大会情報を削除
+            with open("datafile/tournaments.json", "w", encoding="utf-8") as f:
+                json.dump(update_tournaments_json, f, ensure_ascii=False, indent=4)
+
+        except FileNotFoundError:
+            tournaments_json = []
+            with open("datafile/tournaments.json", "w", encoding="utf-8") as f:
+                json.dump(tournaments_json, f, ensure_ascii=False, indent=4)
+            messagebox.showerror("エラー", "予期せぬエラーが発生しました。")
+            return
+
+# (戦績タブ)両プレイヤーの戦績取得
+def stGetPlacements(event):
+    # 大会を選択してない場合はエラー
+    if st_tournamentInfo.get() == "":
+        messagebox.showerror("エラー", "①から大会を選択してください。")
+        return
+    
+    tournament_id = st_tournamentInfo.get().split('/')[-1]
+
+    p1Name = st_pName1.get().replace('/', '／')
+    p2Name = st_pName2.get().replace('/', '／')
+    p1file_name = "datafile/" + tournament_id + "/" + p1Name + ".json"
+    p2file_name = "datafile/" + tournament_id + "/" + p2Name + ".json"
+
+    try:
+        with open(p1file_name, "r", encoding="utf-8") as f:
+            p1Placements = json.load(f)
+        with open(p2file_name, "r", encoding="utf-8") as f:
+            p2Placements = json.load(f)
+    except FileNotFoundError:
+        messagebox.showerror("エラー", "このプレイヤーは戦績が出力されていません。\n戦績出力タブから戦績を出力してください。")
+        return
+
+    for i in range(5):
+        for j in range(3):
+            st_p1PlacementsInfo[i][j].delete(0, tk.END)
+            st_p2PlacementsInfo[i][j].delete(0, tk.END)
+    
+    for i in range(len(p1Placements)):
+        st_p1PlacementsInfo[i][0].insert(tk.END, p1Placements[i].get("tournament_name"))
+        st_p1PlacementsInfo[i][1].insert(tk.END, p1Placements[i].get("entrants"))
+        st_p1PlacementsInfo[i][2].insert(tk.END, p1Placements[i].get("placement"))
+    
+    for i in range(len(p2Placements)):
+        st_p2PlacementsInfo[i][0].insert(tk.END, p2Placements[i].get("tournament_name"))
+        st_p2PlacementsInfo[i][1].insert(tk.END, p2Placements[i].get("entrants"))
+        st_p2PlacementsInfo[i][2].insert(tk.END, p2Placements[i].get("placement"))
+
+# (戦績タブ)プレイヤー1の戦績取得ボタン押下時
+def stGetP1Placements(event):
+    # 大会を選択してない場合はエラー
+    if st_tournamentInfo.get() == "":
+        messagebox.showerror("エラー", "①から大会を選択してください。")
+        return
+    # プレイヤー名が未入力の場合はエラー
+    if st_pName1.get() == "":
+        messagebox.showerror("エラー", "プレイヤー名が未入力です。")
+        return
+    
+    tournament_id = st_tournamentInfo.get().split('/')[-1]
+
+    p1Name = st_pName1.get().replace('/', '／')
+    p1file_name = "datafile/" + tournament_id + "/" + p1Name + ".json"
+
+    try:
+        with open(p1file_name, "r", encoding="utf-8") as f:
+            p1Placements = json.load(f)
+    except FileNotFoundError:
+        messagebox.showerror("エラー", "このプレイヤーは戦績が出力されていません。\n戦績出力タブから戦績を出力してください。")
+        return
+    
+    for i in range(5):
+        for j in range(3):
+            st_p1PlacementsInfo[i][j].delete(0, tk.END)
+    
+    for i in range(len(p1Placements)):
+        st_p1PlacementsInfo[i][0].insert(tk.END, p1Placements[i].get("tournament_name"))
+        st_p1PlacementsInfo[i][1].insert(tk.END, p1Placements[i].get("entrants"))
+        st_p1PlacementsInfo[i][2].insert(tk.END, p1Placements[i].get("placement"))
+
+# (戦績タブ)プレイヤー2の戦績取得ボタン押下時
+def stGetP2Placements(event):
+    # 大会を選択してない場合はエラー
+    if st_tournamentInfo.get() == "":
+        messagebox.showerror("エラー", "①から大会を選択してください。")
+        return
+    # プレイヤー名が未入力の場合はエラー
+    if st_pName2.get() == "":
+        messagebox.showerror("エラー", "プレイヤー名が未入力です。")
+        return
+    
+    tournament_id = st_tournamentInfo.get().split('/')[-1]
+
+    p2Name = st_pName2.get().replace('/', '／')
+    p2file_name = "datafile/" + tournament_id + "/" + p2Name + ".json"
+
+    try:
+        with open(p2file_name, "r", encoding="utf-8") as f:
+            p2Placements = json.load(f)
+    except FileNotFoundError:
+        messagebox.showerror("エラー", "このプレイヤーは戦績が出力されていません。\n戦績出力タブから戦績を出力してください。")
+        return
+    
+    for i in range(5):
+        for j in range(3):
+            st_p2PlacementsInfo[i][j].delete(0, tk.END)
+    
+    for i in range(len(p2Placements)):
+        st_p2PlacementsInfo[i][0].insert(tk.END, p2Placements[i].get("tournament_name"))
+        st_p2PlacementsInfo[i][1].insert(tk.END, p2Placements[i].get("entrants"))
+        st_p2PlacementsInfo[i][2].insert(tk.END, p2Placements[i].get("placement"))
+
+# (戦績タブ)リストボックスで選択したプレイヤー名をP1にセットする関数
+def stSetP1Name(event):
+    if len(st_listbox_entrants.curselection()) == 0:
+        messagebox.showerror("エラー", "②からプレイヤーを選択してください。")
+        return
+    
+    st_pName1.delete(0, tk.END)
+    st_pName1.insert(tk.END, st_listbox_entrants.get(st_listbox_entrants.curselection()[0]))
+    for i in range(5):
+        for j in range(3):
+            st_p1PlacementsInfo[i][j].delete(0, tk.END)
+    
+    if st_autoSetVal.get() == True:
+        stGetP1Placements(None)
+
+# (戦績タブ)リストボックスで選択したプレイヤー名をP2にセットする関数
+def stSetP2Name(event):
+    if len(st_listbox_entrants.curselection()) == 0:
+        messagebox.showerror("エラー", "②からプレイヤーを選択してください。")
+        return
+    
+    st_pName2.delete(0, tk.END)
+    st_pName2.insert(tk.END, st_listbox_entrants.get(st_listbox_entrants.curselection()[0]))
+    for i in range(5):
+        for j in range(3):
+            st_p2PlacementsInfo[i][j].delete(0, tk.END)
+    
+    if st_autoSetVal.get() == True:
+        stGetP2Placements(None)
+
+# (戦績タブ)スコアボードに入力されているプレイヤー名をセットする関数
+def stSetNamesFromScoreBoard(event):
+    if pName1.get() == "" or pName2.get() == "":
+        messagebox.showerror("エラー", "スコアボードにプレイヤー名が入力されていません。")
+        return
+
+    st_pName1.delete(0, tk.END)
+    st_pName1.insert(tk.END, pName1.get())
+    st_pName2.delete(0, tk.END)
+    st_pName2.insert(tk.END, pName2.get())
+    for i in range(5):
+        for j in range(3):
+            st_p1PlacementsInfo[i][j].delete(0, tk.END)
+            st_p2PlacementsInfo[i][j].delete(0, tk.END)
+    
+    if st_autoSetVal.get() == True:
+        stGetPlacements(None)
+
+# (戦績タブ)戦績タブの左右データを入れ替える関数
+def stSwap(event):
+    swapVal = st_pName1.get()
+    st_pName1.delete(0, tk.END)
+    st_pName1.insert(tk.END, st_pName2.get())
+    st_pName2.delete(0, tk.END)
+    st_pName2.insert(tk.END, swapVal)
+
+    for i in range(5):
+        for j in range(3):
+            swapVal = st_p1PlacementsInfo[i][j].get()
+            st_p1PlacementsInfo[i][j].delete(0, tk.END)
+            st_p1PlacementsInfo[i][j].insert(tk.END, st_p2PlacementsInfo[i][j].get())
+            st_p2PlacementsInfo[i][j].delete(0, tk.END)
+            st_p2PlacementsInfo[i][j].insert(tk.END, swapVal)
+
+# (戦績タブ)戦績データをクリアする関数
+def stClear(event):
+    st_pName1.delete(0, tk.END)
+    st_pName2.delete(0, tk.END)
+
+    for i in range(5):
+        for j in range(3):
+            st_p1PlacementsInfo[i][j].delete(0, tk.END)
+            st_p2PlacementsInfo[i][j].delete(0, tk.END)
+
 # LatteCon.exeを最前面に固定する関数
 def alwaysOnTop():
     root.attributes("-topmost", always_top_value.get())
@@ -637,6 +1197,8 @@ root.bind("<Control-L>", incrementLeftScore)
 root.bind("<Control-r>", incrementRightScore)
 root.bind("<Control-R>", incrementRightScore)
 
+#region スコアボードの設定
+
 # メニューバーの作成
 menubar = tk.Menu(root)
 root.config(menu=menubar)
@@ -655,6 +1217,8 @@ notebook = ttk.Notebook(root)
 
 # タブの作成
 scoreboard = tk.Frame(notebook)
+standing = tk.Frame(notebook)
+api = tk.Frame(notebook)
 mc = tk.Frame(notebook)
 TOP8 = tk.Frame(notebook)
 crewbattle = tk.Frame(notebook)
@@ -663,6 +1227,8 @@ roundrobin = tk.Frame(notebook)
 
 # notebookにタブを追加
 notebook.add(scoreboard, text="スコアボード")
+notebook.add(standing, text="戦績")
+notebook.add(api, text="戦績出力")
 notebook.add(mc, text="MC")
 notebook.add(TOP8, text="TOP8")
 notebook.add(crewbattle, text="クルーバトル")
@@ -676,7 +1242,7 @@ Button_save.bind("<Button-1>",SetJSON)
 Button_save.pack(anchor = tk.NW)
 notebook.pack(expand=True, fill='both', padx=10, pady=10)
 
-# -------------スコアボード-------------
+#region スコアボードタブ
 # ラベル
 stage_info_text = ['R1','R2','R3','R4','R5','R6','R7','QF','SF',' F','GF','GF2','予選']
 for i in range(len(stage_info_text)):
@@ -852,7 +1418,219 @@ combo_GF_WL2 = ttk.Combobox(scoreboard, values=option_GF_WL2, textvariable=GF_WL
 combo_GF_WL2.set(option_GF_WL1[0])
 combo_GF_WL2.place(x=295, y=210)
 
-# ------------- MC -------------
+#endregion
+
+#region 戦績タブ
+
+# イベントIDコンボボックス
+st_label_eventID = ttk.Label(standing, text="①大会選択")
+st_label_eventID.place(x=5, y=5)
+st_tournamentInfo = ttk.Combobox(standing, state="readonly", width=40)
+st_tournamentInfo.place(x=5, y=25)
+st_tournamentInfo.bind("<<ComboboxSelected>>", stChangeTournamentCombo)
+
+# 大会フォルダ削除ボタン
+Button_st_removeFolder = ttk.Button(standing, text=u'削除', width=5)
+Button_st_removeFolder.bind("<Button-1>",stRemoveFolder)
+Button_st_removeFolder.place(x=280, y=23)
+
+# 参加者一覧リストボックス
+st_label_entrants = ttk.Label(standing, text="②戦績出力済プレイヤー")
+st_label_entrants.place(x=5, y=55)
+st_listbox_entrants = tk.Listbox(standing, width=20, height=21)
+st_listbox_entrants.place(x=5, y=75)
+
+st_label_entrants = ttk.Label(standing, text="③プレイヤー名, 戦績のセット")
+st_label_entrants.place(x=150, y=55)
+
+# 各種プレイヤー名セットボタン
+Button_st_SetP1Name = ttk.Button(standing, text=u'選択したプレイヤー名をP1にセット', width=26)
+Button_st_SetP1Name.bind("<Button-1>",stSetP1Name)
+Button_st_SetP1Name.place(x=150, y=75)
+
+Button_st_SetP2Name = ttk.Button(standing, text=u'選択したプレイヤー名をP2にセット', width=26)
+Button_st_SetP2Name.bind("<Button-1>",stSetP2Name)
+Button_st_SetP2Name.place(x=335, y=75)
+
+Button_st_SetNameFromScoreBoard = ttk.Button(standing, text=u'スコアボードからプレイヤー名をセット', width=57)
+Button_st_SetNameFromScoreBoard.bind("<Button-1>",stSetNamesFromScoreBoard)
+Button_st_SetNameFromScoreBoard.place(x=150, y=105)
+
+# プレイヤー名セット時の戦績自動セットチェックボックス
+st_autoSetVal = tk.BooleanVar()
+st_autoSetVal.set(True)
+st_autoSetCheckbox = ttk.Checkbutton(standing, text=u"プレイヤー名セット時の戦績自動セット", variable=st_autoSetVal)
+st_autoSetCheckbox.place(x=150, y=135)
+
+# 左プレイヤー名
+st_label_pName1 = ttk.Label(standing, text="P1 Name")
+st_label_pName1.place(x=150, y=185)
+st_pName1 = ttk.Entry(standing, width=24)
+st_pName1.place(x=150, y=205)
+
+# 右プレイヤー名
+st_label_pName2 = ttk.Label(standing, text="P2 Name")
+st_label_pName2.place(x=350, y=185)
+st_pName2 = ttk.Entry(standing, width=24)
+st_pName2.place(x=350, y=205)
+
+# プレイヤー名と戦績を入れ替えるボタン
+Button_st_swap = ttk.Button(standing, text=u'⇔', width=5)
+Button_st_swap.bind("<Button-1>",stSwap)
+Button_st_swap.place(x=306, y=202)
+
+# プレイヤー1戦績取得ボタン
+Button_st_GetP1Placements = ttk.Button(standing, text=u'戦績取得', width=23)
+Button_st_GetP1Placements.bind("<Button-1>",stGetP1Placements)
+Button_st_GetP1Placements.place(x=150, y=232)
+
+# 戦績データクリアボタン
+Button_st_clear = ttk.Button(standing, text=u'Clear', width=5)
+Button_st_clear.bind("<Button-1>",stClear)
+Button_st_clear.place(x=306, y=232)
+
+# プレイヤー2戦績取得ボタン
+Button_st_GetP2Placements = ttk.Button(standing, text=u'戦績取得', width=24)
+Button_st_GetP2Placements.bind("<Button-1>",stGetP2Placements)
+Button_st_GetP2Placements.place(x=350, y=232)
+
+# 戦績
+st_label_p1tournamentName = ttk.Label(standing, text="大会名")
+st_label_p1tournamentName.place(x=150, y=265)
+st_label_p1entrants = ttk.Label(standing, text="人数")
+st_label_p1entrants.place(x=247, y=265)
+st_label_p1placement = ttk.Label(standing, text="順位")
+st_label_p1placement.place(x=277, y=265)
+
+st_label_p2tournamentName = ttk.Label(standing, text="大会名")
+st_label_p2tournamentName.place(x=350, y=265)
+st_label_p2entrants = ttk.Label(standing, text="人数")
+st_label_p2entrants.place(x=447, y=265)
+st_label_p2placement = ttk.Label(standing, text="順位")
+st_label_p2placement.place(x=477, y=265)
+
+st_p1PlacementsInfo = []
+st_p2PlacementsInfo = []
+
+st_tournament_width = 15
+st_placement_width = 3
+st_p1_base_x = 150
+st_p1_base_y = 285
+st_p2_base_x = 350
+st_p2_base_y = 285
+for i in range(5):
+    st_p1Info = []
+    st_p1Info.append(ttk.Entry(standing, width=st_tournament_width))
+    st_p1Info.append(ttk.Entry(standing, width=st_placement_width))
+    st_p1Info.append(ttk.Entry(standing, width=st_placement_width))
+
+    st_p2Info = []
+    st_p2Info.append(ttk.Entry(standing, width=st_tournament_width))
+    st_p2Info.append(ttk.Entry(standing, width=st_placement_width))
+    st_p2Info.append(ttk.Entry(standing, width=st_placement_width))
+
+    for j in range(3):
+        if j == 0:
+            st_p1Info[j].place(x=st_p1_base_x, y=st_p1_base_y)
+            st_p2Info[j].place(x=st_p2_base_x, y=st_p2_base_y)
+        else:
+            st_p1Info[j].place(x=st_p1_base_x + 100 + ((j - 1) * 28), y=st_p1_base_y)
+            st_p2Info[j].place(x=st_p2_base_x + 100 + ((j - 1) * 28), y=st_p2_base_y)
+    
+    st_p1_base_y = st_p1_base_y + 30
+    st_p2_base_y = st_p2_base_y + 30
+
+    st_p1PlacementsInfo.append(st_p1Info)
+    st_p2PlacementsInfo.append(st_p2Info)
+
+#endregion
+
+#region 戦績出力タブ
+
+# トークン入力欄
+label_token = ttk.Label(api, text="①start.ggトークン")
+label_token.place(x=5, y=5)
+api_token = ttk.Entry(api, width=38)
+api_token.place(x=5, y=25)
+
+# 大会ID入力欄
+label_tournamentID = ttk.Label(api, text="②大会ID")
+label_tournamentID.place(x=5, y=55)
+api_tournamentID = ttk.Entry(api, width=20)
+api_tournamentID.place(x=5, y=75)
+
+# 大会ID取得ボタン
+Button_api_GetTournamentID = ttk.Button(api, text=u'大会ID取得', width=15)
+Button_api_GetTournamentID.bind("<Button-1>", createGetTournamentIDModeless) 
+Button_api_GetTournamentID.place(x=140, y=72)
+
+# イベントID取得ボタン
+Button_api_GetEventID = ttk.Button(api, text=u'③イベントID取得', width=15)
+Button_api_GetEventID.bind("<Button-1>",apiGetEventID) 
+Button_api_GetEventID.place(x=250, y=72)
+
+# イベントIDコンボボックス
+label_eventID = ttk.Label(api, text="④イベントID")
+label_eventID.place(x=5, y=105)
+api_eventID = ttk.Combobox(api, state="readonly", width=35)
+api_eventID.place(x=5, y=125)
+
+# 参加者出力ボタン
+Button_api_GetEntrants = ttk.Button(api, text=u'⑤参加者出力', width=15)
+Button_api_GetEntrants.bind("<Button-1>",apiGetEntrants)
+Button_api_GetEntrants.place(x=250, y=122)
+
+# 参加者一覧リストボックス
+label_entrants = ttk.Label(api, text="⑥参加者一覧")
+label_entrants.place(x=5, y=155)
+listbox_entrants = tk.Listbox(api, width=16, height=15, selectmode="multiple")
+listbox_entrants.place(x=5, y=175)
+listbox_entrants.bind("<<ListboxSelect>>", apiListboxSelected)
+
+# 戦績出力ボタン
+Button_api_GetPlacements = ttk.Button(api, text=u'⑦戦績出力', width=18)
+Button_api_GetPlacements.bind("<Button-1>",apiGetPlacements)
+Button_api_GetPlacements.place(x=118, y=175)
+api_label_caution1 = ttk.Label(api, text="一度に10人まで出力可")
+api_label_caution1.place(x=118, y=205)
+
+# 選択解除ボタン
+Button_api_ClearSelect = ttk.Button(api, text=u'選択解除', width=18)
+Button_api_ClearSelect.bind("<Button-1>",apiClearSelect)
+Button_api_ClearSelect.place(x=118, y=245)
+
+# 戦績出力済み参加者一覧リストボックス
+label_done_entrants = ttk.Label(api, text="⑧戦績出力済み")
+label_done_entrants.place(x=250, y=155)
+listbox_done_entrants = tk.Listbox(api, width=16, height=15)
+listbox_done_entrants.place(x=250, y=175)
+
+# セパレータ
+for i in range(45):
+    label = ttk.Label(api, text="|")
+    label.place(x=360, y=0 + (i *10))
+
+# 手順
+api_label_process0 = ttk.Label(api, text="■ 戦績出力手順")
+api_label_process0.place(x=365, y=5)
+api_label_process1 = ttk.Label(api, text="1. ①を入力")
+api_label_process1.place(x=365, y=25)
+api_label_process2 = ttk.Label(api, text="2. ②を入力")
+api_label_process2.place(x=365, y=45)
+api_label_process3 = ttk.Label(api, text="3. ③をクリック")
+api_label_process3.place(x=365, y=65)
+api_label_process4 = ttk.Label(api, text="4. ④からイベントを選択")
+api_label_process4.place(x=365, y=85)
+api_label_process5 = ttk.Label(api, text="5. ⑤をクリック")
+api_label_process5.place(x=365, y=105)
+api_label_process6 = ttk.Label(api, text="6. ⑥から参加者を選択")
+api_label_process6.place(x=365, y=125)
+api_label_process7 = ttk.Label(api, text="7. ⑦をクリック")
+api_label_process7.place(x=365, y=145)
+
+#endregion
+
+#region MCタブ
 # ラベル
 label_mc_name = ttk.Label(mc, text="MC NAME")
 label_mc_name.place(x=90, y=20)
@@ -876,7 +1654,9 @@ mc_name2.place(x=60, y=70)
 mc_xid2 = ttk.Entry(mc, width=20)
 mc_xid2.place(x=200, y=70)
 
-# ------------- TOP8 -------------
+#endregion
+
+#region TOP8 
 # ラベル
 label = ttk.Label(TOP8, text="Winners SF")
 label.place(x=5, y=5)
@@ -1109,7 +1889,9 @@ Button_top8_AllClear = ttk.Button(TOP8, text=u'AllClear')
 Button_top8_AllClear.bind("<Button-1>",top8ClearAll) 
 Button_top8_AllClear.place(x=5, y=330)
 
-# ------------- クルーバトル -------------
+#endregion
+
+#region クルーバトル
 # ラベル
 label = ttk.Label(crewbattle, text="LEFT TEAM")
 label.place(x=5, y=53)
@@ -1361,7 +2143,9 @@ Button_cb_swap = ttk.Button(crewbattle, text=u'⇐ Swap ⇒', width=17)
 Button_cb_swap.bind("<Button-1>",cbSwap) 
 Button_cb_swap.place(x=135, y=380)
 
-# ------------- 事前入力 -------------
+#endregion
+
+#region 事前入力
 label = ttk.Label(inadvance, text="■クルーバトルメンバー事前入力")
 label.place(x=5, y=5)
 
@@ -1405,7 +2189,9 @@ Button_inad4Clear = ttk.Button(inadvance, text=u'Clear', width=14)
 Button_inad4Clear.bind("<Button-1>",inad4Clear) 
 Button_inad4Clear.place(x=350, y=310)
 
-# 3人総当たり
+#endregion
+
+#region 3人総当たりタブ
 label = ttk.Label(roundrobin, text="------------------------------------------------------------------------------------------------")
 label.place(x=5, y=50)
 label = ttk.Label(roundrobin, text="------------------------------------------------------------------------------------------------")
@@ -1555,11 +2341,12 @@ Button_rr_clear = ttk.Button(roundrobin, text=u'AllClear', width=14)
 Button_rr_clear.bind("<Button-1>",rrClear) 
 Button_rr_clear.place(x=10, y=190)
 
-#----------------------------------------------------------------------------------
-#
-#                           jsonファイルの読み込み処理
-#
-#----------------------------------------------------------------------------------
+#endregion
+
+#endregion
+
+#region jsonファイルの読み込み処理
+
 jsonfile = "datafile/LatteCon.json"
 jsonfile_open = open(jsonfile, "r", encoding="utf-8")
 jsonfile_load = json.load(jsonfile_open)
@@ -1599,6 +2386,47 @@ combo_GF_WL1.set(set_gfwl1)
 combo_GF_WL2.set(set_gfwl2)
 
 tournament_name.insert(tk.END, jsonfile_load["tournament_name"])
+
+# 戦績
+try:
+    with open("datafile/tournaments.json", "r", encoding="utf-8") as f:
+        tournaments_json = json.load(f)
+    tournamentsInfo = []
+
+    for tournament in tournaments_json:
+        tournamentInfo = tournament.get("tournament_name") + "/" + tournament.get("tournament_id")
+        tournamentsInfo.append(tournamentInfo)
+    st_tournamentInfo["values"] = tournamentsInfo
+
+except FileNotFoundError:
+    tournaments_json = []
+    with open("datafile/tournaments.json", "w", encoding="utf-8") as f:
+        json.dump(tournaments_json, f, ensure_ascii=False, indent=4)
+
+st_pName1.insert(tk.END, jsonfile_load["st_pName1"])
+st_pName2.insert(tk.END, jsonfile_load["st_pName2"])
+
+for i in range(5):
+    st_p1PlacementsInfo[i][0].insert(tk.END, jsonfile_load["st_p1_" + str(i) + "_tournament_name"])
+    st_p1PlacementsInfo[i][1].insert(tk.END, jsonfile_load["st_p1_" + str(i) + "_entrants"])
+    st_p1PlacementsInfo[i][2].insert(tk.END, jsonfile_load["st_p1_" + str(i) + "_placement"])
+    st_p2PlacementsInfo[i][0].insert(tk.END, jsonfile_load["st_p2_" + str(i) + "_tournament_name"])
+    st_p2PlacementsInfo[i][1].insert(tk.END, jsonfile_load["st_p2_" + str(i) + "_entrants"])
+    st_p2PlacementsInfo[i][2].insert(tk.END, jsonfile_load["st_p2_" + str(i) + "_placement"])
+
+# 戦績出力
+try:
+    with open("datafile/token.json", "r", encoding="utf-8") as f:
+        token_json = json.load(f)
+    api_token.insert(tk.END, token_json["token"])
+except FileNotFoundError:
+    token_json = {
+        "token": ""
+    }
+    with open("datafile/token.json", "w", encoding="utf-8") as f:
+        json.dump(token_json, f, ensure_ascii=False, indent=4)
+    api_token.insert(tk.END, "")
+
 
 # MC
 mc_name1.insert(tk.END, jsonfile_load["mc_name1"])
@@ -1730,5 +2558,7 @@ rr_pl_p3_xid.insert(tk.END, jsonfile_load["rr_pl_p3_xid"])
 rr_p1_rank.set(int(jsonfile_load["rr_p1_rank"]))
 rr_p2_rank.set(int(jsonfile_load["rr_p2_rank"]))
 rr_p3_rank.set(int(jsonfile_load["rr_p3_rank"]))
+
+#endregion
 
 root.mainloop()
