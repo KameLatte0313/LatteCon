@@ -7,7 +7,7 @@ LatteConは格闘ゲームの大会で使用されることを想定し、様々
 
 ※現時点ではWindowsでのみ使用可能です。Macを使用している方はご注意ください。
 
-<img src="https://github.com/KameLatte0313/LatteCon/assets/75975584/3615af27-3b2b-4396-a241-d6931af5b71c"  style="width:400px;height:auto;">
+<img src="https://github.com/user-attachments/assets/151faecc-b5f8-4326-a21e-26095581e57d"  style="width:400px;height:auto;">
 
 ## 導入方法
 ダウンロードしたzipファイルを解凍します。
@@ -34,6 +34,10 @@ scoreboard-type2.html <br>
 
 scoreboard-type3.html <br>
 <img src="https://github.com/KameLatte0313/ScoreBoard-LatteCon_forSSBU_1.0/assets/75975584/cbf49187-1060-451f-a376-a3ed4e01f6b4"  style="width:600px;height:auto;">
+
+### 【戦績】
+stats.html <br>
+<img src="https://github.com/user-attachments/assets/7bccc4fc-bbc5-4d0e-9ed8-323d6afbe646"  style="width:600px;height:auto;">
 
 ### 【TOP8ブラケット】
 top8.html <br>
@@ -68,12 +72,3 @@ LatteConコミュニティーサーバーをDiscordにて作成しました。
 
 ### LatteCon.exe
 Copyright (c) 2023-2025, Kamelatte
-
-## StreamControl.exe
-Original work Copyright (c) 2012-2015, Tan Yu Sheng
-Modified work Copyright (c) 2019, Miguel Müller
-
-
-All rights reserved.
-
-<https://github.com/farpenoodle/StreamControl>
