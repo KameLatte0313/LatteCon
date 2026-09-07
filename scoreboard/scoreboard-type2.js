@@ -122,8 +122,8 @@ function update() {
 		animating = true;
 
         // プレイヤー名
-        setValtoAddData("player1", scObj["pTeam1"].toString() + " " + scObj["pName1"].toString());
-        setValtoAddData("player2", scObj["pTeam2"].toString() + " " + scObj["pName2"].toString());
+        setTeamAndName("player1", scObj["pTeam1"].toString(), scObj["pName1"].toString());
+        setTeamAndName("player2", scObj["pTeam2"].toString(), scObj["pName2"].toString());
 
         fitty("#player1", {maxSize: 35});
         fitty("#player2", {maxSize: 35});
@@ -199,8 +199,8 @@ function update() {
     } else if (!animating) {
 
         // プレイヤー名
-        changeValtoAddData("player1", scObj["pTeam1"].toString() + " " + scObj["pName1"].toString());
-        changeValtoAddData("player2", scObj["pTeam2"].toString() + " " + scObj["pName2"].toString());
+        changeTeamAndName("player1", scObj["pTeam1"].toString(), scObj["pName1"].toString());
+        changeTeamAndName("player2", scObj["pTeam2"].toString(), scObj["pName2"].toString());
         fitty("#player1", {maxSize: 35});
         fitty("#player2", {maxSize: 35});
 
@@ -263,6 +263,12 @@ function setValtoAddData(id_name, data) {
     document.getElementById(id_name).innerHTML = scObjOld[id_name] = data.toString();
 }
 
+function setTeamAndName(id_name, team, name) {
+    scObjOld[id_name] = team + " " + name;
+    let color = id_name == "player1" ? "#FE3334" : "#298BFF";
+    document.getElementById(id_name).innerHTML = `<span style="color: ${color}">${team}</span> ${name}`;
+}
+
 function setSetstory() {
     for (let i = 1; i < 4; i++) {
         let id_name = "bo3-game" + i.toString() + "-" + scObj["game" + i.toString()];
@@ -301,6 +307,25 @@ function changeValtoAddData(id_name, data) {
         let id = document.getElementById(id_name);
         TweenMax.to(id,0.5,{opacity:"0",ease:Quad.easeOut,onComplete: function() { 
             id.innerHTML = scObjOld[id_name] = data.toString(); 
+            // fitty("#" + id_name, {maxSize: 40});
+        }});
+        TweenMax.to(id,0.5,{opacity:"1",ease:Quad.easeOut,delay:1,onComplete: function() {
+            animating = false;
+        }});
+    }
+}
+
+function changeTeamAndName(id_name, team, name) {
+    let data = team + " " + name;
+    if (scObjOld[id_name] != data) {
+        animating = true;
+        let id = document.getElementById(id_name);
+        scObjOld[id_name] = data;
+
+        let color = id_name == "player1" ? "#FE3334" : "#298BFF";
+        
+        TweenMax.to(id,0.5,{opacity:"0",ease:Quad.easeOut,onComplete: function() { 
+            id.innerHTML = `<span style="color: ${color}">${team}</span> ${name}`;
             // fitty("#" + id_name, {maxSize: 40});
         }});
         TweenMax.to(id,0.5,{opacity:"1",ease:Quad.easeOut,delay:1,onComplete: function() {
